@@ -1201,7 +1201,7 @@ usb_status_t USB_DeviceKhciInit(uint8_t controllerId,
 #endif
 
 #if defined(__DSC__) || defined(__CW__)
-    khciState->bdt = (void *)s_UsbDeviceKhciBdtBuffer[controllerId - (uint8_t)kUSB_ControllerKhci0];
+    khciState->bdt = (uint8_t *)s_UsbDeviceKhciBdtBuffer[controllerId - (uint8_t)kUSB_ControllerKhci0];
 #else
     khciState->bdt = s_UsbDeviceKhciBdtBuffer[controllerId - (uint8_t)kUSB_ControllerKhci0];
 #endif
