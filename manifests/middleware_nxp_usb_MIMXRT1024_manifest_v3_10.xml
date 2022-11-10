@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ksdk:manifest xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="SDK_2.x_middleware_nxp_usb_MIMXRT1052_manifest_v3_10" name="USB Host, Device, OTG Stack" brief="Host, Device, OTG" format_version="3.10" api_version="2.0.0" xsi:schemaLocation="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd http://nxp.com/mcuxpresso/sdk/sdk_manifest_v3.10.xsd">
-  <!--Timestamp (UTC): 2022-07-15 08:18:08.354511-->
+<ksdk:manifest xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="SDK_2.x_middleware_nxp_usb_MIMXRT1024_manifest_v3_10" name="USB Host, Device, OTG Stack" brief="Host, Device, OTG" format_version="3.10" api_version="2.0.0" xsi:schemaLocation="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd http://nxp.com/mcuxpresso/sdk/sdk_manifest_v3.10.xsd">
+  <!--Timestamp (UTC): 2022-07-15 08:18:15.405890-->
   <!--This manifest is generated based on sdk repo commit: 45d71c921a1dd3e0403549aa377535344ed9bc97-->
   <externalDefinitions>
-    <definition extID="MIMXRT1052xxxxB"/>
-    <definition extID="component.osa.MIMXRT1052"/>
-    <definition extID="core0_MIMXRT1052xxxxB"/>
+    <definition extID="MIMXRT1024xxxxx"/>
+    <definition extID="component.osa.MIMXRT1024"/>
+    <definition extID="core0_MIMXRT1024xxxxx"/>
     <definition extID="armgcc"/>
   </externalDefinitions>
-  <ksdk id="MCUXpressoSDK2120_middleware_nxp_usb_MIMXRT1052_manifest_v3_10" name="MCUXpressoSDK2120_middleware_nxp_usb_MIMXRT1052_manifest_v3_10" version="2.12.0"/>
+  <ksdk id="MCUXpressoSDK2120_middleware_nxp_usb_MIMXRT1024_manifest_v3_10" name="MCUXpressoSDK2120_middleware_nxp_usb_MIMXRT1024_manifest_v3_10" version="2.12.0"/>
   <components>
-    <component id="middleware.usb.common_header.MIMXRT1052" name="USB Common Header" brief="Middleware usb common_header" version="2.8.2" full_name="USB Common Header" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.common_header.MIMXRT1024" name="USB Common Header" brief="Middleware usb common_header" version="2.8.2" full_name="USB Common Header" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="component.osa.MIMXRT1052"/>
+        <component_dependency value="component.osa.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./include" project_relative_path="include" type="c_include">
         <files mask="usb.h"/>
@@ -20,15 +20,15 @@
         <files mask="usb_spec.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_common_header_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_common_header_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.audio.external.MIMXRT1052" name="USB Device Audio" brief="Middleware usb device audio external" version="2.8.2" full_name="USB Device Audio" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.audio.external.MIMXRT1024" name="USB Device Audio" brief="Middleware usb device audio external" version="2.8.2" full_name="USB Device Audio" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/audio" type="src">
         <files mask="usb_device_audio.c"/>
@@ -41,9 +41,9 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ccid.external.MIMXRT1052" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.8.2" full_name="USB Device CCID" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.ccid.external.MIMXRT1024" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.8.2" full_name="USB Device CCID" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/ccid" type="src">
         <files mask="usb_device_ccid.c"/>
@@ -56,9 +56,9 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.external.MIMXRT1052" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.8.2" full_name="USB Device CDC" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.external.MIMXRT1024" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.8.2" full_name="USB Device CDC" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/cdc" type="src">
         <files mask="usb_device_cdc_acm.c"/>
@@ -67,18 +67,18 @@
         <files mask="usb_device_cdc_acm.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_device_cdc_external_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_device_cdc_external_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./output/source/device/class" project_relative_path="device/class/cdc" type="c_include"/>
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.rndis.external.MIMXRT1052" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.8.2" full_name="USB Device CDC RNDIS" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.rndis.external.MIMXRT1024" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.8.2" full_name="USB Device CDC RNDIS" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.device.cdc.external.MIMXRT1052"/>
+          <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.device.cdc.external.MIMXRT1024"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/cdc_rndis" type="src">
@@ -92,11 +92,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.common_header.MIMXRT1052" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.8.2" full_name="USB Device Common Header" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.common_header.MIMXRT1024" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.8.2" full_name="USB Device Common Header" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.common_header.MIMXRT1052"/>
+          <component_dependency value="component.osa.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.common_header.MIMXRT1024"/>
         </all>
       </dependencies>
       <source relative_path="./device" project_relative_path="device/include" type="c_include">
@@ -106,18 +106,18 @@
         <files mask="usb_device_dci.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_device_common_header_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_device_common_header_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./device" project_relative_path="device/include" type="c_include"/>
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.controller.driver.MIMXRT1052" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.8.2" full_name="USB Device Common Controller" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.controller.driver.MIMXRT1024" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.8.2" full_name="USB Device Common Controller" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.device_controller_ehci.MIMXRT1052"/>
+          <component_dependency value="component.osa.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.device_controller_ehci.MIMXRT1024"/>
         </all>
       </dependencies>
       <source relative_path="./device" project_relative_path="device/include" type="c_include">
@@ -133,16 +133,16 @@
         <files mask="ChangeLogKSDK.txt" hidden="true"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_device_controller_driver_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_device_controller_driver_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./device" project_relative_path="device/include" type="c_include"/>
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.dfu.external.MIMXRT1052" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.8.2" full_name="USB Device DFU" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.dfu.external.MIMXRT1024" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.8.2" full_name="USB Device DFU" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/dfu" type="src">
         <files mask="usb_device_dfu.c"/>
@@ -155,12 +155,12 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device_controller_ehci.MIMXRT1052" name="USB Device EHCI Controller Driver(HS)" brief="Middleware usb device ehci" version="2.8.2" full_name="USB Device EHCI Controller Driver(HS)" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device_controller_ehci.MIMXRT1024" name="USB Device EHCI Controller Driver(HS)" brief="Middleware usb device ehci" version="2.8.2" full_name="USB Device EHCI Controller Driver(HS)" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.phy.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.device.ehci_config_header.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.device.common_header.MIMXRT1052"/>
+          <component_dependency value="middleware.usb.phy.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.device.ehci_config_header.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.device.common_header.MIMXRT1024"/>
         </all>
       </dependencies>
       <source relative_path="./device" project_relative_path="device/source/ehci" type="src">
@@ -170,14 +170,14 @@
         <files mask="usb_device_ehci.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_device_ehci_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_device_ehci_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./device" project_relative_path="device/source/ehci" type="c_include"/>
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ehci_config_header.MIMXRT1052" name="USB device ehci config header" brief="USB device ehci config header" version="2.8.2" full_name="USB device ehci config header" devices="MIMXRT1052xxxxB" user_visible="true" type="project_template" package_base_path="./" project_base_path="source">
+    <component id="middleware.usb.device.ehci_config_header.MIMXRT1024" name="USB device ehci config header" brief="USB device ehci config header" version="2.8.2" full_name="USB device ehci config header" devices="MIMXRT1024xxxxx" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <source relative_path="./output/npw/device_config/ehci" project_relative_path="generated" type="c_include">
         <files mask="usb_device_config.h"/>
       </source>
@@ -185,9 +185,9 @@
         <include_path relative_path="./output/npw/device_config/ehci" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.hid.external.MIMXRT1052" name="USB Device HID" brief="Middleware usb device hid external" version="2.8.2" full_name="USB Device HID" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.hid.external.MIMXRT1024" name="USB Device HID" brief="Middleware usb device hid external" version="2.8.2" full_name="USB Device HID" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/hid" type="src">
         <files mask="usb_device_hid.c"/>
@@ -200,9 +200,9 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.msd.external.MIMXRT1052" name="USB Device MSD" brief="Middleware usb device msd external" version="2.8.2" full_name="USB Device MSD" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.msd.external.MIMXRT1024" name="USB Device MSD" brief="Middleware usb device msd external" version="2.8.2" full_name="USB Device MSD" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/msc" type="src">
         <files mask="usb_device_msc.c"/>
@@ -217,9 +217,9 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.phdc.external.MIMXRT1052" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.8.2" full_name="USB Device PHDC" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.phdc.external.MIMXRT1024" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.8.2" full_name="USB Device PHDC" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/phdc" type="src">
         <files mask="usb_device_phdc.c"/>
@@ -232,9 +232,9 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.printer.external.MIMXRT1052" name="USB Device Printer" brief="Middleware usb device printer external" version="2.8.2" full_name="USB Device Printer" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.printer.external.MIMXRT1024" name="USB Device Printer" brief="Middleware usb device printer external" version="2.8.2" full_name="USB Device Printer" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/printer" type="src">
         <files mask="usb_device_printer.c"/>
@@ -247,11 +247,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.stack.external.MIMXRT1052" name="USB Device Stack" brief="Middleware usb device stack external" version="2.8.2" full_name="USB Device Stack" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.stack.external.MIMXRT1024" name="USB Device Stack" brief="Middleware usb device stack external" version="2.8.2" full_name="USB Device Stack" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.device.controller.driver.MIMXRT1052"/>
+          <component_dependency value="component.osa.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.device.controller.driver.MIMXRT1024"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class" type="src">
@@ -267,7 +267,7 @@
         <files mask="usb_device_ch9.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_device_stack_external_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_device_stack_external_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./output/source/device/class" project_relative_path="device/class" type="c_include"/>
@@ -276,9 +276,9 @@
         <include_path relative_path="./output/source/device" project_relative_path="output/source/device" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.video.external.MIMXRT1052" name="USB Device Video" brief="Middleware usb device video external" version="2.8.2" full_name="USB Device Video" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.video.external.MIMXRT1024" name="USB Device Video" brief="Middleware usb device video external" version="2.8.2" full_name="USB Device Video" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.device.stack.external.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/video" type="src">
         <files mask="usb_device_video.c"/>
@@ -291,9 +291,9 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_audio.MIMXRT1052" name="USB Host Audio" brief="Middleware usb host audio" version="2.8.2" full_name="USB Host Audio" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_audio.MIMXRT1024" name="USB Host Audio" brief="Middleware usb host audio" version="2.8.2" full_name="USB Host Audio" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.host.stack.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.host.stack.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
         <files mask="usb_host_audio.c"/>
@@ -302,15 +302,15 @@
         <files mask="usb_host_audio.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_audio_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_audio_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_cdc.MIMXRT1052" name="USB Host CDC" brief="Middleware usb host cdc" version="2.8.2" full_name="USB Host CDC" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_cdc.MIMXRT1024" name="USB Host CDC" brief="Middleware usb host cdc" version="2.8.2" full_name="USB Host CDC" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.host.stack.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.host.stack.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
         <files mask="usb_host_cdc.c"/>
@@ -319,17 +319,17 @@
         <files mask="usb_host_cdc.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_cdc_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_cdc_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_cdc_rndis.MIMXRT1052" name="USB Host CDC RNDIS" brief="Middleware usb host cdc_rndis" version="2.8.2" full_name="USB Host CDC RNDIS" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_cdc_rndis.MIMXRT1024" name="USB Host CDC RNDIS" brief="Middleware usb host cdc_rndis" version="2.8.2" full_name="USB Host CDC RNDIS" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.host_cdc.MIMXRT1052"/>
+          <component_dependency value="middleware.usb.host.stack.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.host_cdc.MIMXRT1024"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -339,17 +339,17 @@
         <files mask="usb_host_cdc_rndis.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_cdc_rndis_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_cdc_rndis_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.common_header.MIMXRT1052" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.8.2" full_name="USB Host Common Header" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host.common_header.MIMXRT1024" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.8.2" full_name="USB Host Common Header" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.common_header.MIMXRT1052"/>
+          <component_dependency value="component.osa.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.common_header.MIMXRT1024"/>
         </all>
       </dependencies>
       <source relative_path="./host" project_relative_path="host" type="c_include">
@@ -359,18 +359,18 @@
         <files mask="usb_host_framework.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_common_header_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_common_header_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host" project_relative_path="host" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_controller_ehci.MIMXRT1052" name="USB Host EHCI Controller Driver(HS)" brief="Middleware usb host ehci" version="2.8.2" full_name="USB Host EHCI Controller Driver(HS)" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_controller_ehci.MIMXRT1024" name="USB Host EHCI Controller Driver(HS)" brief="Middleware usb host ehci" version="2.8.2" full_name="USB Host EHCI Controller Driver(HS)" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.phy.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.host.ehci_config_header.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.host.common_header.MIMXRT1052"/>
+          <component_dependency value="middleware.usb.phy.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.host.ehci_config_header.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.host.common_header.MIMXRT1024"/>
         </all>
       </dependencies>
       <source relative_path="./host" project_relative_path="host" type="src">
@@ -380,14 +380,14 @@
         <files mask="usb_host_ehci.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_ehci_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_ehci_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host" project_relative_path="host" type="c_include"/>
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.ehci_config_header.MIMXRT1052" name="USB host ehci config header" brief="USB host ehci config header" version="2.8.2" full_name="USB host ehci config header" devices="MIMXRT1052xxxxB" user_visible="true" type="project_template" package_base_path="./" project_base_path="source">
+    <component id="middleware.usb.host.ehci_config_header.MIMXRT1024" name="USB host ehci config header" brief="USB host ehci config header" version="2.8.2" full_name="USB host ehci config header" devices="MIMXRT1024xxxxx" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <source relative_path="./output/npw/host_config/ehci" project_relative_path="generated" type="c_include">
         <files mask="usb_host_config.h"/>
       </source>
@@ -395,9 +395,9 @@
         <include_path relative_path="./output/npw/host_config/ehci" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_hid.MIMXRT1052" name="USB Host HID" brief="Middleware usb host hid" version="2.8.2" full_name="USB Host HID" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_hid.MIMXRT1024" name="USB Host HID" brief="Middleware usb host hid" version="2.8.2" full_name="USB Host HID" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.host.stack.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.host.stack.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
         <files mask="usb_host_hid.c"/>
@@ -406,15 +406,15 @@
         <files mask="usb_host_hid.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_hid_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_hid_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_msd.MIMXRT1052" name="USB Host MSD" brief="Middleware usb host msd" version="2.8.2" full_name="USB Host MSD" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_msd.MIMXRT1024" name="USB Host MSD" brief="Middleware usb host msd" version="2.8.2" full_name="USB Host MSD" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.host.stack.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.host.stack.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
         <files mask="usb_host_msd.c"/>
@@ -424,15 +424,15 @@
         <files mask="usb_host_msd.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_msd_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_msd_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_phdc.MIMXRT1052" name="USB Host PHDC" brief="Middleware usb host phdc" version="2.8.2" full_name="USB Host PHDC" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_phdc.MIMXRT1024" name="USB Host PHDC" brief="Middleware usb host phdc" version="2.8.2" full_name="USB Host PHDC" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.host.stack.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.host.stack.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
         <files mask="usb_host_phdc.c"/>
@@ -441,15 +441,15 @@
         <files mask="usb_host_phdc.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_phdc_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_phdc_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_printer.MIMXRT1052" name="USB Host Printer" brief="Middleware usb host printer" version="2.8.2" full_name="USB Host Printer" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_printer.MIMXRT1024" name="USB Host Printer" brief="Middleware usb host printer" version="2.8.2" full_name="USB Host Printer" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.host.stack.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.host.stack.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
         <files mask="usb_host_printer.c"/>
@@ -458,17 +458,17 @@
         <files mask="usb_host_printer.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_printer_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_printer_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.stack.MIMXRT1052" name="USB Host Stack" brief="Middleware usb host stack" version="2.8.2" full_name="USB Host Stack" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host.stack.MIMXRT1024" name="USB Host Stack" brief="Middleware usb host stack" version="2.8.2" full_name="USB Host Stack" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MIMXRT1052"/>
-          <component_dependency value="middleware.usb.host_controller_ehci.MIMXRT1052"/>
+          <component_dependency value="component.osa.MIMXRT1024"/>
+          <component_dependency value="middleware.usb.host_controller_ehci.MIMXRT1024"/>
         </all>
       </dependencies>
       <source relative_path="./host" project_relative_path="host" type="c_include">
@@ -491,7 +491,7 @@
         <files mask="usb_host_hub_app.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_stack_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_host_stack_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./host" project_relative_path="host" type="c_include"/>
@@ -499,9 +499,9 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_video.MIMXRT1052" name="USB Host Video" brief="Middleware usb host video" version="2.8.2" full_name="USB Host Video" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_video.MIMXRT1024" name="USB Host Video" brief="Middleware usb host video" version="2.8.2" full_name="USB Host Video" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.host.stack.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.host.stack.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
         <files mask="usb_host_video.c"/>
@@ -509,16 +509,13 @@
       <source relative_path="./host/class" project_relative_path="host/class" type="c_include">
         <files mask="usb_host_video.h"/>
       </source>
-      <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_host_video_MIMXRT1052.cmake" hidden="true"/>
-      </source>
       <include_paths>
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.phy.MIMXRT1052" name="USB PHY" brief="Middleware usb phy" version="2.8.2" full_name="USB PHY" devices="MIMXRT1052xxxxB" device_cores="core0_MIMXRT1052xxxxB" category="USB/USB PHY" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.phy.MIMXRT1024" name="USB PHY" brief="Middleware usb phy" version="2.8.2" full_name="USB PHY" devices="MIMXRT1024xxxxx" device_cores="core0_MIMXRT1024xxxxx" category="USB/USB PHY" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
-        <component_dependency value="middleware.usb.common_header.MIMXRT1052"/>
+        <component_dependency value="middleware.usb.common_header.MIMXRT1024"/>
       </dependencies>
       <source relative_path="./phy" project_relative_path="phy" type="src">
         <files mask="usb_phy.c"/>
@@ -527,7 +524,7 @@
         <files mask="usb_phy.h"/>
       </source>
       <source toolchain="armgcc" relative_path="./" project_relative_path="." type="workspace">
-        <files mask="middleware_usb_phy_MIMXRT1052.cmake" hidden="true"/>
+        <files mask="middleware_usb_phy_MIMXRT1024.cmake" hidden="true"/>
       </source>
       <include_paths>
         <include_path relative_path="./phy" project_relative_path="phy" type="c_include"/>

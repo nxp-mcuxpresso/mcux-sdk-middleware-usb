@@ -10,7 +10,7 @@
   </externalDefinitions>
   <ksdk id="MCUXpressoSDK2120_middleware_nxp_usb_K32L2A41A_manifest_v3_10" name="MCUXpressoSDK2120_middleware_nxp_usb_K32L2A41A_manifest_v3_10" version="2.12.0"/>
   <components>
-    <component id="middleware.usb.common_header.K32L2A41A" name="USB Common Header" brief="Middleware usb common_header" version="2.8.2" full_name="USB Common Header" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.common_header.K32L2A41A" name="USB Common Header" brief="Middleware usb common_header" version="2.8.2" full_name="USB Common Header" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="component.osa.K32L2A41A"/>
       </dependencies>
@@ -26,7 +26,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.audio.external.K32L2A41A" name="USB Device Audio" brief="Middleware usb device audio external" version="2.8.2" full_name="USB Device Audio" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.audio.external.K32L2A41A" name="USB Device Audio" brief="Middleware usb device audio external" version="2.8.2" full_name="USB Device Audio" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
       </dependencies>
@@ -41,7 +41,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ccid.external.K32L2A41A" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.8.2" full_name="USB Device CCID" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.ccid.external.K32L2A41A" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.8.2" full_name="USB Device CCID" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
       </dependencies>
@@ -56,7 +56,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.external.K32L2A41A" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.8.2" full_name="USB Device CDC" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.external.K32L2A41A" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.8.2" full_name="USB Device CDC" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
       </dependencies>
@@ -74,7 +74,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.rndis.external.K32L2A41A" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.8.2" full_name="USB Device CDC RNDIS" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.rndis.external.K32L2A41A" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.8.2" full_name="USB Device CDC RNDIS" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
@@ -92,7 +92,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.common_header.K32L2A41A" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.8.2" full_name="USB Device Common Header" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.common_header.K32L2A41A" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.8.2" full_name="USB Device Common Header" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.K32L2A41A"/>
@@ -113,7 +113,7 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.controller.driver.K32L2A41A" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.8.2" full_name="USB Device Common Controller" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.controller.driver.K32L2A41A" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.8.2" full_name="USB Device Common Controller" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.K32L2A41A"/>
@@ -140,7 +140,7 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.dfu.external.K32L2A41A" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.8.2" full_name="USB Device DFU" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.dfu.external.K32L2A41A" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.8.2" full_name="USB Device DFU" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
       </dependencies>
@@ -155,7 +155,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.hid.external.K32L2A41A" name="USB Device HID" brief="Middleware usb device hid external" version="2.8.2" full_name="USB Device HID" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.hid.external.K32L2A41A" name="USB Device HID" brief="Middleware usb device hid external" version="2.8.2" full_name="USB Device HID" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
       </dependencies>
@@ -170,7 +170,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device_controller_khci.K32L2A41A" name="USB Device KHCI Controller Driver(FS)" brief="Middleware usb device khci" version="2.8.2" full_name="USB Device KHCI Controller Driver(FS)" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device_controller_khci.K32L2A41A" name="USB Device KHCI Controller Driver(FS)" brief="Middleware usb device khci" version="2.8.2" full_name="USB Device KHCI Controller Driver(FS)" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.khci_config_header.K32L2A41A"/>
@@ -194,7 +194,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.khci_config_header.K32L2A41A" name="USB device khci config header" brief="USB device khci config header" version="2.8.2" full_name="USB device khci config header" devices="K32L2A41xxxxA" user_visible="true" type="project_template" package_base_path="./" project_base_path="source">
+    <component id="middleware.usb.device.khci_config_header.K32L2A41A" name="USB device khci config header" brief="USB device khci config header" version="2.8.2" full_name="USB device khci config header" devices="K32L2A41xxxxA" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <source relative_path="./output/npw/device_config/khci" project_relative_path="generated" type="c_include">
         <files mask="usb_device_config.h"/>
       </source>
@@ -202,7 +202,7 @@
         <include_path relative_path="./output/npw/device_config/khci" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.msd.external.K32L2A41A" name="USB Device MSD" brief="Middleware usb device msd external" version="2.8.2" full_name="USB Device MSD" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.msd.external.K32L2A41A" name="USB Device MSD" brief="Middleware usb device msd external" version="2.8.2" full_name="USB Device MSD" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
       </dependencies>
@@ -219,7 +219,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.phdc.external.K32L2A41A" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.8.2" full_name="USB Device PHDC" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.phdc.external.K32L2A41A" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.8.2" full_name="USB Device PHDC" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
       </dependencies>
@@ -234,7 +234,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.printer.external.K32L2A41A" name="USB Device Printer" brief="Middleware usb device printer external" version="2.8.2" full_name="USB Device Printer" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.printer.external.K32L2A41A" name="USB Device Printer" brief="Middleware usb device printer external" version="2.8.2" full_name="USB Device Printer" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
       </dependencies>
@@ -249,7 +249,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.stack.external.K32L2A41A" name="USB Device Stack" brief="Middleware usb device stack external" version="2.8.2" full_name="USB Device Stack" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.stack.external.K32L2A41A" name="USB Device Stack" brief="Middleware usb device stack external" version="2.8.2" full_name="USB Device Stack" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.K32L2A41A"/>
@@ -278,7 +278,7 @@
         <include_path relative_path="./output/source/device" project_relative_path="output/source/device" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.video.external.K32L2A41A" name="USB Device Video" brief="Middleware usb device video external" version="2.8.2" full_name="USB Device Video" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.device.video.external.K32L2A41A" name="USB Device Video" brief="Middleware usb device video external" version="2.8.2" full_name="USB Device Video" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L2A41A"/>
       </dependencies>
@@ -293,7 +293,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_audio.K32L2A41A" name="USB Host Audio" brief="Middleware usb host audio" version="2.8.2" full_name="USB Host Audio" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_audio.K32L2A41A" name="USB Host Audio" brief="Middleware usb host audio" version="2.8.2" full_name="USB Host Audio" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.host.stack.K32L2A41A"/>
       </dependencies>
@@ -310,7 +310,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_cdc.K32L2A41A" name="USB Host CDC" brief="Middleware usb host cdc" version="2.8.2" full_name="USB Host CDC" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_cdc.K32L2A41A" name="USB Host CDC" brief="Middleware usb host cdc" version="2.8.2" full_name="USB Host CDC" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.host.stack.K32L2A41A"/>
       </dependencies>
@@ -327,7 +327,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_cdc_rndis.K32L2A41A" name="USB Host CDC RNDIS" brief="Middleware usb host cdc_rndis" version="2.8.2" full_name="USB Host CDC RNDIS" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_cdc_rndis.K32L2A41A" name="USB Host CDC RNDIS" brief="Middleware usb host cdc_rndis" version="2.8.2" full_name="USB Host CDC RNDIS" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.stack.K32L2A41A"/>
@@ -344,7 +344,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.common_header.K32L2A41A" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.8.2" full_name="USB Host Common Header" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host.common_header.K32L2A41A" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.8.2" full_name="USB Host Common Header" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.K32L2A41A"/>
@@ -364,7 +364,7 @@
         <include_path relative_path="./host" project_relative_path="host" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_hid.K32L2A41A" name="USB Host HID" brief="Middleware usb host hid" version="2.8.2" full_name="USB Host HID" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_hid.K32L2A41A" name="USB Host HID" brief="Middleware usb host hid" version="2.8.2" full_name="USB Host HID" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.host.stack.K32L2A41A"/>
       </dependencies>
@@ -381,7 +381,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_controller_khci.K32L2A41A" name="USB Host KHCI Controller Driver(FS)" brief="Middleware usb host khci" version="2.8.2" full_name="USB Host KHCI Controller Driver(FS)" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_controller_khci.K32L2A41A" name="USB Host KHCI Controller Driver(FS)" brief="Middleware usb host khci" version="2.8.2" full_name="USB Host KHCI Controller Driver(FS)" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.khci_config_header.K32L2A41A"/>
@@ -402,7 +402,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.khci_config_header.K32L2A41A" name="USB host khci config header" brief="USB host khci config header" version="2.8.2" full_name="USB host khci config header" devices="K32L2A41xxxxA" user_visible="true" type="project_template" package_base_path="./" project_base_path="source">
+    <component id="middleware.usb.host.khci_config_header.K32L2A41A" name="USB host khci config header" brief="USB host khci config header" version="2.8.2" full_name="USB host khci config header" devices="K32L2A41xxxxA" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <source relative_path="./output/npw/host_config/khci" project_relative_path="generated" type="c_include">
         <files mask="usb_host_config.h"/>
       </source>
@@ -410,7 +410,7 @@
         <include_path relative_path="./output/npw/host_config/khci" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_msd.K32L2A41A" name="USB Host MSD" brief="Middleware usb host msd" version="2.8.2" full_name="USB Host MSD" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_msd.K32L2A41A" name="USB Host MSD" brief="Middleware usb host msd" version="2.8.2" full_name="USB Host MSD" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.host.stack.K32L2A41A"/>
       </dependencies>
@@ -428,7 +428,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_phdc.K32L2A41A" name="USB Host PHDC" brief="Middleware usb host phdc" version="2.8.2" full_name="USB Host PHDC" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_phdc.K32L2A41A" name="USB Host PHDC" brief="Middleware usb host phdc" version="2.8.2" full_name="USB Host PHDC" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.host.stack.K32L2A41A"/>
       </dependencies>
@@ -445,7 +445,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_printer.K32L2A41A" name="USB Host Printer" brief="Middleware usb host printer" version="2.8.2" full_name="USB Host Printer" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_printer.K32L2A41A" name="USB Host Printer" brief="Middleware usb host printer" version="2.8.2" full_name="USB Host Printer" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.host.stack.K32L2A41A"/>
       </dependencies>
@@ -462,7 +462,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.stack.K32L2A41A" name="USB Host Stack" brief="Middleware usb host stack" version="2.8.2" full_name="USB Host Stack" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host.stack.K32L2A41A" name="USB Host Stack" brief="Middleware usb host stack" version="2.8.2" full_name="USB Host Stack" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.K32L2A41A"/>
@@ -497,7 +497,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_video.K32L2A41A" name="USB Host Video" brief="Middleware usb host video" version="2.8.2" full_name="USB Host Video" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path="./" project_base_path="usb">
+    <component id="middleware.usb.host_video.K32L2A41A" name="USB Host Video" brief="Middleware usb host video" version="2.8.2" full_name="USB Host Video" devices="K32L2A41xxxxA" device_cores="core0_K32L2A41xxxxA" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.host.stack.K32L2A41A"/>
       </dependencies>
