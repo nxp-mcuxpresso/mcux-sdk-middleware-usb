@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ksdk:manifest xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="SDK_2.x_middleware_nxp_usb_K32L3A60_manifest_v3_10" name="USB Host, Device, OTG Stack" brief="Host, Device, OTG" format_version="3.10" api_version="2.0.0" xsi:schemaLocation="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd http://nxp.com/mcuxpresso/sdk/sdk_manifest_v3.10.xsd">
-  <!--Timestamp (UTC): 2022-07-15 08:19:54.092882-->
-  <!--This manifest is generated based on sdk repo commit: 45d71c921a1dd3e0403549aa377535344ed9bc97-->
+  <!--Timestamp (UTC): 2023-01-09 15:38:07.029578-->
+  <!--This manifest is generated based on sdk repo commit: dcc319a0105d6a9ebec0bc625dd7aae64718cd3d-->
   <externalDefinitions>
     <definition extID="K32L3A60xxx"/>
     <definition extID="component.osa.K32L3A60"/>
@@ -10,9 +10,9 @@
     <definition extID="cm4_K32L3A60xxx"/>
     <definition extID="armgcc"/>
   </externalDefinitions>
-  <ksdk id="MCUXpressoSDK2120_middleware_nxp_usb_K32L3A60_manifest_v3_10" name="MCUXpressoSDK2120_middleware_nxp_usb_K32L3A60_manifest_v3_10" version="2.12.0"/>
+  <ksdk id="MCUXpressoSDK2130_middleware_nxp_usb_K32L3A60_manifest_v3_10" name="MCUXpressoSDK2130_middleware_nxp_usb_K32L3A60_manifest_v3_10" version="2.13.0"/>
   <components>
-    <component id="middleware.usb.common_header.K32L3A60" name="USB Common Header" brief="Middleware usb common_header" version="2.8.2" full_name="USB Common Header" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.common_header.K32L3A60" name="USB Common Header" brief="Middleware usb common_header" version="2.8.4" full_name="USB Common Header" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="component.osa.K32L3A60"/>
       </dependencies>
@@ -28,7 +28,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.audio.external.K32L3A60" name="USB Device Audio" brief="Middleware usb device audio external" version="2.8.2" full_name="USB Device Audio" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.audio.external.K32L3A60" name="USB Device Audio" brief="Middleware usb device audio external" version="2.8.4" full_name="USB Device Audio" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
       </dependencies>
@@ -43,7 +43,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ccid.external.K32L3A60" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.8.2" full_name="USB Device CCID" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.ccid.external.K32L3A60" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.8.4" full_name="USB Device CCID" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
       </dependencies>
@@ -58,7 +58,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.external.K32L3A60" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.8.2" full_name="USB Device CDC" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.external.K32L3A60" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.8.4" full_name="USB Device CDC" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
       </dependencies>
@@ -73,7 +73,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.rndis.external.K32L3A60" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.8.2" full_name="USB Device CDC RNDIS" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.rndis.external.K32L3A60" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.8.4" full_name="USB Device CDC RNDIS" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
@@ -91,7 +91,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.common_header.K32L3A60" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.8.2" full_name="USB Device Common Header" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.common_header.K32L3A60" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.8.4" full_name="USB Device Common Header" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.K32L3A60"/>
@@ -112,7 +112,7 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.controller.driver.K32L3A60" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.8.2" full_name="USB Device Common Controller" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.controller.driver.K32L3A60" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.8.4" full_name="USB Device Common Controller" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.K32L3A60"/>
@@ -139,7 +139,7 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.dfu.external.K32L3A60" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.8.2" full_name="USB Device DFU" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.dfu.external.K32L3A60" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.8.4" full_name="USB Device DFU" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
       </dependencies>
@@ -154,7 +154,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.hid.external.K32L3A60" name="USB Device HID" brief="Middleware usb device hid external" version="2.8.2" full_name="USB Device HID" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.hid.external.K32L3A60" name="USB Device HID" brief="Middleware usb device hid external" version="2.8.4" full_name="USB Device HID" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
       </dependencies>
@@ -169,7 +169,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device_controller_khci.K32L3A60" name="USB Device KHCI Controller Driver(FS)" brief="Middleware usb device khci" version="2.8.2" full_name="USB Device KHCI Controller Driver(FS)" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device_controller_khci.K32L3A60" name="USB Device KHCI Controller Driver(FS)" brief="Middleware usb device khci" version="2.8.4" full_name="USB Device KHCI Controller Driver(FS)" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.khci_config_header.K32L3A60"/>
@@ -193,7 +193,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.khci_config_header.K32L3A60" name="USB device khci config header" brief="USB device khci config header" version="2.8.2" full_name="USB device khci config header" devices="K32L3A60xxx" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
+    <component id="middleware.usb.device.khci_config_header.K32L3A60" name="USB device khci config header" brief="USB device khci config header" version="2.8.4" full_name="USB device khci config header" devices="K32L3A60xxx" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <source relative_path="./output/npw/device_config/khci" project_relative_path="generated" type="c_include">
         <files mask="usb_device_config.h"/>
       </source>
@@ -201,7 +201,7 @@
         <include_path relative_path="./output/npw/device_config/khci" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.msd.external.K32L3A60" name="USB Device MSD" brief="Middleware usb device msd external" version="2.8.2" full_name="USB Device MSD" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.msd.external.K32L3A60" name="USB Device MSD" brief="Middleware usb device msd external" version="2.8.4" full_name="USB Device MSD" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
       </dependencies>
@@ -218,7 +218,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.phdc.external.K32L3A60" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.8.2" full_name="USB Device PHDC" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.phdc.external.K32L3A60" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.8.4" full_name="USB Device PHDC" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
       </dependencies>
@@ -233,7 +233,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.printer.external.K32L3A60" name="USB Device Printer" brief="Middleware usb device printer external" version="2.8.2" full_name="USB Device Printer" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.printer.external.K32L3A60" name="USB Device Printer" brief="Middleware usb device printer external" version="2.8.4" full_name="USB Device Printer" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
       </dependencies>
@@ -248,7 +248,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.stack.external.K32L3A60" name="USB Device Stack" brief="Middleware usb device stack external" version="2.8.2" full_name="USB Device Stack" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.stack.external.K32L3A60" name="USB Device Stack" brief="Middleware usb device stack external" version="2.8.4" full_name="USB Device Stack" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.K32L3A60"/>
@@ -274,7 +274,7 @@
         <include_path relative_path="./output/source/device" project_relative_path="output/source/device" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.video.external.K32L3A60" name="USB Device Video" brief="Middleware usb device video external" version="2.8.2" full_name="USB Device Video" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.video.external.K32L3A60" name="USB Device Video" brief="Middleware usb device video external" version="2.8.4" full_name="USB Device Video" devices="K32L3A60xxx" device_cores="cm0plus_K32L3A60xxx cm4_K32L3A60xxx" slave_roles="M0SLAVE" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.K32L3A60"/>
       </dependencies>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ksdk:manifest xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="SDK_2.x_middleware_nxp_usb_LPC51U68_manifest_v3_10" name="USB Host, Device, OTG Stack" brief="Host, Device, OTG" format_version="3.10" api_version="2.0.0" xsi:schemaLocation="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd http://nxp.com/mcuxpresso/sdk/sdk_manifest_v3.10.xsd">
-  <!--Timestamp (UTC): 2022-07-15 08:19:50.926881-->
-  <!--This manifest is generated based on sdk repo commit: 45d71c921a1dd3e0403549aa377535344ed9bc97-->
+  <!--Timestamp (UTC): 2023-01-09 15:37:57.658711-->
+  <!--This manifest is generated based on sdk repo commit: dcc319a0105d6a9ebec0bc625dd7aae64718cd3d-->
   <externalDefinitions>
     <definition extID="LPC51U68"/>
     <definition extID="component.osa.LPC51U68"/>
     <definition extID="core0_LPC51U68"/>
     <definition extID="armgcc"/>
   </externalDefinitions>
-  <ksdk id="MCUXpressoSDK2120_middleware_nxp_usb_LPC51U68_manifest_v3_10" name="MCUXpressoSDK2120_middleware_nxp_usb_LPC51U68_manifest_v3_10" version="2.12.0"/>
+  <ksdk id="MCUXpressoSDK2130_middleware_nxp_usb_LPC51U68_manifest_v3_10" name="MCUXpressoSDK2130_middleware_nxp_usb_LPC51U68_manifest_v3_10" version="2.13.0"/>
   <components>
-    <component id="middleware.usb.common_header.LPC51U68" name="USB Common Header" brief="Middleware usb common_header" version="2.8.2" full_name="USB Common Header" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.common_header.LPC51U68" name="USB Common Header" brief="Middleware usb common_header" version="2.8.4" full_name="USB Common Header" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="component.osa.LPC51U68"/>
       </dependencies>
@@ -26,7 +26,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.audio.external.LPC51U68" name="USB Device Audio" brief="Middleware usb device audio external" version="2.8.2" full_name="USB Device Audio" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.audio.external.LPC51U68" name="USB Device Audio" brief="Middleware usb device audio external" version="2.8.4" full_name="USB Device Audio" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
       </dependencies>
@@ -41,7 +41,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ccid.external.LPC51U68" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.8.2" full_name="USB Device CCID" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.ccid.external.LPC51U68" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.8.4" full_name="USB Device CCID" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
       </dependencies>
@@ -56,7 +56,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.external.LPC51U68" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.8.2" full_name="USB Device CDC" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.external.LPC51U68" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.8.4" full_name="USB Device CDC" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
       </dependencies>
@@ -71,7 +71,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.rndis.external.LPC51U68" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.8.2" full_name="USB Device CDC RNDIS" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.rndis.external.LPC51U68" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.8.4" full_name="USB Device CDC RNDIS" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
@@ -89,7 +89,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.common_header.LPC51U68" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.8.2" full_name="USB Device Common Header" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.common_header.LPC51U68" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.8.4" full_name="USB Device Common Header" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.LPC51U68"/>
@@ -110,7 +110,7 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.controller.driver.LPC51U68" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.8.2" full_name="USB Device Common Controller" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.controller.driver.LPC51U68" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.8.4" full_name="USB Device Common Controller" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.LPC51U68"/>
@@ -137,7 +137,7 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.dfu.external.LPC51U68" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.8.2" full_name="USB Device DFU" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.dfu.external.LPC51U68" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.8.4" full_name="USB Device DFU" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
       </dependencies>
@@ -152,7 +152,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.hid.external.LPC51U68" name="USB Device HID" brief="Middleware usb device hid external" version="2.8.2" full_name="USB Device HID" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.hid.external.LPC51U68" name="USB Device HID" brief="Middleware usb device hid external" version="2.8.4" full_name="USB Device HID" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
       </dependencies>
@@ -167,7 +167,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device_controller_ip3511fs.LPC51U68" name="USB Device IP3511FS Controller Driver(FS)" brief="Middleware usb device ip3511fs" version="2.8.2" full_name="USB Device IP3511FS Controller Driver(FS)" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device_controller_ip3511fs.LPC51U68" name="USB Device IP3511FS Controller Driver(FS)" brief="Middleware usb device ip3511fs" version="2.8.4" full_name="USB Device IP3511FS Controller Driver(FS)" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.ip3511fs_config_header.LPC51U68"/>
@@ -188,7 +188,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ip3511fs_config_header.LPC51U68" name="USB device ip3511fs config header" brief="USB device ip3511fs config header" version="2.8.2" full_name="USB device ip3511fs config header" devices="LPC51U68" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
+    <component id="middleware.usb.device.ip3511fs_config_header.LPC51U68" name="USB device ip3511fs config header" brief="USB device ip3511fs config header" version="2.8.4" full_name="USB device ip3511fs config header" devices="LPC51U68" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <source relative_path="./output/npw/device_config/ip3511fs" project_relative_path="generated" type="c_include">
         <files mask="usb_device_config.h"/>
       </source>
@@ -196,7 +196,7 @@
         <include_path relative_path="./output/npw/device_config/ip3511fs" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.msd.external.LPC51U68" name="USB Device MSD" brief="Middleware usb device msd external" version="2.8.2" full_name="USB Device MSD" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.msd.external.LPC51U68" name="USB Device MSD" brief="Middleware usb device msd external" version="2.8.4" full_name="USB Device MSD" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
       </dependencies>
@@ -213,7 +213,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.phdc.external.LPC51U68" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.8.2" full_name="USB Device PHDC" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.phdc.external.LPC51U68" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.8.4" full_name="USB Device PHDC" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
       </dependencies>
@@ -228,7 +228,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.printer.external.LPC51U68" name="USB Device Printer" brief="Middleware usb device printer external" version="2.8.2" full_name="USB Device Printer" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.printer.external.LPC51U68" name="USB Device Printer" brief="Middleware usb device printer external" version="2.8.4" full_name="USB Device Printer" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
       </dependencies>
@@ -243,7 +243,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.stack.external.LPC51U68" name="USB Device Stack" brief="Middleware usb device stack external" version="2.8.2" full_name="USB Device Stack" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.stack.external.LPC51U68" name="USB Device Stack" brief="Middleware usb device stack external" version="2.8.4" full_name="USB Device Stack" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.LPC51U68"/>
@@ -269,7 +269,7 @@
         <include_path relative_path="./output/source/device" project_relative_path="output/source/device" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.video.external.LPC51U68" name="USB Device Video" brief="Middleware usb device video external" version="2.8.2" full_name="USB Device Video" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.video.external.LPC51U68" name="USB Device Video" brief="Middleware usb device video external" version="2.8.4" full_name="USB Device Video" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <component_dependency value="middleware.usb.device.stack.external.LPC51U68"/>
       </dependencies>
@@ -284,7 +284,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.common_header.LPC51U68" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.8.2" full_name="USB Host Common Header" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host.common_header.LPC51U68" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.8.4" full_name="USB Host Common Header" devices="LPC51U68" device_cores="core0_LPC51U68" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.LPC51U68"/>
