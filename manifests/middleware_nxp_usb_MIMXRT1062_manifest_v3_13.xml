@@ -7,7 +7,7 @@
     <definition extID="armgcc"/>
     <definition extID="component.osa.MIMXRT1062"/>
   </externalDefinitions>
-  <ksdk id="MCUXpressoSDK2140_middleware_nxp_usb_MIMXRT1062_manifest_v3_13" name="MCUXpressoSDK2140_middleware_nxp_usb_MIMXRT1062_manifest_v3_13" version="2.14.0"/>
+  <ksdk id="MCUXpressoSDK2141_middleware_nxp_usb_MIMXRT1062_manifest_v3_13" name="MCUXpressoSDK2141_middleware_nxp_usb_MIMXRT1062_manifest_v3_13" version="2.14.1" revision="Provided by Script"/>
   <components>
     <component id="middleware.usb.device.ehci_config_header.MIMXRT1062" name="USB device ehci config header" brief="USB device ehci config header" version="2.9.0" full_name="USB device ehci config header" devices="MIMXRT1062xxxxA MIMXRT1062xxxxB" category="USB/USB Device" user_visible="true" type="project_template" package_base_path="../middleware/usb" project_base_path="source">
       <source relative_path="../../output/npw/device_config/ehci" project_relative_path="generated" config="true" type="c_include">
