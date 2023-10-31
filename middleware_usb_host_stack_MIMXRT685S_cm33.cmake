@@ -17,5 +17,5 @@ target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
 )
 
 
-include(middleware_usb_host_ip3516hs_MIMXRT685S_cm33)
 include(component_osa)
+include(middleware_usb_host_ip3516hs_MIMXRT685S_cm33)

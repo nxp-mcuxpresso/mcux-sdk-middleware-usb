@@ -14,4 +14,3 @@ target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
 
 include(driver_memory)
 include(middleware_usb_host_common_header)
-include(middleware_usb_phy)

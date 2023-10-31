@@ -11,6 +11,12 @@ target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
 )
 
 #OR Logic component
+if(${MCUX_DEVICE} STREQUAL "RW610")
+    include(middleware_usb_host_stack_RW612)
+endif()
+if(${MCUX_DEVICE} STREQUAL "RW612")
+    include(middleware_usb_host_stack_RW612)
+endif()
 if(${MCUX_DEVICE} STREQUAL "MIMXRT1166_cm4")
     include(middleware_usb_host_stack_MIMXRT1166_cm4)
 endif()
