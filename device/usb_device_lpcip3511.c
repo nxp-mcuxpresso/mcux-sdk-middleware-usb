@@ -486,6 +486,9 @@ static void USB_DeviceLpc3511IpSetDefaultState(usb_device_lpc3511ip_state_struct
         (USB_LPC3511IP_INTSTAT_FRAME_INT_MASK | USB_LPC3511IP_MAX_PHY_ENDPOINT_MASK);
     /* enable interrupts */
     lpc3511IpState->registerBase->INTEN = USB_LPC3511IP_INTSTAT_DEV_INT_MASK | USB_LPC3511IP_MAX_PHY_ENDPOINT_MASK;
+#if (defined(USB_DEVICE_CONFIG_SOF_NOTIFICATIONS) && (USB_DEVICE_CONFIG_SOF_NOTIFICATIONS > 0))
+    lpc3511IpState->registerBase->INTEN |= USB_LPC3511IP_INTSTAT_FRAME_INT_MASK;
+#endif
 
     /* Clear reset flag */
     lpc3511IpState->isResetting = 0U;
@@ -2562,6 +2565,39 @@ usb_status_t USB_DeviceLpc3511IpControl(usb_device_controller_handle controllerH
     return error;
 }
 
+#if (defined(USB_DEVICE_CONFIG_SOF_NOTIFICATIONS) && (USB_DEVICE_CONFIG_SOF_NOTIFICATIONS > 0))
+/*!
+ * @brief Handle Start of Frame (SOF) Interrupt
+ *
+ * The function is used to notify the upper layer that an SOF has occurred
+ *
+ * @param lpc3511IpState      Pointer of the controller state structure.
+ *
+ * @return A USB error code (if configured for error checking) or kStatus_USB_Success.
+ */
+static usb_status_t USB_DeviceLpc3511IpInterruptSOF(usb_device_lpc3511ip_state_struct_t *lpc3511IpState)
+{
+    usb_device_callback_message_struct_t message;
+
+    message.buffer  = (uint8_t *)NULL;
+    message.code    = (uint8_t)kUSB_DeviceNotifySOF;
+    message.length  = 0U;
+    message.isSetup = 0U;
+
+    /* Notify upper layer */
+#if (defined(USB_DEVICE_CONFIG_RETURN_VALUE_CHECK) && (USB_DEVICE_CONFIG_RETURN_VALUE_CHECK > 0U))
+    if (kStatus_USB_Success != USB_DeviceNotificationTrigger(lpc3511IpState->deviceHandle, &message))
+    {
+        return kStatus_USB_Error;
+    }
+#else
+    (void)USB_DeviceNotificationTrigger(lpc3511IpState->deviceHandle, &message);
+#endif
+
+    return kStatus_USB_Success;
+}
+#endif /* (defined(USB_DEVICE_CONFIG_SOF_NOTIFICATIONS) && (USB_DEVICE_CONFIG_SOF_NOTIFICATIONS > 0)) */
+
 void USB_DeviceLpcIp3511IsrFunction(void *deviceHandle)
 {
     usb_device_struct_t *handle = (usb_device_struct_t *)deviceHandle;
@@ -2776,9 +2812,10 @@ void USB_DeviceLpcIp3511IsrFunction(void *deviceHandle)
         }
     }
 
-#if 0U
+#if (defined(USB_DEVICE_CONFIG_SOF_NOTIFICATIONS) && (USB_DEVICE_CONFIG_SOF_NOTIFICATIONS > 0))
     if (interruptStatus & USB_LPC3511IP_INTSTAT_FRAME_INT_MASK)
     {
+        USB_DeviceLpc3511IpInterruptSOF(lpc3511IpState);
     }
 #endif
 }
