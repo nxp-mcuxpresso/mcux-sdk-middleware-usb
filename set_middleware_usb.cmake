@@ -28,7 +28,7 @@ if (CONFIG_USE_middleware_usb_device_ehci)
 
 message("middleware_usb_device_ehci component is included from ${CMAKE_CURRENT_LIST_FILE}.")
 
-if(CONFIG_USE_driver_memory AND (CONFIG_DEVICE_ID STREQUAL RW610 OR CONFIG_DEVICE_ID STREQUAL RW612) AND CONFIG_USE_middleware_usb_device_ehci_config_header AND CONFIG_USE_middleware_usb_device_common_header AND ((CONFIG_USE_middleware_usb_phy AND (CONFIG_DEVICE_ID STREQUAL RW610 OR CONFIG_DEVICE_ID STREQUAL RW612))))
+if(CONFIG_USE_driver_memory AND (CONFIG_DEVICE_ID STREQUAL RW610 OR CONFIG_DEVICE_ID STREQUAL RW612) AND CONFIG_USE_middleware_usb_device_ehci_config_header AND CONFIG_USE_middleware_usb_device_common_header AND ((CONFIG_USE_middleware_usb_phy AND (CONFIG_DEVICE_ID STREQUAL RW610 OR CONFIG_DEVICE_ID STREQUAL RW612)) OR (NOT (CONFIG_NOT STREQUAL RW610 OR CONFIG_NOT STREQUAL RW612))))
 
 target_sources(${MCUX_SDK_PROJECT_NAME} PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}/./device/usb_device_ehci.c
@@ -53,7 +53,7 @@ if (CONFIG_USE_middleware_usb_host_ehci)
 
 message("middleware_usb_host_ehci component is included from ${CMAKE_CURRENT_LIST_FILE}.")
 
-if(CONFIG_USE_driver_memory AND (CONFIG_DEVICE_ID STREQUAL RW610 OR CONFIG_DEVICE_ID STREQUAL RW612) AND CONFIG_USE_middleware_usb_host_ehci_config_header AND CONFIG_USE_middleware_usb_host_common_header AND ((CONFIG_USE_middleware_usb_phy AND (CONFIG_DEVICE_ID STREQUAL RW610 OR CONFIG_DEVICE_ID STREQUAL RW612))))
+if(CONFIG_USE_driver_memory AND (CONFIG_DEVICE_ID STREQUAL RW610 OR CONFIG_DEVICE_ID STREQUAL RW612) AND CONFIG_USE_middleware_usb_host_ehci_config_header AND CONFIG_USE_middleware_usb_host_common_header AND ((CONFIG_USE_middleware_usb_phy AND (CONFIG_DEVICE_ID STREQUAL RW610 OR CONFIG_DEVICE_ID STREQUAL RW612)) OR (NOT (CONFIG_NOT STREQUAL RW610 OR CONFIG_NOT STREQUAL RW612))))
 
 target_sources(${MCUX_SDK_PROJECT_NAME} PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}/./host/usb_host_ehci.c
