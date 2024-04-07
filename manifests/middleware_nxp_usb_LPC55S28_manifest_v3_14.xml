@@ -6,7 +6,7 @@
     <definition extID="armgcc"/>
     <definition extID="component.osa.LPC55S28"/>
   </externalDefinitions>
-  <ksdk id="MCUXpressoSDK2150_middleware_nxp_usb_LPC55S28_manifest_v3_14" name="MCUXpressoSDK2150_middleware_nxp_usb_LPC55S28_manifest_v3_14" version="2.15.0" revision="2.15.0"/>
+  <ksdk id="MCUXpressoSDK215100_middleware_nxp_usb_LPC55S28_manifest_v3_14" name="MCUXpressoSDK215100_middleware_nxp_usb_LPC55S28_manifest_v3_14" version="2.15.100" revision="2.15.100"/>
   <components>
     <component id="middleware.usb.phydcd_config_header.LPC55S28" name="USB device phydcd config header" brief="USB device phydcd config header" version="2.8.4" full_name="USB device phydcd config header" category="USB/USB DCD" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <dependencies>
