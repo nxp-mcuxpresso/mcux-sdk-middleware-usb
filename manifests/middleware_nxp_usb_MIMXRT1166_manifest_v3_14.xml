@@ -7,7 +7,7 @@
     <definition extID="component.osa.MIMXRT1166"/>
     <definition extID="platform.drivers.memory.MIMXRT1166"/>
   </externalDefinitions>
-  <ksdk id="MCUXpressoSDK2150_middleware_nxp_usb_MIMXRT1166_manifest_v3_14" name="MCUXpressoSDK2150_middleware_nxp_usb_MIMXRT1166_manifest_v3_14" version="2.15.0" revision="2.15.0"/>
+  <ksdk id="MCUXpressoSDK216000_middleware_nxp_usb_MIMXRT1166_manifest_v3_14" name="MCUXpressoSDK216000_middleware_nxp_usb_MIMXRT1166_manifest_v3_14" version="2.16.000" revision="2.16.000"/>
   <components>
     <component id="middleware.usb.phydcd_config_header.MIMXRT1166" name="USB device phydcd config header" brief="USB device phydcd config header" version="2.8.4" full_name="USB device phydcd config header" category="USB/USB DCD" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <dependencies>
@@ -37,7 +37,7 @@
         <include_path relative_path="./output/npw/dcd_config/hsdcd" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ehci_config_header.MIMXRT1166" name="USB device ehci config header" brief="USB device ehci config header" version="2.9.1" full_name="USB device ehci config header" category="USB/USB Device" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
+    <component id="middleware.usb.device.ehci_config_header.MIMXRT1166" name="USB device ehci config header" brief="USB device ehci config header" version="2.10.0" full_name="USB device ehci config header" category="USB/USB Device" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <dependencies>
         <device_dependency value="MIMXRT1166xxxxx"/>
       </dependencies>
@@ -51,7 +51,7 @@
         <include_path relative_path="./output/npw/device_config/ehci" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.common_header.MIMXRT1166" name="USB Common Header" brief="Middleware usb common_header" version="2.9.1" full_name="USB Common Header" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.common_header.MIMXRT1166" name="USB Common Header" brief="Middleware usb common_header" version="2.10.0" full_name="USB Common Header" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.MIMXRT1166"/>
@@ -70,7 +70,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.common_header.MIMXRT1166" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.9.1" full_name="USB Device Common Header" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.common_header.MIMXRT1166" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.10.0" full_name="USB Device Common Header" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.MIMXRT1166"/>
@@ -92,7 +92,7 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device_controller_ehci.MIMXRT1166" name="USB Device EHCI Controller Driver(HS)" brief="Middleware usb device ehci" version="2.9.1" full_name="USB Device EHCI Controller Driver(HS)" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device_controller_ehci.MIMXRT1166" name="USB Device EHCI Controller Driver(HS)" brief="Middleware usb device ehci" version="2.10.0" full_name="USB Device EHCI Controller Driver(HS)" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.ehci_config_header.MIMXRT1166"/>
@@ -115,7 +115,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.phy.MIMXRT1166" name="USB PHY" brief="Middleware usb phy" version="2.9.1" full_name="USB PHY" category="USB/USB PHY" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.phy.MIMXRT1166" name="USB PHY" brief="Middleware usb phy" version="2.10.0" full_name="USB PHY" category="USB/USB PHY" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.common_header.MIMXRT1166"/>
@@ -136,7 +136,7 @@
         <include_path relative_path="./phy" project_relative_path="phy" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.stack.external.MIMXRT1166" name="USB Device Stack" brief="Middleware usb device stack external" version="2.9.1" full_name="USB Device Stack" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.stack.external.MIMXRT1166" name="USB Device Stack" brief="Middleware usb device stack external" version="2.10.0" full_name="USB Device Stack" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.MIMXRT1166"/>
@@ -166,7 +166,7 @@
         <include_path relative_path="./output/source/device" project_relative_path="output/source/device" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.audio.external.MIMXRT1166" name="USB Device Audio" brief="Middleware usb device audio external" version="2.9.1" full_name="USB Device Audio" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.audio.external.MIMXRT1166" name="USB Device Audio" brief="Middleware usb device audio external" version="2.10.0" full_name="USB Device Audio" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -187,7 +187,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.external.MIMXRT1166" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.9.1" full_name="USB Device CDC" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.external.MIMXRT1166" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.10.0" full_name="USB Device CDC" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -208,7 +208,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.rndis.external.MIMXRT1166" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.9.1" full_name="USB Device CDC RNDIS" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.rndis.external.MIMXRT1166" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.10.0" full_name="USB Device CDC RNDIS" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -230,7 +230,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.hid.external.MIMXRT1166" name="USB Device HID" brief="Middleware usb device hid external" version="2.9.1" full_name="USB Device HID" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.hid.external.MIMXRT1166" name="USB Device HID" brief="Middleware usb device hid external" version="2.10.0" full_name="USB Device HID" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -251,7 +251,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.dfu.external.MIMXRT1166" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.9.1" full_name="USB Device DFU" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.dfu.external.MIMXRT1166" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.10.0" full_name="USB Device DFU" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -272,7 +272,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.msd.external.MIMXRT1166" name="USB Device MSD" brief="Middleware usb device msd external" version="2.9.1" full_name="USB Device MSD" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.msd.external.MIMXRT1166" name="USB Device MSD" brief="Middleware usb device msd external" version="2.10.0" full_name="USB Device MSD" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -295,7 +295,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.phdc.external.MIMXRT1166" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.9.1" full_name="USB Device PHDC" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.phdc.external.MIMXRT1166" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.10.0" full_name="USB Device PHDC" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -316,7 +316,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.video.external.MIMXRT1166" name="USB Device Video" brief="Middleware usb device video external" version="2.9.1" full_name="USB Device Video" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.video.external.MIMXRT1166" name="USB Device Video" brief="Middleware usb device video external" version="2.10.0" full_name="USB Device Video" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -337,7 +337,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ccid.external.MIMXRT1166" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.9.1" full_name="USB Device CCID" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.ccid.external.MIMXRT1166" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.10.0" full_name="USB Device CCID" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -358,7 +358,7 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.printer.external.MIMXRT1166" name="USB Device Printer" brief="Middleware usb device printer external" version="2.9.1" full_name="USB Device Printer" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.printer.external.MIMXRT1166" name="USB Device Printer" brief="Middleware usb device printer external" version="2.10.0" full_name="USB Device Printer" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.device.stack.external.MIMXRT1166"/>
@@ -400,7 +400,7 @@
         <include_path relative_path="./dcd" project_relative_path="dcd" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.controller.driver.MIMXRT1166" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.9.1" full_name="USB Device Common Controller" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.controller.driver.MIMXRT1166" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.10.0" full_name="USB Device Common Controller" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.MIMXRT1166"/>
@@ -428,7 +428,7 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_controller_ehci.MIMXRT1166" name="USB Host EHCI Controller Driver(HS)" brief="Middleware usb host ehci" version="2.9.1" full_name="USB Host EHCI Controller Driver(HS)" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_controller_ehci.MIMXRT1166" name="USB Host EHCI Controller Driver(HS)" brief="Middleware usb host ehci" version="2.10.0" full_name="USB Host EHCI Controller Driver(HS)" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.ehci_config_header.MIMXRT1166"/>
@@ -451,7 +451,7 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_audio.MIMXRT1166" name="USB Host Audio" brief="Middleware usb host audio" version="2.9.1" full_name="USB Host Audio" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_audio.MIMXRT1166" name="USB Host Audio" brief="Middleware usb host audio" version="2.10.0" full_name="USB Host Audio" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.stack.MIMXRT1166"/>
@@ -471,7 +471,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_cdc.MIMXRT1166" name="USB Host CDC" brief="Middleware usb host cdc" version="2.9.1" full_name="USB Host CDC" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_cdc.MIMXRT1166" name="USB Host CDC" brief="Middleware usb host cdc" version="2.10.0" full_name="USB Host CDC" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.stack.MIMXRT1166"/>
@@ -491,7 +491,28 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_cdc_rndis.MIMXRT1166" name="USB Host CDC RNDIS" brief="Middleware usb host cdc_rndis" version="2.9.1" full_name="USB Host CDC RNDIS" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_cdc_ecm.MIMXRT1166" name="USB Host CDC ECM" brief="Middleware usb host cdc_ecm" version="2.9.1" full_name="USB Host CDC ECM" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+      <dependencies>
+        <all>
+          <component_dependency value="middleware.usb.host.stack.MIMXRT1166"/>
+          <component_dependency value="middleware.usb.host_cdc.MIMXRT1166"/>
+          <device_dependency value="MIMXRT1166xxxxx"/>
+        </all>
+      </dependencies>
+      <source relative_path="./host/class" project_relative_path="host/class" type="src">
+        <files mask="usb_host_cdc_ecm.c"/>
+      </source>
+      <source relative_path="./host/class" project_relative_path="host/class" type="c_include">
+        <files mask="usb_host_cdc_ecm.h"/>
+      </source>
+      <source toolchain="armgcc" relative_path="./" type="workspace">
+        <files mask="middleware_usb_host_cdc_ecm.cmake" hidden="true"/>
+      </source>
+      <include_paths>
+        <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
+      </include_paths>
+    </component>
+    <component id="middleware.usb.host_cdc_rndis.MIMXRT1166" name="USB Host CDC RNDIS" brief="Middleware usb host cdc_rndis" version="2.10.0" full_name="USB Host CDC RNDIS" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.stack.MIMXRT1166"/>
@@ -512,7 +533,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_hid.MIMXRT1166" name="USB Host HID" brief="Middleware usb host hid" version="2.9.1" full_name="USB Host HID" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_hid.MIMXRT1166" name="USB Host HID" brief="Middleware usb host hid" version="2.10.0" full_name="USB Host HID" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.stack.MIMXRT1166"/>
@@ -532,7 +553,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_msd.MIMXRT1166" name="USB Host MSD" brief="Middleware usb host msd" version="2.9.1" full_name="USB Host MSD" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_msd.MIMXRT1166" name="USB Host MSD" brief="Middleware usb host msd" version="2.10.0" full_name="USB Host MSD" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.stack.MIMXRT1166"/>
@@ -553,7 +574,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_video.MIMXRT1166" name="USB Host Video" brief="Middleware usb host video" version="2.9.1" full_name="USB Host Video" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_video.MIMXRT1166" name="USB Host Video" brief="Middleware usb host video" version="2.10.0" full_name="USB Host Video" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.stack.MIMXRT1166"/>
@@ -573,7 +594,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_phdc.MIMXRT1166" name="USB Host PHDC" brief="Middleware usb host phdc" version="2.9.1" full_name="USB Host PHDC" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_phdc.MIMXRT1166" name="USB Host PHDC" brief="Middleware usb host phdc" version="2.10.0" full_name="USB Host PHDC" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.stack.MIMXRT1166"/>
@@ -593,7 +614,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_printer.MIMXRT1166" name="USB Host Printer" brief="Middleware usb host printer" version="2.9.1" full_name="USB Host Printer" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_printer.MIMXRT1166" name="USB Host Printer" brief="Middleware usb host printer" version="2.10.0" full_name="USB Host Printer" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="middleware.usb.host.stack.MIMXRT1166"/>
@@ -613,7 +634,7 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.common_header.MIMXRT1166" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.9.1" full_name="USB Host Common Header" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host.common_header.MIMXRT1166" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.10.0" full_name="USB Host Common Header" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.MIMXRT1166"/>
@@ -634,7 +655,7 @@
         <include_path relative_path="./host" project_relative_path="host" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.ehci_config_header.MIMXRT1166" name="USB host ehci config header" brief="USB host ehci config header" version="2.9.1" full_name="USB host ehci config header" category="USB/USB Host" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
+    <component id="middleware.usb.host.ehci_config_header.MIMXRT1166" name="USB host ehci config header" brief="USB host ehci config header" version="2.10.0" full_name="USB host ehci config header" category="USB/USB Host" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <dependencies>
         <device_dependency value="MIMXRT1166xxxxx"/>
       </dependencies>
@@ -648,7 +669,7 @@
         <include_path relative_path="./output/npw/host_config/ehci" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.stack.MIMXRT1166" name="USB Host Stack" brief="Middleware usb host stack" version="2.9.1" full_name="USB Host Stack" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host.stack.MIMXRT1166" name="USB Host Stack" brief="Middleware usb host stack" version="2.10.0" full_name="USB Host Stack" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
           <component_dependency value="component.osa.MIMXRT1166"/>

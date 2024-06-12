@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ksdk:manifest xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="SDK_2.x_middleware_nxp_usb_MCIMX7U5_manifest_v3_14" name="USB Host, Device, OTG Stack" brief="Host, Device, OTG" format_version="3.14" api_version="2.0.0" xsi:schemaLocation="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd http://nxp.com/mcuxpresso/sdk/sdk_manifest_v3.14.xsd">
+<ksdk:manifest xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="SDK_2.x_middleware_nxp_usb_RW612_manifest_v3_14" name="USB Host, Device, OTG Stack" brief="Host, Device, OTG" format_version="3.14" api_version="2.0.0" xsi:schemaLocation="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd http://nxp.com/mcuxpresso/sdk/sdk_manifest_v3.14.xsd">
 
   <externalDefinitions>
-    <definition extID="MCIMX7U5xxxxx"/>
+    <definition extID="RW612"/>
     <definition extID="armgcc"/>
-    <definition extID="component.osa.MCIMX7U5"/>
+    <definition extID="component.osa.RW612"/>
+    <definition extID="platform.drivers.memory.RW612"/>
   </externalDefinitions>
-  <ksdk id="MCUXpressoSDK216000_middleware_nxp_usb_MCIMX7U5_manifest_v3_14" name="MCUXpressoSDK216000_middleware_nxp_usb_MCIMX7U5_manifest_v3_14" version="2.16.000" revision="2.16.000"/>
+  <ksdk id="MCUXpressoSDK216000_middleware_nxp_usb_RW612_manifest_v3_14" name="MCUXpressoSDK216000_middleware_nxp_usb_RW612_manifest_v3_14" version="2.16.000" revision="2.16.000"/>
   <components>
-    <component id="middleware.usb.phydcd_config_header.MCIMX7U5" name="USB device phydcd config header" brief="USB device phydcd config header" version="2.8.4" full_name="USB device phydcd config header" category="USB/USB DCD" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
+    <component id="middleware.usb.phydcd_config_header.RW612" name="USB device phydcd config header" brief="USB device phydcd config header" version="2.8.4" full_name="USB device phydcd config header" category="USB/USB DCD" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <dependencies>
-        <device_dependency value="MCIMX7U5xxxxx"/>
+        <device_dependency value="RW612"/>
       </dependencies>
       <source relative_path="./output/npw/dcd_config/phydcd" project_relative_path="generated" config="true" type="c_include">
         <files mask="usb_phydcd_config.h"/>
@@ -22,9 +23,9 @@
         <include_path relative_path="./output/npw/dcd_config/phydcd" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.hsdcd_config_header.MCIMX7U5" name="USB device hsdcd config header" brief="USB device hsdcd config header" version="2.8.4" full_name="USB device hsdcd config header" category="USB/USB DCD" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
+    <component id="middleware.usb.hsdcd_config_header.RW612" name="USB device hsdcd config header" brief="USB device hsdcd config header" version="2.8.4" full_name="USB device hsdcd config header" category="USB/USB DCD" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <dependencies>
-        <device_dependency value="MCIMX7U5xxxxx"/>
+        <device_dependency value="RW612"/>
       </dependencies>
       <source relative_path="./output/npw/dcd_config/hsdcd" project_relative_path="generated" config="true" type="c_include">
         <files mask="usb_hsdcd_config.h"/>
@@ -36,9 +37,9 @@
         <include_path relative_path="./output/npw/dcd_config/hsdcd" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ehci_config_header.MCIMX7U5" name="USB device ehci config header" brief="USB device ehci config header" version="2.10.0" full_name="USB device ehci config header" category="USB/USB Device" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
+    <component id="middleware.usb.device.ehci_config_header.RW612" name="USB device ehci config header" brief="USB device ehci config header" version="2.10.0" full_name="USB device ehci config header" category="USB/USB Device" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <dependencies>
-        <device_dependency value="MCIMX7U5xxxxx"/>
+        <device_dependency value="RW612"/>
       </dependencies>
       <source relative_path="./output/npw/device_config/ehci" project_relative_path="generated" config="true" type="c_include">
         <files mask="usb_device_config.h"/>
@@ -50,11 +51,11 @@
         <include_path relative_path="./output/npw/device_config/ehci" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.common_header.MCIMX7U5" name="USB Common Header" brief="Middleware usb common_header" version="2.10.0" full_name="USB Common Header" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.common_header.RW612" name="USB Common Header" brief="Middleware usb common_header" version="2.10.0" full_name="USB Common Header" category="USB/USB Common Header" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="component.osa.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./include" project_relative_path="include" type="c_include">
@@ -69,12 +70,12 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.common_header.MCIMX7U5" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.10.0" full_name="USB Device Common Header" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.common_header.RW612" name="USB Device Common Header" brief="Middleware usb device common_header" version="2.10.0" full_name="USB Device Common Header" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.common_header.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="component.osa.RW612"/>
+          <component_dependency value="middleware.usb.common_header.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./device" project_relative_path="device/include" type="c_include">
@@ -91,13 +92,13 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device_controller_ehci.MCIMX7U5" name="USB Device EHCI Controller Driver(HS)" brief="Middleware usb device ehci" version="2.10.0" full_name="USB Device EHCI Controller Driver(HS)" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device_controller_ehci.RW612" name="USB Device EHCI Controller Driver(HS)" brief="Middleware usb device ehci" version="2.10.0" full_name="USB Device EHCI Controller Driver(HS)" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.ehci_config_header.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.device.common_header.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.phy.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.ehci_config_header.RW612"/>
+          <component_dependency value="middleware.usb.device.common_header.RW612"/>
+          <component_dependency value="platform.drivers.memory.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./device" project_relative_path="device/source/ehci" type="src">
@@ -114,32 +115,12 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.phy.MCIMX7U5" name="USB PHY" brief="Middleware usb phy" version="2.10.0" full_name="USB PHY" category="USB/USB PHY" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.stack.external.RW612" name="USB Device Stack" brief="Middleware usb device stack external" version="2.10.0" full_name="USB Device Stack" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.common_header.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
-        </all>
-      </dependencies>
-      <source relative_path="./phy" project_relative_path="phy" type="src">
-        <files mask="usb_phy.c"/>
-      </source>
-      <source relative_path="./phy" project_relative_path="phy" type="c_include">
-        <files mask="usb_phy.h"/>
-      </source>
-      <source toolchain="armgcc" relative_path="./" type="workspace">
-        <files mask="middleware_usb_phy.cmake" hidden="true"/>
-      </source>
-      <include_paths>
-        <include_path relative_path="./phy" project_relative_path="phy" type="c_include"/>
-      </include_paths>
-    </component>
-    <component id="middleware.usb.device.stack.external.MCIMX7U5" name="USB Device Stack" brief="Middleware usb device stack external" version="2.10.0" full_name="USB Device Stack" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
-      <dependencies>
-        <all>
-          <component_dependency value="component.osa.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.device.controller.driver.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="component.osa.RW612"/>
+          <component_dependency value="middleware.usb.device.controller.driver.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class" type="src">
@@ -164,11 +145,11 @@
         <include_path relative_path="./output/source/device" project_relative_path="output/source/device" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.audio.external.MCIMX7U5" name="USB Device Audio" brief="Middleware usb device audio external" version="2.10.0" full_name="USB Device Audio" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.audio.external.RW612" name="USB Device Audio" brief="Middleware usb device audio external" version="2.10.0" full_name="USB Device Audio" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/audio" type="src">
@@ -185,11 +166,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.external.MCIMX7U5" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.10.0" full_name="USB Device CDC" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.external.RW612" name="USB Device CDC" brief="Middleware usb device cdc external" version="2.10.0" full_name="USB Device CDC" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/cdc" type="src">
@@ -206,12 +187,12 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.cdc.rndis.external.MCIMX7U5" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.10.0" full_name="USB Device CDC RNDIS" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.cdc.rndis.external.RW612" name="USB Device CDC RNDIS" brief="Middleware usb device cdc rndis external" version="2.10.0" full_name="USB Device CDC RNDIS" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.device.cdc.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <component_dependency value="middleware.usb.device.cdc.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/cdc_rndis" type="src">
@@ -228,11 +209,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.hid.external.MCIMX7U5" name="USB Device HID" brief="Middleware usb device hid external" version="2.10.0" full_name="USB Device HID" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.hid.external.RW612" name="USB Device HID" brief="Middleware usb device hid external" version="2.10.0" full_name="USB Device HID" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/hid" type="src">
@@ -249,11 +230,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.dfu.external.MCIMX7U5" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.10.0" full_name="USB Device DFU" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.dfu.external.RW612" name="USB Device DFU" brief="Middleware usb device dfu external" version="2.10.0" full_name="USB Device DFU" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/dfu" type="src">
@@ -270,11 +251,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.msd.external.MCIMX7U5" name="USB Device MSD" brief="Middleware usb device msd external" version="2.10.0" full_name="USB Device MSD" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.msd.external.RW612" name="USB Device MSD" brief="Middleware usb device msd external" version="2.10.0" full_name="USB Device MSD" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/msc" type="src">
@@ -293,11 +274,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.phdc.external.MCIMX7U5" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.10.0" full_name="USB Device PHDC" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.phdc.external.RW612" name="USB Device PHDC" brief="Middleware usb device phdc external" version="2.10.0" full_name="USB Device PHDC" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/phdc" type="src">
@@ -314,11 +295,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.video.external.MCIMX7U5" name="USB Device Video" brief="Middleware usb device video external" version="2.10.0" full_name="USB Device Video" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.video.external.RW612" name="USB Device Video" brief="Middleware usb device video external" version="2.10.0" full_name="USB Device Video" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/video" type="src">
@@ -335,11 +316,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.ccid.external.MCIMX7U5" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.10.0" full_name="USB Device CCID" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.ccid.external.RW612" name="USB Device CCID" brief="Middleware usb device ccid external" version="2.10.0" full_name="USB Device CCID" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/ccid" type="src">
@@ -356,11 +337,11 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.printer.external.MCIMX7U5" name="USB Device Printer" brief="Middleware usb device printer external" version="2.10.0" full_name="USB Device Printer" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.printer.external.RW612" name="USB Device Printer" brief="Middleware usb device printer external" version="2.10.0" full_name="USB Device Printer" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.device.stack.external.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.device.stack.external.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./output/source/device/class" project_relative_path="device/class/printer" type="src">
@@ -377,12 +358,12 @@
         <include_path relative_path="./output/source/device/class" project_relative_path="output/source/device/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.device.controller.driver.MCIMX7U5" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.10.0" full_name="USB Device Common Controller" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.device.controller.driver.RW612" name="USB Device Common Controller" brief="Middleware usb device controller driver" version="2.10.0" full_name="USB Device Common Controller" category="USB/USB Device" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.device_controller_ehci.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="component.osa.RW612"/>
+          <component_dependency value="middleware.usb.device_controller_ehci.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./device" project_relative_path="device/include" type="c_include">
@@ -405,13 +386,13 @@
         <include_path relative_path="./device" project_relative_path="device/source" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_controller_ehci.MCIMX7U5" name="USB Host EHCI Controller Driver(HS)" brief="Middleware usb host ehci" version="2.10.0" full_name="USB Host EHCI Controller Driver(HS)" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_controller_ehci.RW612" name="USB Host EHCI Controller Driver(HS)" brief="Middleware usb host ehci" version="2.10.0" full_name="USB Host EHCI Controller Driver(HS)" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.ehci_config_header.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.host.common_header.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.phy.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.ehci_config_header.RW612"/>
+          <component_dependency value="middleware.usb.host.common_header.RW612"/>
+          <component_dependency value="platform.drivers.memory.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host" project_relative_path="host" type="src">
@@ -428,11 +409,11 @@
         <include_path relative_path="./include" project_relative_path="include" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_audio.MCIMX7U5" name="USB Host Audio" brief="Middleware usb host audio" version="2.10.0" full_name="USB Host Audio" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_audio.RW612" name="USB Host Audio" brief="Middleware usb host audio" version="2.10.0" full_name="USB Host Audio" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.stack.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -448,11 +429,11 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_cdc.MCIMX7U5" name="USB Host CDC" brief="Middleware usb host cdc" version="2.10.0" full_name="USB Host CDC" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_cdc.RW612" name="USB Host CDC" brief="Middleware usb host cdc" version="2.10.0" full_name="USB Host CDC" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.stack.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -468,12 +449,12 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_cdc_ecm.MCIMX7U5" name="USB Host CDC ECM" brief="Middleware usb host cdc_ecm" version="2.9.1" full_name="USB Host CDC ECM" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_cdc_ecm.RW612" name="USB Host CDC ECM" brief="Middleware usb host cdc_ecm" version="2.9.1" full_name="USB Host CDC ECM" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.host_cdc.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.stack.RW612"/>
+          <component_dependency value="middleware.usb.host_cdc.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -489,12 +470,12 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_cdc_rndis.MCIMX7U5" name="USB Host CDC RNDIS" brief="Middleware usb host cdc_rndis" version="2.10.0" full_name="USB Host CDC RNDIS" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_cdc_rndis.RW612" name="USB Host CDC RNDIS" brief="Middleware usb host cdc_rndis" version="2.10.0" full_name="USB Host CDC RNDIS" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.host_cdc.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.stack.RW612"/>
+          <component_dependency value="middleware.usb.host_cdc.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -510,11 +491,11 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_hid.MCIMX7U5" name="USB Host HID" brief="Middleware usb host hid" version="2.10.0" full_name="USB Host HID" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_hid.RW612" name="USB Host HID" brief="Middleware usb host hid" version="2.10.0" full_name="USB Host HID" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.stack.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -530,11 +511,11 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_msd.MCIMX7U5" name="USB Host MSD" brief="Middleware usb host msd" version="2.10.0" full_name="USB Host MSD" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_msd.RW612" name="USB Host MSD" brief="Middleware usb host msd" version="2.10.0" full_name="USB Host MSD" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.stack.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -551,11 +532,11 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_video.MCIMX7U5" name="USB Host Video" brief="Middleware usb host video" version="2.10.0" full_name="USB Host Video" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_video.RW612" name="USB Host Video" brief="Middleware usb host video" version="2.10.0" full_name="USB Host Video" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.stack.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -571,11 +552,11 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_phdc.MCIMX7U5" name="USB Host PHDC" brief="Middleware usb host phdc" version="2.10.0" full_name="USB Host PHDC" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_phdc.RW612" name="USB Host PHDC" brief="Middleware usb host phdc" version="2.10.0" full_name="USB Host PHDC" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.stack.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -591,11 +572,11 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host_printer.MCIMX7U5" name="USB Host Printer" brief="Middleware usb host printer" version="2.10.0" full_name="USB Host Printer" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host_printer.RW612" name="USB Host Printer" brief="Middleware usb host printer" version="2.10.0" full_name="USB Host Printer" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="middleware.usb.host.stack.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="middleware.usb.host.stack.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host/class" project_relative_path="host/class" type="src">
@@ -611,12 +592,12 @@
         <include_path relative_path="./host/class" project_relative_path="host/class" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.common_header.MCIMX7U5" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.10.0" full_name="USB Host Common Header" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host.common_header.RW612" name="USB Host Common Header" brief="Middleware usb host common_header" version="2.10.0" full_name="USB Host Common Header" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.common_header.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="component.osa.RW612"/>
+          <component_dependency value="middleware.usb.common_header.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host" project_relative_path="host" type="c_include">
@@ -632,9 +613,9 @@
         <include_path relative_path="./host" project_relative_path="host" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.ehci_config_header.MCIMX7U5" name="USB host ehci config header" brief="USB host ehci config header" version="2.10.0" full_name="USB host ehci config header" category="USB/USB Host" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
+    <component id="middleware.usb.host.ehci_config_header.RW612" name="USB host ehci config header" brief="USB host ehci config header" version="2.10.0" full_name="USB host ehci config header" category="USB/USB Host" user_visible="true" type="project_template" package_base_path=".././" project_base_path="source">
       <dependencies>
-        <device_dependency value="MCIMX7U5xxxxx"/>
+        <device_dependency value="RW612"/>
       </dependencies>
       <source relative_path="./output/npw/host_config/ehci" project_relative_path="generated" config="true" type="c_include">
         <files mask="usb_host_config.h"/>
@@ -646,12 +627,12 @@
         <include_path relative_path="./output/npw/host_config/ehci" project_relative_path="generated" type="c_include"/>
       </include_paths>
     </component>
-    <component id="middleware.usb.host.stack.MCIMX7U5" name="USB Host Stack" brief="Middleware usb host stack" version="2.10.0" full_name="USB Host Stack" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
+    <component id="middleware.usb.host.stack.RW612" name="USB Host Stack" brief="Middleware usb host stack" version="2.10.0" full_name="USB Host Stack" category="USB/USB Host" user_visible="true" type="middleware" package_base_path=".././" project_base_path="usb">
       <dependencies>
         <all>
-          <component_dependency value="component.osa.MCIMX7U5"/>
-          <component_dependency value="middleware.usb.host_controller_ehci.MCIMX7U5"/>
-          <device_dependency value="MCIMX7U5xxxxx"/>
+          <component_dependency value="component.osa.RW612"/>
+          <component_dependency value="middleware.usb.host_controller_ehci.RW612"/>
+          <device_dependency value="RW612"/>
         </all>
       </dependencies>
       <source relative_path="./host" project_relative_path="host" type="c_include">
