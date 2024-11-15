@@ -98,6 +98,10 @@ if MCUX_COMPONENT_middleware.usb.common_header
                 bool "Use middleware.usb.device.cdc" if !MCUX_MISC_USB_DEVICE_GENERATE_CONFIG
                 default y if USB_DEVICE_CONFIG_CDC_ACM > 0
 
+            config MCUX_COMPONENT_middleware.usb.device.cdc.ecm
+                bool "Use middleware.usb.device.cdc.ecm" if !MCUX_MISC_USB_DEVICE_GENERATE_CONFIG
+                default y if USB_DEVICE_CONFIG_CDC_ECM > 0
+
             config MCUX_COMPONENT_middleware.usb.device.cdc.rndis
                 bool "Use middleware.usb.device.cdc.rndis" if !MCUX_MISC_USB_DEVICE_GENERATE_CONFIG
                 default y if USB_DEVICE_CONFIG_CDC_RNDIS > 0

@@ -89,6 +89,12 @@ config USB_DEVICE_CONFIG_CDC_ACM
     help
         No prefix in generated macro
 
+config USB_DEVICE_CONFIG_CDC_ECM
+    int "CDC-ECM (Communication Device Class Ethernet Control Model) Instance Count"
+    default 0
+    help
+        No prefix in generated macro
+
 config USB_DEVICE_CONFIG_CDC_RNDIS
     int "RNDIS (Remote Network Driver Interface Specification) Instance Count"
     default 0
