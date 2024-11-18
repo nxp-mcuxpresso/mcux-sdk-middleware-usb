@@ -58,13 +58,13 @@ typedef struct _usb_eth_nic_struct
     eth_adapter_handle_t *ethHandle;
     uint8_t configuration;
     uint8_t interfaceAltSetting[USB_DEVICE_CDC_ECM_INTERFACE_COUNT];
-    uint8_t attachStatus;
+    volatile uint8_t attachStatus;
     uint8_t deviceSpeed;
-    uint8_t linkStatus;
+    volatile uint8_t linkStatus;
     uint32_t linkSpeed;
-    uint8_t boardcastFramePass;
-    uint8_t multicastFramePass;
-    uint8_t unicastFramePass;
+    volatile uint8_t boardcastFramePass;
+    volatile uint8_t multicastFramePass;
+    volatile uint8_t unicastFramePass;
 } usb_eth_nic_t;
 
 typedef enum _usb_eth_nic_event_enum
