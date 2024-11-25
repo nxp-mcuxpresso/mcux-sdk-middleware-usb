@@ -13,7 +13,7 @@
 #include "usb_device.h"
 
 #include "usb_device_msc.h"
-#include "usb_device_cdc_acm.h"
+#include "usb_device_cdc.h"
 #include "usb_device_ch9.h"
 #include "usb_device_descriptor.h"
 

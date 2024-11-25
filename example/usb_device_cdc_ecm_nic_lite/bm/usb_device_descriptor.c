@@ -9,7 +9,7 @@
  ******************************************************************************/
 #include "usb_device_config.h"
 #include "usb_device.h"
-#include "usb_device_cdc_ecm.h"
+#include "usb_device_cdc.h"
 #include "usb_device_descriptor.h"
 #include "usb_eth_adapter.h"
 #include "app.h"

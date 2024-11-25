@@ -18,7 +18,7 @@
 #include "usb_device.h"
 
 #include "usb_device_class.h"
-#include "usb_device_cdc_acm.h"
+#include "usb_device_cdc.h"
 #include "usb_device_cdc_rndis.h"
 #include "usb_device_ch9.h"
 #include "usb_device_descriptor.h"
@@ -112,6 +112,8 @@ static usb_device_class_config_list_struct_t s_cdcAcmConfigList = {
     USB_DeviceCallback,
     1,
 };
+
+volatile uint8_t hasSentState = 0U;
 
 /*******************************************************************************
  * Code
@@ -218,7 +220,7 @@ usb_status_t USB_DeviceVnicTransmit(void)
                 memcpy(firstSendBuff + RNDIS_USB_OVERHEAD_SIZE, nicData, usbTxPart_1Len - RNDIS_USB_OVERHEAD_SIZE);
 
                 USB_DEVICE_VNIC_ENTER_CRITICAL();
-                error = USB_DeviceCdcAcmSend(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_IN_ENDPOINT, firstSendBuff,
+                error = USB_DeviceCdcSend(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_IN_ENDPOINT, firstSendBuff,
                                              usbTxPart_1Len);
                 if (kStatus_USB_Error != error)
                 {
@@ -249,7 +251,7 @@ usb_status_t USB_DeviceVnicTransmit(void)
                 USB_DEVICE_VNIC_ENTER_CRITICAL();
                 memcpy(s_usbTxRndisPacketBuffer, nicData + (usbTxPart_1Len - RNDIS_USB_OVERHEAD_SIZE),
                        usbTxLen - usbTxPart_1Len);
-                error = USB_DeviceCdcAcmSend(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_IN_ENDPOINT,
+                error = USB_DeviceCdcSend(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_IN_ENDPOINT,
                                              s_usbTxRndisPacketBuffer, usbTxLen - usbTxPart_1Len);
 
                 if (kStatus_USB_Error != error)
@@ -278,7 +280,7 @@ usb_status_t USB_DeviceVnicTransmit(void)
             {
                 /* Send a zero length packet */
                 USB_DEVICE_VNIC_ENTER_CRITICAL();
-                error = USB_DeviceCdcAcmSend(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_IN_ENDPOINT, &s_zeroSend,
+                error = USB_DeviceCdcSend(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_IN_ENDPOINT, &s_zeroSend,
                                              sizeof(uint8_t));
                 if (kStatus_USB_Error != error)
                 {
@@ -334,7 +336,7 @@ usb_status_t USB_DeviceVnicReceive(void)
         {
             /* Prime for next receive */
             USB_DEVICE_VNIC_ENTER_CRITICAL();
-            error = USB_DeviceCdcAcmRecv(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_OUT_ENDPOINT, s_currRecvBuf,
+            error = USB_DeviceCdcRecv(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_OUT_ENDPOINT, s_currRecvBuf,
                                          g_cdcVnicDicEp[1].maxPacketSize);
             if (kStatus_USB_Error != error)
             {
@@ -375,7 +377,7 @@ usb_status_t USB_DeviceVnicReceive(void)
             {
                 /* Required when ethernet packet + usb header is larger than maxPacketSize */
                 USB_DEVICE_VNIC_ENTER_CRITICAL();
-                error = USB_DeviceCdcAcmRecv(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_OUT_ENDPOINT,
+                error = USB_DeviceCdcRecv(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_OUT_ENDPOINT,
                                              rndisPktMsgData + g_cdcVnicDicEp[1].maxPacketSize, frameRemainingLen);
                 if (kStatus_USB_Error != error)
                 {
@@ -506,9 +508,9 @@ usb_status_t USB_DeviceCdcRndisCallback(class_handle_t handle, uint32_t event, v
 usb_status_t USB_DeviceCdcVnicCallback(class_handle_t handle, uint32_t event, void *param)
 {
     usb_status_t error = kStatus_USB_InvalidRequest;
-    usb_device_cdc_acm_request_param_struct_t *acmReqParam;
+    usb_device_control_request_struct_t *acmReqParam;
     usb_device_endpoint_callback_message_struct_t *epCbParam;
-    acmReqParam = (usb_device_cdc_acm_request_param_struct_t *)param;
+    acmReqParam = (usb_device_control_request_struct_t *)param;
     epCbParam   = (usb_device_endpoint_callback_message_struct_t *)param;
     switch (event)
     {
@@ -566,25 +568,25 @@ usb_status_t USB_DeviceCdcVnicCallback(class_handle_t handle, uint32_t event, vo
             }
         }
         break;
-        case kUSB_DeviceCdcEventSerialStateNotif:
-            ((usb_device_cdc_acm_struct_t *)handle)->hasSentState = 0;
-            error                                                 = kStatus_USB_Success;
+        case kUSB_DeviceCdcEventNotifyResponse:
+            hasSentState = 0;
+            error = kStatus_USB_Success;
             break;
         case kUSB_DeviceCdcEventSendEncapsulatedCommand:
             if (1 == acmReqParam->isSetup)
             {
-                *(acmReqParam->buffer) = g_cdcVnic.rndisHandle->rndisCommand;
-                *(acmReqParam->length) = RNDIS_MAX_EXPECTED_COMMAND_SIZE;
+                acmReqParam->buffer = g_cdcVnic.rndisHandle->rndisCommand;
+                acmReqParam->length = RNDIS_MAX_EXPECTED_COMMAND_SIZE;
             }
             else
             {
                 /* data phase */
-                USB_DeviceCdcRndisMessageSet(g_cdcVnic.rndisHandle, acmReqParam->buffer, acmReqParam->length);
+                USB_DeviceCdcRndisMessageSet(g_cdcVnic.rndisHandle, &acmReqParam->buffer, &acmReqParam->length);
             }
             error = kStatus_USB_Success;
             break;
         case kUSB_DeviceCdcEventGetEncapsulatedResponse:
-            error = USB_DeviceCdcRndisMessageGet(g_cdcVnic.rndisHandle, acmReqParam->buffer, acmReqParam->length);
+            error = USB_DeviceCdcRndisMessageGet(g_cdcVnic.rndisHandle, &acmReqParam->buffer, &acmReqParam->length);
             break;
         default:
             break;
@@ -672,11 +674,11 @@ usb_status_t USB_DeviceCallback(usb_device_handle handle, uint32_t event, void *
                 g_cdcVnic.attach               = 1;
                 g_cdcVnic.currentConfiguration = *temp8;
                 /* Schedule buffer for receive */
-                error = USB_DeviceCdcAcmRecv(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_OUT_ENDPOINT, s_currRecvBuf,
+                error = USB_DeviceCdcRecv(g_cdcVnic.cdcAcmHandle, USB_CDC_VNIC_BULK_OUT_ENDPOINT, s_currRecvBuf,
                                              g_cdcVnicDicEp[0].maxPacketSize);
                 if (kStatus_USB_Error == error)
                 {
-                    usb_echo("kUSB_DeviceEventSetConfiguration, USB_DeviceCdcAcmRecv failed.\r\n");
+                    usb_echo("kUSB_DeviceEventSetConfiguration, USB_DeviceCdcRecv failed.\r\n");
                 }
             }
             else

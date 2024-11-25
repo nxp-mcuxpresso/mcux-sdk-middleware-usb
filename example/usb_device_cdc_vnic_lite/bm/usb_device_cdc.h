@@ -6,8 +6,8 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#ifndef _USB_DEVICE_CDC_ACM_H_
-#define _USB_DEVICE_CDC_ACM_H_ 1
+#ifndef __USB_DEVICE_CDC_H__
+#define __USB_DEVICE_CDC_H__ 1
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -83,4 +83,4 @@
 #define USB_DEVICE_CDC_UART_STATE_PARITY (0x20)
 #define USB_DEVICE_CDC_UART_STATE_OVERRUN (0x40)
 
-#endif /* _USB_DEVICE_CDC_ACM_H_ */
+#endif /* __USB_DEVICE_CDC_H__ */

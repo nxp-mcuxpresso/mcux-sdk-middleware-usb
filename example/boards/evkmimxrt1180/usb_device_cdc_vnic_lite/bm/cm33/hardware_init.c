@@ -10,7 +10,7 @@
 #include "usb_device.h"
 #include "usb_device_ch9.h"
 #include "usb_device_descriptor.h"
-#include "usb_device_cdc_acm.h"
+#include "usb_device_cdc.h"
 #include "usb_device_cdc_rndis.h"
 #include "virtual_nic_enetif.h"
 #include "virtual_nic.h"
