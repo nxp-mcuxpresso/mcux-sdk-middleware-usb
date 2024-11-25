@@ -71,9 +71,9 @@ usb_status_t USB_DeviceProcessClassRequest(usb_device_handle handle, usb_setup_s
 
     switch (setup->bRequest)
     {
-        case USB_DEVICE_CDC_ECM_SET_ETHERNET_PACKET_FILTER:
+        case USB_DEVICE_CDC_REQUEST_SET_ETHERNET_PACKET_FILTER:
             ethNicHandle.attachStatus = 1U;
-            if (setup->wValue & USB_DEVICE_CDC_ECM_PACKET_TYPE_PROMISCUOUS_MASK)
+            if (setup->wValue & USB_DEVICE_CDC_ETHERNET_PACKET_FILTER_BITMAP_PACKET_TYPE_PROMISCUOUS_MASK)
             {
                 ethNicHandle.boardcastFramePass = 1U;
                 ethNicHandle.multicastFramePass = 1U;
@@ -81,7 +81,7 @@ usb_status_t USB_DeviceProcessClassRequest(usb_device_handle handle, usb_setup_s
             }
             else
             {
-                if (setup->wValue & USB_DEVICE_CDC_ECM_PACKET_TYPE_ALL_MULTICAST_MASK)
+                if (setup->wValue & USB_DEVICE_CDC_ETHERNET_PACKET_FILTER_BITMAP_PACKET_TYPE_ALL_MULTICAST_MASK)
                 {
                     ethNicHandle.multicastFramePass = 1U;
                 }
@@ -90,7 +90,7 @@ usb_status_t USB_DeviceProcessClassRequest(usb_device_handle handle, usb_setup_s
                     ethNicHandle.multicastFramePass = 0U;
                 }
 
-                if (setup->wValue & USB_DEVICE_CDC_ECM_PACKET_TYPE_DIRECTED_MASK)
+                if (setup->wValue & USB_DEVICE_CDC_ETHERNET_PACKET_FILTER_BITMAP_PACKET_TYPE_DIRECTED_MASK)
                 {
                     ethNicHandle.unicastFramePass = 1U;
                 }
@@ -99,7 +99,7 @@ usb_status_t USB_DeviceProcessClassRequest(usb_device_handle handle, usb_setup_s
                     ethNicHandle.unicastFramePass = 0U;
                 }
 
-                if (setup->wValue & USB_DEVICE_CDC_ECM_PACKET_TYPE_BROADCAST_MASK)
+                if (setup->wValue & USB_DEVICE_CDC_ETHERNET_PACKET_FILTER_BITMAP_PACKET_TYPE_BROADCAST_MASK)
                 {
                     ethNicHandle.boardcastFramePass = 1U;
                 }

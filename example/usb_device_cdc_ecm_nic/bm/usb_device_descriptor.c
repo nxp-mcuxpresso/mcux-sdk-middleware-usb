@@ -10,6 +10,7 @@
 #include "usb_device_config.h"
 #include "usb_device.h"
 #include "usb_device_class.h"
+#include "usb_device_cdc.h"
 #include "usb_device_descriptor.h"
 #include "usb_eth_adapter.h"
 
@@ -135,7 +136,7 @@ uint8_t usbDeviceConfigurationDescriptor[] = {
     /* Total length of data returned for this configuration. */
     USB_SHORT_GET_LOW(USB_DESCRIPTOR_LENGTH_CONFIGURE +
                       USB_DESCRIPTOR_LENGTH_INTERFACE +
-                      USB_DEVICE_CDC_FUNC_LENGTH +
+                      USB_DEVICE_CDC_FUNC_HEADER_LENGTH +
                       USB_DEVICE_CDC_FUNC_UNION_LENGTH +
                       USB_DEVICE_CDC_ECM_CLASS_DESCRIPTOR_LENGTH +
                       USB_DESCRIPTOR_LENGTH_ENDPOINT +
@@ -145,7 +146,7 @@ uint8_t usbDeviceConfigurationDescriptor[] = {
                       USB_DESCRIPTOR_LENGTH_ENDPOINT),
     USB_SHORT_GET_HIGH(USB_DESCRIPTOR_LENGTH_CONFIGURE +
                        USB_DESCRIPTOR_LENGTH_INTERFACE +
-                       USB_DEVICE_CDC_FUNC_LENGTH +
+                       USB_DEVICE_CDC_FUNC_HEADER_LENGTH +
                        USB_DEVICE_CDC_FUNC_UNION_LENGTH +
                        USB_DEVICE_CDC_ECM_CLASS_DESCRIPTOR_LENGTH +
                        USB_DESCRIPTOR_LENGTH_ENDPOINT +
@@ -182,11 +183,11 @@ uint8_t usbDeviceConfigurationDescriptor[] = {
     0x00U, /* Interface Description String Index*/
 
     /* Communication Class Specific Interface Descriptor */
-    USB_DEVICE_CDC_FUNC_LENGTH,            /* Size of the descriptor, in bytes */
+    USB_DEVICE_CDC_FUNC_HEADER_LENGTH,     /* Size of the descriptor, in bytes */
     USB_DEVICE_CDC_FUNC_TYPE_CS_INTERFACE, /* CS_INTERFACE Descriptor Type */
     USB_DEVICE_CDC_FUNC_SUBTYPE_HEADER,    /* Header Functional Descriptor Subtype */
-    0x10,
-    0x01, /* USB Class Definitions for Communications the Communication specification version 1.10 */
+    0x20,
+    0x01, /* USB Class Definitions for Communications the Communication specification version 1.20 */
 
     USB_DEVICE_CDC_FUNC_UNION_LENGTH,         /* Size of the descriptor, in bytes */
     USB_DEVICE_CDC_FUNC_UNION_TYPE,           /* CS_INTERFACE Descriptor Type */
@@ -211,7 +212,7 @@ uint8_t usbDeviceConfigurationDescriptor[] = {
     /* Notification Endpoint descriptor */
     USB_DESCRIPTOR_LENGTH_ENDPOINT,
     USB_DESCRIPTOR_TYPE_ENDPOINT,
-    USB_DEVICE_CDC_ECM_COMM_INTERRUPT_IN_EP_NUMBER | (USB_IN << 7U),
+    USB_DEVICE_CDC_ECM_COMM_INTERRUPT_IN_EP_NUMBER | USB_DESCRIPTOR_ENDPOINT_ADDRESS_DIRECTION_IN,
     USB_ENDPOINT_INTERRUPT,
     USB_SHORT_GET_LOW(USB_DEIVCE_CDC_ECM_COMM_INTERRUPT_IN_EP_MAXPKT_SIZE),
     USB_SHORT_GET_HIGH(USB_DEIVCE_CDC_ECM_COMM_INTERRUPT_IN_EP_MAXPKT_SIZE),
@@ -242,7 +243,7 @@ uint8_t usbDeviceConfigurationDescriptor[] = {
     /* Bulk IN Endpoint descriptor */
     USB_DESCRIPTOR_LENGTH_ENDPOINT,
     USB_DESCRIPTOR_TYPE_ENDPOINT,
-    USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_NUMBER | (USB_IN << 7U),
+    USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_NUMBER | USB_DESCRIPTOR_ENDPOINT_ADDRESS_DIRECTION_IN,
     USB_ENDPOINT_BULK,
     USB_SHORT_GET_LOW(USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_MAXPKT_SIZE_FS),
     USB_SHORT_GET_HIGH(USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_MAXPKT_SIZE_FS),
@@ -251,7 +252,7 @@ uint8_t usbDeviceConfigurationDescriptor[] = {
     /* Bulk OUT Endpoint descriptor */
     USB_DESCRIPTOR_LENGTH_ENDPOINT,
     USB_DESCRIPTOR_TYPE_ENDPOINT,
-    USB_DEVICE_CDC_ECM_DATA_BULK_OUT_EP_NUMBER | (USB_OUT << 7U),
+    USB_DEVICE_CDC_ECM_DATA_BULK_OUT_EP_NUMBER | USB_DESCRIPTOR_ENDPOINT_ADDRESS_DIRECTION_OUT,
     USB_ENDPOINT_BULK,
     USB_SHORT_GET_LOW(USB_DEVICE_CDC_ECM_DATA_BULK_OUT_EP_MAXPKT_SIZE_FS),
     USB_SHORT_GET_HIGH(USB_DEVICE_CDC_ECM_DATA_BULK_OUT_EP_MAXPKT_SIZE_FS),
