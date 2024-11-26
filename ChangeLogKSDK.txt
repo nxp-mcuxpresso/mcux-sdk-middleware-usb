@@ -13,7 +13,7 @@
       - Enable USB device CDC ECM example: dev_cdc_ecm_nic_bm, dev_cdc_ecm_nic_freertos, dev_cdc_ecm_nic_lite_bm.
   - 2.10.1
     - Improvement:
-      - Host CDC ACM
+      - Host CDC ECM
         - Add link state detection in DHCP and DNS processing.
         - Unify and simplify application processing log.
         - Add static IP supporting.
