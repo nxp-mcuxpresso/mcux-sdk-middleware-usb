@@ -88,7 +88,7 @@ static const usb_device_class_map_t s_UsbDeviceClassInterfaceMap[] = {
 #endif
 
 #if ((defined(USB_DEVICE_CONFIG_CDC_ECM)) && (USB_DEVICE_CONFIG_CDC_ECM > 0U))
-    {USB_DeviceCdcEcmInit, USB_DeviceCdcEcmDeinit, USB_DeviceCdcEcmEvent, kUSB_DeviceClassTypeCdc},
+    {USB_DeviceCdcEcmInit, USB_DeviceCdcEcmDeinit, USB_DeviceCdcEcmEvent, kUSB_DeviceClassTypeCdcEcm},
 #endif
 
 #if ((defined(USB_DEVICE_CONFIG_MSC)) && (USB_DEVICE_CONFIG_MSC > 0U))

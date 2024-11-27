@@ -64,7 +64,7 @@ static usb_status_t USB_DeviceCdcEcmBulkIn(usb_device_handle handle, usb_device_
     if ((NULL != cdcEcmHandle->config) && (NULL != cdcEcmHandle->config->classCallback))
     {
         /* classCallback is initialized in classInit of s_UsbDeviceClassInterfaceMap, it is from the second parameter of classInit */
-        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEventSendResponse, message);
+        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEcmEventSendResponse, message);
     }
 
     cdcEcmHandle->bulkIn.isBusy = 0U;
@@ -85,7 +85,7 @@ static usb_status_t USB_DeviceCdcEcmBulkOut(usb_device_handle handle, usb_device
     if ((NULL != cdcEcmHandle->config) && (NULL != cdcEcmHandle->config->classCallback))
     {
         /* classCallback is initialized in classInit of s_UsbDeviceClassInterfaceMap, it is from the second parameter of classInit */
-        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEventRecvResponse, message);
+        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEcmEventRecvResponse, message);
     }
 
     cdcEcmHandle->bulkOut.isBusy = 0U;
@@ -106,7 +106,7 @@ static usb_status_t USB_DeviceCdcEcmInterruptIn(usb_device_handle handle, usb_de
     if ((NULL != cdcEcmHandle->config) && (NULL != cdcEcmHandle->config->classCallback))
     {
         /* classCallback is initialized in classInit of s_UsbDeviceClassInterfaceMap, it is from the second parameter of classInit */
-        error = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEventNotifyResponse, message);
+        error = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEcmEventNotifyResponse, message);
     }
 
     cdcEcmHandle->interruptIn.isBusy = 0U;
@@ -635,35 +635,35 @@ usb_status_t USB_DeviceCdcEcmEvent(void *handle, uint32_t event, void *param)
                 case USB_DEVICE_CDC_ECM_SET_ETHERNET_MULTICAST_FILTER:
                     if ((controlRequest->setup->bmRequestType & USB_REQUEST_TYPE_DIR_MASK) == USB_REQUEST_TYPE_DIR_OUT)
                     {
-                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEventSetEthernetMulticastFilters, param);
+                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEcmEventSetEthernetMulticastFilters, param);
                     }
                     break;
 
                 case USB_DEVICE_CDC_ECM_SET_ETHERNET_POWER_MANAGEMENT_PATTERN_FILTER:
                     if ((controlRequest->setup->bmRequestType & USB_REQUEST_TYPE_DIR_MASK) == USB_REQUEST_TYPE_DIR_OUT)
                     {
-                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEventSetEthernetPowerManagementPatternFilter, param);
+                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEcmEventSetEthernetPowerManagementPatternFilter, param);
                     }
                     break;
 
                 case USB_DEVICE_CDC_ECM_GET_ETHERNET_POWER_MANAGEMENT_PATTERN_FILTER:
                     if ((controlRequest->setup->bmRequestType & USB_REQUEST_TYPE_DIR_MASK) == USB_REQUEST_TYPE_DIR_IN)
                     {
-                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEventGetEthernetPowerManagementPatternFilter, param);
+                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEcmEventGetEthernetPowerManagementPatternFilter, param);
                     }
                     break;
 
                 case USB_DEVICE_CDC_ECM_SET_ETHERNET_PACKET_FILTER:
                     if ((controlRequest->setup->bmRequestType & USB_REQUEST_TYPE_DIR_MASK) == USB_REQUEST_TYPE_DIR_OUT)
                     {
-                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEventSetEthernetPacketFilter, param);
+                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEcmEventSetEthernetPacketFilter, param);
                     }
                     break;
 
                 case USB_DEVICE_CDC_ECM_GET_ETHERNET_STATISTIC:
                     if ((controlRequest->setup->bmRequestType & USB_REQUEST_TYPE_DIR_MASK) == USB_REQUEST_TYPE_DIR_IN)
                     {
-                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEventGetEthernetStatistic, param);
+                        status = cdcEcmHandle->config->classCallback((class_handle_t)cdcEcmHandle, kUSB_DeviceCdcEcmEventGetEthernetStatistic, param);
                     }
                     break;
 

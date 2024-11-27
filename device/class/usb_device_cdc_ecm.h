@@ -62,14 +62,14 @@ typedef struct _usb_device_cdc_ecm_struct
 
 typedef enum _usb_device_cdc_ecm_event
 {
-    kUSB_DeviceCdcEventSendResponse,
-    kUSB_DeviceCdcEventRecvResponse,
-    kUSB_DeviceCdcEventNotifyResponse,
-    kUSB_DeviceCdcEventSetEthernetMulticastFilters,
-    kUSB_DeviceCdcEventSetEthernetPowerManagementPatternFilter,
-    kUSB_DeviceCdcEventGetEthernetPowerManagementPatternFilter,
-    kUSB_DeviceCdcEventSetEthernetPacketFilter,
-    kUSB_DeviceCdcEventGetEthernetStatistic,
+    kUSB_DeviceCdcEcmEventSendResponse,
+    kUSB_DeviceCdcEcmEventRecvResponse,
+    kUSB_DeviceCdcEcmEventNotifyResponse,
+    kUSB_DeviceCdcEcmEventSetEthernetMulticastFilters,
+    kUSB_DeviceCdcEcmEventSetEthernetPowerManagementPatternFilter,
+    kUSB_DeviceCdcEcmEventGetEthernetPowerManagementPatternFilter,
+    kUSB_DeviceCdcEcmEventSetEthernetPacketFilter,
+    kUSB_DeviceCdcEcmEventGetEthernetStatistic,
 } usb_device_cdc_ecm_event_t;
 
 usb_status_t USB_DeviceCdcEcmInit(uint8_t controllerId, usb_device_class_config_struct_t *config, class_handle_t *handle);

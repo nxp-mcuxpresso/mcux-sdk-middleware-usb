@@ -26,6 +26,7 @@ typedef enum _usb_usb_device_class_type
 {
     kUSB_DeviceClassTypeHid = 1U,
     kUSB_DeviceClassTypeCdc,
+    kUSB_DeviceClassTypeCdcEcm,
     kUSB_DeviceClassTypeMsc,
     kUSB_DeviceClassTypeMtp,
     kUSB_DeviceClassTypeAudio,
