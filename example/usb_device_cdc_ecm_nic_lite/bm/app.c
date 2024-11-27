@@ -112,7 +112,7 @@ static void APP_NotifyLinkStatus(void)
     uint32_t speedMap[2];
 
     req.bmRequestType = USB_REQUEST_TYPE_DIR_IN | USB_REQUEST_TYPE_TYPE_CLASS | USB_REQUEST_TYPE_RECIPIENT_INTERFACE;
-    req.bRequest = USB_DEVICE_CDC_NOTIFICATION_NETWORK_CONNECTION;
+    req.bRequest = USB_DEVICE_CDC_NETWORK_CONNECTION;
     req.wValue = (uint16_t)ethNicHandle.linkStatus;
     req.wIndex = USB_DEVICE_CDC_ECM_COMM_INTERFACE_NUMBER + 1;
     req.wLength = 0;
@@ -126,7 +126,7 @@ static void APP_NotifyLinkStatus(void)
     }
 
     req.bmRequestType = USB_REQUEST_TYPE_DIR_IN | USB_REQUEST_TYPE_TYPE_CLASS | USB_REQUEST_TYPE_RECIPIENT_INTERFACE;
-    req.bRequest = USB_DEVICE_CDC_NOTIFICATION_CONNECTION_SPEED_CHANGE;
+    req.bRequest = USB_DEVICE_CDC_CONNECTION_SPEED_CHANGE;
     req.wValue = 0;
     req.wIndex = USB_DEVICE_CDC_ECM_COMM_INTERFACE_NUMBER + 1;
     req.wLength = 8;

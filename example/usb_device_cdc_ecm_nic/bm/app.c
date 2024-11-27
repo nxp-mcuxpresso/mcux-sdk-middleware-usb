@@ -10,7 +10,7 @@
 #include "usb_device_config.h"
 #include "usb_device.h"
 #include "usb_device_class.h"
-#include "usb_device_cdc.h"
+#include "usb_device_cdc_ecm.h"
 #include "usb_device_descriptor.h"
 #include "usb_eth_adapter.h"
 #include "app.h"
@@ -130,13 +130,13 @@ static void APP_NotifyLinkStatus(void)
     uint32_t speedMap[2];
 
     req.bmRequestType = USB_REQUEST_TYPE_DIR_IN | USB_REQUEST_TYPE_TYPE_CLASS | USB_REQUEST_TYPE_RECIPIENT_INTERFACE;
-    req.bRequest = USB_DEVICE_CDC_NOTIFICATION_NETWORK_CONNECTION;
+    req.bRequest = USB_DEVICE_CDC_NETWORK_CONNECTION;
     req.wValue = (uint16_t)ethNicHandle.linkStatus;
     req.wIndex = USB_DEVICE_CDC_ECM_COMM_INTERFACE_NUMBER + 1;
     req.wLength = 0;
 
     APP_EncapsulateUSBRequest(notify_req, &req, NULL, 0);
-    while (USB_DeviceCdcSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_COMM_INTERRUPT_IN_EP_NUMBER, notify_req, 8) != kStatus_USB_Success)
+    while (USB_DeviceCdcEcmSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_COMM_INTERRUPT_IN_EP_NUMBER, notify_req, 8) != kStatus_USB_Success)
     {
 #if USB_DEVICE_CONFIG_USE_TASK
         USB_DeviceTaskFn(ethNicHandle.deviceHandle);
@@ -144,7 +144,7 @@ static void APP_NotifyLinkStatus(void)
     }
 
     req.bmRequestType = USB_REQUEST_TYPE_DIR_IN | USB_REQUEST_TYPE_TYPE_CLASS | USB_REQUEST_TYPE_RECIPIENT_INTERFACE;
-    req.bRequest = USB_DEVICE_CDC_NOTIFICATION_CONNECTION_SPEED_CHANGE;
+    req.bRequest = USB_DEVICE_CDC_CONNECTION_SPEED_CHANGE;
     req.wValue = 0;
     req.wIndex = USB_DEVICE_CDC_ECM_COMM_INTERFACE_NUMBER + 1;
     req.wLength = 8;
@@ -158,7 +158,7 @@ static void APP_NotifyLinkStatus(void)
     speedMap[1] = ethNicHandle.linkSpeed;
 
     APP_EncapsulateUSBRequest(notify_req, &req, (uint8_t *)speedMap, 8);
-    while (USB_DeviceCdcSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_COMM_INTERRUPT_IN_EP_NUMBER, notify_req, 16) != kStatus_USB_Success)
+    while (USB_DeviceCdcEcmSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_COMM_INTERRUPT_IN_EP_NUMBER, notify_req, 16) != kStatus_USB_Success)
     {
 #if USB_DEVICE_CONFIG_USE_TASK
         USB_DeviceTaskFn(ethNicHandle.deviceHandle);
@@ -226,7 +226,7 @@ static void APP_TransferFrameUSBIn(void)
                 {
                     if (frame_total_len > USB_DEVICE_CDC_ECM_CLASS_DESCRIPTOR_MAX_SEGMENT_SIZE)
                     {
-                        usb_status_t status = USB_DeviceCdcSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_NUMBER, &buf->payload[sent_len], USB_DEVICE_CDC_ECM_CLASS_DESCRIPTOR_MAX_SEGMENT_SIZE);
+                        usb_status_t status = USB_DeviceCdcEcmSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_NUMBER, &buf->payload[sent_len], USB_DEVICE_CDC_ECM_CLASS_DESCRIPTOR_MAX_SEGMENT_SIZE);
                         switch (status)
                         {
                             case kStatus_USB_Busy:
@@ -251,7 +251,7 @@ static void APP_TransferFrameUSBIn(void)
                     }
                     else
                     {
-                        usb_status_t status = USB_DeviceCdcSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_NUMBER, &buf->payload[sent_len], frame_total_len);
+                        usb_status_t status = USB_DeviceCdcEcmSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_NUMBER, &buf->payload[sent_len], frame_total_len);
                         switch (status)
                         {
                             case kStatus_USB_Busy:
@@ -286,7 +286,7 @@ static void APP_TransferFrameUSBIn(void)
                 if (!(buf->len % USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_MAXPKT_SIZE_FS))
 #endif
                 {
-                    if (USB_DeviceCdcSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_NUMBER, &zlpBuffer, 0) != kStatus_USB_Success)
+                    if (USB_DeviceCdcEcmSend(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_DATA_BULK_IN_EP_NUMBER, &zlpBuffer, 0) != kStatus_USB_Success)
                     {
                         if (!ethNicHandle.attachStatus)
                         {
@@ -307,7 +307,7 @@ static void APP_TransferFrameUSBOut(void)
 {
     (void)ETH_ADAPTER_SendFrameQueue();
 
-    if (USB_DeviceCdcRecv(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_DATA_BULK_OUT_EP_NUMBER, dataOutBuffer, APP_ETH_FRAME_MAX_LENGTH) != kStatus_USB_Success)
+    if (USB_DeviceCdcEcmRecv(ethNicHandle.cdcEcmHandle, USB_DEVICE_CDC_ECM_DATA_BULK_OUT_EP_NUMBER, dataOutBuffer, APP_ETH_FRAME_MAX_LENGTH) != kStatus_USB_Success)
     {
         if (!ethNicHandle.attachStatus)
         {
@@ -490,7 +490,7 @@ usb_status_t USB_DeviceCdcEcmCallback(usb_device_handle handle, uint32_t event, 
         case kUSB_DeviceCdcEventSetEthernetPacketFilter:
             ethNicHandle.attachStatus = 1U;
 
-            if (request->setup->wValue & USB_DEVICE_CDC_ETHERNET_PACKET_FILTER_BITMAP_PACKET_TYPE_PROMISCUOUS_MASK)
+            if (request->setup->wValue & USB_DEVICE_CDC_ECM_PACKET_TYPE_PROMISCUOUS_MASK)
             {
                 ethNicHandle.boardcastFramePass = 1U;
                 ethNicHandle.multicastFramePass = 1U;
@@ -498,7 +498,7 @@ usb_status_t USB_DeviceCdcEcmCallback(usb_device_handle handle, uint32_t event, 
             }
             else
             {
-                if (request->setup->wValue & USB_DEVICE_CDC_ETHERNET_PACKET_FILTER_BITMAP_PACKET_TYPE_ALL_MULTICAST_MASK)
+                if (request->setup->wValue & USB_DEVICE_CDC_ECM_PACKET_TYPE_ALL_MULTICAST_MASK)
                 {
                     ethNicHandle.multicastFramePass = 1U;
                 }
@@ -507,7 +507,7 @@ usb_status_t USB_DeviceCdcEcmCallback(usb_device_handle handle, uint32_t event, 
                     ethNicHandle.multicastFramePass = 0U;
                 }
 
-                if (request->setup->wValue & USB_DEVICE_CDC_ETHERNET_PACKET_FILTER_BITMAP_PACKET_TYPE_DIRECTED_MASK)
+                if (request->setup->wValue & USB_DEVICE_CDC_ECM_PACKET_TYPE_DIRECTED_MASK)
                 {
                     ethNicHandle.unicastFramePass = 1U;
                 }
@@ -516,7 +516,7 @@ usb_status_t USB_DeviceCdcEcmCallback(usb_device_handle handle, uint32_t event, 
                     ethNicHandle.unicastFramePass = 0U;
                 }
 
-                if (request->setup->wValue & USB_DEVICE_CDC_ETHERNET_PACKET_FILTER_BITMAP_PACKET_TYPE_BROADCAST_MASK)
+                if (request->setup->wValue & USB_DEVICE_CDC_ECM_PACKET_TYPE_BROADCAST_MASK)
                 {
                     ethNicHandle.boardcastFramePass = 1U;
                 }
