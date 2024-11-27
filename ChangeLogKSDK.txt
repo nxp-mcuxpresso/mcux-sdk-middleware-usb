@@ -7,13 +7,10 @@
     - Improvement:
       - Support USB for KConfig Configuration System and CMake Build System.
       - Enable cache maintentance on i.MX RT 4-digit series and mimxrt700evk.
-      - Split USB audio cases for LPC54xxx series with others.
-      - Unify USB device CDC class driver and USB device common class driver to adapt to CDC ACM and CDC ECM. Rename usb_device_cdc_acm.c/h to be usb_device_cdc.c/h.
-    - New features and demos:
-      - Enable USB device CDC ECM example: dev_cdc_ecm_nic_bm, dev_cdc_ecm_nic_freertos, dev_cdc_ecm_nic_lite_bm.
+      - Split usb audio cases for LPC54xxx series with others.
   - 2.10.1
     - Improvement:
-      - Host CDC ACM
+      - Host cdc acm
         - Add link state detection in DHCP and DNS processing.
         - Unify and simplify application processing log.
         - Add static IP supporting.
