@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Freescale Semiconductor, Inc.
+ * Copyright (c) 2016, Freescale Semiconductor, Inc.
  * Copyright 2016 NXP
  * All rights reserved.
  *
@@ -11,6 +11,6 @@
 #include "usb_device.h"
 
 #if USB_DEVICE_CONFIG_CDC_ACM
-#include "usb_device_cdc.h"
+#include "usb_device_cdc_acm.h"
 
 #endif

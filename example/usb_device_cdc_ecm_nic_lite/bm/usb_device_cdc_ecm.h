@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#ifndef __USB_DEVICE_CDC_H__
-#define __USB_DEVICE_CDC_H__
+#ifndef __USB_DEVICE_CDC_ECM_H__
+#define __USB_DEVICE_CDC_ECM_H__
 
 /*******************************************************************************
  * Includes

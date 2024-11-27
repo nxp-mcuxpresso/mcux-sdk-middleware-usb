@@ -17,7 +17,7 @@
 #include "usb.h"
 #include "usb_device.h"
 
-#include "usb_device_cdc.h"
+#include "usb_device_cdc_acm.h"
 #if USB_DEVICE_CONFIG_CDC_RNDIS
 #include "usb_device_cdc_rndis.h"
 #include "usb_device_descriptor.h"

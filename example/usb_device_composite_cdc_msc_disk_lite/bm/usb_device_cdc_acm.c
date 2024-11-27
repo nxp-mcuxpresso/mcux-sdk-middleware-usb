@@ -11,6 +11,6 @@
 #include "usb_device.h"
 
 #if USB_DEVICE_CONFIG_CDC_ACM
-#include "usb_device_cdc.h"
+#include "usb_device_cdc_acm.h"
 
 #endif
