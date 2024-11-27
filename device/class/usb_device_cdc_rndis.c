@@ -14,7 +14,7 @@
 #include "usb_device.h"
 
 #include "usb_device_class.h"
-#include "usb_device_cdc.h"
+#include "usb_device_cdc_acm.h"
 #if USB_DEVICE_CONFIG_CDC_RNDIS
 #include "usb_device_cdc_rndis.h"
 /*******************************************************************************
@@ -57,7 +57,7 @@ static usb_device_cdc_rndis_struct_t s_cdcRndisHandle[USB_DEVICE_CONFIG_CDC_RNDI
 /* The response data for RNDIS notification. */
 USB_DMA_INIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE)
 static uint8_t s_responseAvailableData[NOTIF_PACKET_SIZE] = {
-    USB_DEVICE_CDC_NOTIFICATION_RESPONSE_AVAILABLE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    USB_DEVICE_CDC_NOTIF_RESPONSE_AVAIL, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
 /* The buffer to store RNDIS request. */
@@ -220,18 +220,18 @@ usb_status_t USB_DeviceCdcRndisDeinit(usb_device_cdc_rndis_struct_t *handle)
  */
 static usb_status_t USB_DeviceCdcRndisResponseAvailable(usb_device_cdc_rndis_struct_t *handle)
 {
-    usb_device_cdc_struct_t *cdcAcmHandle;
+    usb_device_cdc_acm_struct_t *cdcAcmHandle;
     usb_status_t status;
     if (NULL == handle)
     {
         return kStatus_USB_InvalidHandle;
     }
-    cdcAcmHandle = (usb_device_cdc_struct_t *)(handle->cdcAcmHandle);
+    cdcAcmHandle = (usb_device_cdc_acm_struct_t *)(handle->cdcAcmHandle);
     /* update array for current interface */
     s_responseAvailableData[4] = cdcAcmHandle->interfaceNumber;
 
-    status = USB_DeviceCdcSend((void *)cdcAcmHandle, cdcAcmHandle->interruptIn.ep, s_responseAvailableData,
-                               NOTIF_PACKET_SIZE);
+    status = USB_DeviceCdcAcmSend((void *)cdcAcmHandle, cdcAcmHandle->interruptIn.ep, s_responseAvailableData,
+                                  NOTIF_PACKET_SIZE);
     return status;
 }
 

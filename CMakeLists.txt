@@ -50,8 +50,14 @@ endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.cdc)
   mcux_add_include(INCLUDES device/class)
-  mcux_add_source(SOURCES device/class/usb_device_cdc.c
-                  device/class/usb_device_cdc.h)
+  mcux_add_source(SOURCES device/class/usb_device_cdc_acm.c
+                  device/class/usb_device_cdc_acm.h)
+endif()
+
+if(CONFIG_MCUX_COMPONENT_middleware.usb.device.cdc.ecm)
+  mcux_add_include(INCLUDES device/class)
+  mcux_add_source(SOURCES device/class/usb_device_cdc_ecm.c
+                  device/class/usb_device_cdc_ecm.h)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.cdc.rndis)
