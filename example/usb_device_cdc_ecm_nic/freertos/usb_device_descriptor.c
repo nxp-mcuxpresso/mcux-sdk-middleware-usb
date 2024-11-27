@@ -97,7 +97,7 @@ usb_device_interface_list_t cdcEcmConfigurations[USB_DEVICE_CONFIGURATION_COUNT]
 };
 
 usb_device_class_struct_t cdcEcmClass = {
-    .type = kUSB_DeviceClassTypeCdc,
+    .type = kUSB_DeviceClassTypeCdcEcm,
     .interfaceList = cdcEcmConfigurations,
     .configurations = USB_DEVICE_CONFIGURATION_COUNT,
 };

@@ -450,10 +450,10 @@ usb_status_t USB_DeviceCdcEcmCallback(usb_device_handle handle, uint32_t event, 
 
     switch (event)
     {
-        case kUSB_DeviceCdcEventSendResponse:
+        case kUSB_DeviceCdcEcmEventSendResponse:
             break;
 
-        case kUSB_DeviceCdcEventRecvResponse:
+        case kUSB_DeviceCdcEcmEventRecvResponse:
         {
             if (epMsg->length != USB_CANCELLED_TRANSFER_LENGTH)
             {
@@ -465,10 +465,10 @@ usb_status_t USB_DeviceCdcEcmCallback(usb_device_handle handle, uint32_t event, 
         }
         break;
 
-        case kUSB_DeviceCdcEventNotifyResponse:
+        case kUSB_DeviceCdcEcmEventNotifyResponse:
             break;
 
-        case kUSB_DeviceCdcEventSetEthernetPacketFilter:
+        case kUSB_DeviceCdcEcmEventSetEthernetPacketFilter:
             ethNicHandle.attachStatus = 1U;
 
             if (request->setup->wValue & USB_DEVICE_CDC_ECM_PACKET_TYPE_PROMISCUOUS_MASK)
