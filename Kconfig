@@ -304,6 +304,10 @@ if MCUX_COMPONENT_middleware.usb.common_header
             default MCUX_MISC_USB_PD_USE_DSC_GPIO if MCUX_HAS_COMPONENT_driver.dsc_gpio
             default MCUX_MISC_USB_PD_USE_LPC_GPIO if MCUX_HAS_COMPONENT_driver.lpc_gpio
             default MCUX_MISC_USB_PD_USE_RT_GPIO if MCUX_HAS_COMPONENT_driver.rt_gpio
+            default MCUX_MISC_USB_PD_USE_CUSTOMIZED
+   
+        config MCUX_MISC_USB_PD_USE_CUSTOMIZED
+            bool "CUSTOMIZED_GPIO"
 
         config MCUX_MISC_USB_PD_USE_GPIO
             bool "GPIO"
