@@ -244,9 +244,9 @@ usb_device_mtp_obj_prop_list_t g_ObjPropList = {
 /* 2-byte unicode */
 USB_DMA_INIT_DATA_ALIGN(2U)
 uint8_t g_StorageRootPath[] = {
-#if defined(SD_DISK_ENABLE)
+#if (defined(SD_DISK_ENABLE) && (SD_DISK_ENABLE > 0U))
     SDDISK + '0',
-#elif defined(MMC_DISK_ENABLE)
+#elif (defined(MMC_DISK_ENABLE) && (MMC_DISK_ENABLE > 0U))
     MMCDISK + '0',
 #else
     '0',
