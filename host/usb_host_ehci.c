@@ -3851,6 +3851,7 @@ static usb_status_t USB_HostEhciControlBus(usb_host_ehci_instance_t *ehciInstanc
         case kUSB_HostBusL1Sleep:
             if (0U != (ehciInstance->ehciIpBase->PORTSC1 & USBHS_PORTSC1_CCS_MASK))
             {
+                uint32_t info_val;
                 volatile uint32_t lpm_count = 200000U;
                 OSA_SR_ALLOC();
                  /* set timer1 */
@@ -3876,11 +3877,9 @@ static usb_status_t USB_HostEhciControlBus(usb_host_ehci_instance_t *ehciInstanc
                     ((uint32_t)ehciInstance->hirdValue << USBNC_LPM_CSR2_LPM_HST_BESL_SHIFT) |
                     ((uint32_t)ehciInstance->L1remoteWakeupEnable << USBNC_LPM_CSR2_LPM_HST_RWKEN_SHIFT));
                 ehciInstance->registerNcBase->LPM_CSR2 = portScRegister;
-                
-                usb_host_device_instance_t *deviceInstance;
 
                 ehciInstance->busSuspendStatus = kBus_EhciL1StartSleep;
-                deviceInstance = (usb_host_device_instance_t *)hostPointer->suspendedDevice;
+                USB_HostHelperGetPeripheralInformation(hostPointer->suspendedDevice, kUSB_HostGetDeviceAddress, &info_val);
                  OSA_ENTER_CRITICAL();
                 /* Workaroud for ERR052428: begin */
                 ehciInstance->ehciIpBase->USBSTS |= USB_USBSTS_SRI_MASK;
@@ -3890,7 +3889,7 @@ static usb_status_t USB_HostEhciControlBus(usb_host_ehci_instance_t *ehciInstanc
                     lpm_count--;
                 }
                 ehciInstance->registerNcBase->LPM_CSR2 |= ((uint32_t)USBNC_LPM_CSR2_LPM_HST_SEND_MASK |
-                  (((uint32_t)deviceInstance->setAddress << USBNC_LPM_CSR2_LPM_HST_DEVADD_SHIFT) &
+                  (((uint32_t)info_val << USBNC_LPM_CSR2_LPM_HST_DEVADD_SHIFT) &
                   (uint32_t)USBNC_LPM_CSR2_LPM_HST_DEVADD_MASK));
                 /* Workaroud for ERR052428: end */
                 OSA_EXIT_CRITICAL();
