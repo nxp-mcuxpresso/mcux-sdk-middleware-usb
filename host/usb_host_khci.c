@@ -1723,11 +1723,11 @@ usb_status_t USB_HostKhciOpenPipe(usb_host_controller_handle controllerHandle,
         else
         {
             tempPipePointer = usbHostPointer->pipeDescriptorBasePointer;
-            while (NULL != tempPipePointer)
+            do
             {
                 prePipePointer  = tempPipePointer;
                 tempPipePointer = tempPipePointer->next;
-            }
+            } while (NULL != tempPipePointer);
             prePipePointer->next = pipePointer;
         }
         pipePointer->next = NULL;
