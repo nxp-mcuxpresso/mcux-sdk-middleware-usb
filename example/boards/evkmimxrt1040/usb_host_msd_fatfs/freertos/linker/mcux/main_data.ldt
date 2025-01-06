@@ -1,4 +1,0 @@
-        . = ALIGN(32);
-        *(m_usb_dma_init_data)
-        . = ALIGN(32);
-        *(.data*)

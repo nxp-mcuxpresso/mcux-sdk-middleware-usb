@@ -1,4 +1,0 @@
-        . = ALIGN(32);
-        *(CacheLineData.init)
-        . = ALIGN(32);
-        *(.data*)
