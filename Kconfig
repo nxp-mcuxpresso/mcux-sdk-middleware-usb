@@ -60,32 +60,37 @@ if MCUX_COMPONENT_middleware.usb.common_header
             bool "Use middleware.usb.device.khci module" if !MCUX_MISC_USB_DEVICE_GENERATE_CONFIG
             default y
             depends on MCUX_HW_IP_DriverType_USB_HOST_DEVICE_KHCI || MCUX_HW_IP_DriverType_USB_DEVICE_KHCI
-            select MCUX_COMPONENT_middleware.usb.device.controller.driver
 
         config MCUX_COMPONENT_middleware.usb.device.ehci
             bool "Use middleware.usb.device.ehci" if !MCUX_MISC_USB_DEVICE_GENERATE_CONFIG
             default y
             depends on MCUX_HW_IP_DriverType_USB_HOST_DEVICE_EHCI
-            select MCUX_COMPONENT_middleware.usb.device.controller.driver
+            select MCUX_COMPONENT_middleware.usb.phy if !(MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
+            select MCUX_COMPONENT_driver.commom if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.device.ip3511fs
             bool "Use middleware.usb.device.ip3511fs" if !MCUX_MISC_USB_DEVICE_GENERATE_CONFIG
             default y
             depends on MCUX_HW_IP_DriverType_USB_DEVICE_IP3511FS
-            select MCUX_COMPONENT_middleware.usb.device.controller.driver
 
         config MCUX_COMPONENT_middleware.usb.device.ip3511hs
             bool "Use middleware.usb.device.ip3511hs" if !MCUX_MISC_USB_DEVICE_GENERATE_CONFIG
             default y
             depends on MCUX_HW_IP_DriverType_USB_DEVICE_IP3511HS
-            select MCUX_COMPONENT_middleware.usb.device.controller.driver
+            select MCUX_COMPONENT_middleware.usb.phy if !(MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
+            select MCUX_COMPONENT_driver.commom if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.device.controller.driver
             bool
-            select MCUX_COMPONENT_middleware.usb.device.stack if !MCUX_MISC_USB_LITE
+            depends on \
+                MCUX_COMPONENT_middleware.usb.device.khci || \
+                MCUX_COMPONENT_middleware.usb.device.ehci || \
+                MCUX_COMPONENT_middleware.usb.device.ip3511fs || \
+                MCUX_COMPONENT_middleware.usb.device.ip3511hs
 
         config MCUX_COMPONENT_middleware.usb.device.stack
             bool
+            default y if !MCUX_MISC_USB_LITE
             depends on MCUX_COMPONENT_middleware.usb.device.controller.driver
 
         if MCUX_COMPONENT_middleware.usb.device.stack
@@ -172,28 +177,34 @@ if MCUX_COMPONENT_middleware.usb.common_header
             bool "Use middleware.usb.host.khci" if !MCUX_MISC_USB_HOST_GENERATE_CONFIG
             default y
             depends on MCUX_HW_IP_DriverType_USB_HOST_DEVICE_KHCI || MCUX_HW_IP_DriverType_USB_HOST_KHCI
-            select MCUX_COMPONENT_middleware.usb.host.stack
 
         config MCUX_COMPONENT_middleware.usb.host.ehci
             bool "Use middleware.usb.host.ehci" if !MCUX_MISC_USB_HOST_GENERATE_CONFIG
             default y
             depends on MCUX_HW_IP_DriverType_USB_HOST_DEVICE_EHCI
-            select MCUX_COMPONENT_middleware.usb.host.stack
+            select MCUX_COMPONENT_middleware.usb.phy if !(MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
+            select MCUX_COMPONENT_driver.commom if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.host.ohci
             bool "Use middleware.usb.host.ohci" if !MCUX_MISC_USB_HOST_GENERATE_CONFIG
             default y
             depends on MCUX_HW_IP_DriverType_USB_HOST_OHCI
-            select MCUX_COMPONENT_middleware.usb.host.stack
 
         config MCUX_COMPONENT_middleware.usb.host.ip3516hs
             bool "Use middleware.usb.host.ip3516hs" if !MCUX_MISC_USB_HOST_GENERATE_CONFIG
             default y
             depends on MCUX_HW_IP_DriverType_USB_HOST_IP3516HS
-            select MCUX_COMPONENT_middleware.usb.host.stack
+            select MCUX_COMPONENT_middleware.usb.phy if !(MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
+            select MCUX_COMPONENT_driver.commom if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.host.stack
             bool
+            default y
+            depends on \
+                MCUX_COMPONENT_middleware.usb.host.khci || \
+                MCUX_COMPONENT_middleware.usb.host.ehci || \
+                MCUX_COMPONENT_middleware.usb.host.ohci || \
+                MCUX_COMPONENT_middleware.usb.host.ip3516hs
 
         if MCUX_COMPONENT_middleware.usb.host.stack
 
