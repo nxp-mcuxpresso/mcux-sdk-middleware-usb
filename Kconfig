@@ -66,7 +66,7 @@ if MCUX_COMPONENT_middleware.usb.common_header
             default y
             depends on MCUX_HW_IP_DriverType_USB_HOST_DEVICE_EHCI
             select MCUX_COMPONENT_middleware.usb.phy if !(MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
-            select MCUX_COMPONENT_driver.commom if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
+            select MCUX_COMPONENT_driver.common if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.device.ip3511fs
             bool "Use middleware.usb.device.ip3511fs" if !MCUX_MISC_USB_DEVICE_GENERATE_CONFIG
@@ -78,7 +78,7 @@ if MCUX_COMPONENT_middleware.usb.common_header
             default y
             depends on MCUX_HW_IP_DriverType_USB_DEVICE_IP3511HS
             select MCUX_COMPONENT_middleware.usb.phy if !(MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
-            select MCUX_COMPONENT_driver.commom if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
+            select MCUX_COMPONENT_driver.common if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.device.controller.driver
             bool
@@ -184,7 +184,7 @@ if MCUX_COMPONENT_middleware.usb.common_header
             default y
             depends on MCUX_HW_IP_DriverType_USB_HOST_DEVICE_EHCI
             select MCUX_COMPONENT_middleware.usb.phy if !(MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
-            select MCUX_COMPONENT_driver.commom if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
+            select MCUX_COMPONENT_driver.common if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.host.ohci
             bool "Use middleware.usb.host.ohci" if !MCUX_MISC_USB_HOST_GENERATE_CONFIG
@@ -196,7 +196,7 @@ if MCUX_COMPONENT_middleware.usb.common_header
             default y
             depends on MCUX_HW_IP_DriverType_USB_HOST_IP3516HS
             select MCUX_COMPONENT_middleware.usb.phy if !(MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
-            select MCUX_COMPONENT_driver.commom if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
+            select MCUX_COMPONENT_driver.common if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.host.stack
             bool
