@@ -87,13 +87,6 @@ if MCUX_COMPONENT_middleware.usb.common_header
             config MCUX_DEPENDENCY_COMPONENT_middleware.usb.device.ehci_DEPEND_driver.memory
                 bool
                 depends on \
-                    MCUX_HW_DEVICE_MIMXRT1165 || \
-                    MCUX_HW_DEVICE_MIMXRT1166 || \
-                    MCUX_HW_DEVICE_MIMXRT1173 || \
-                    MCUX_HW_DEVICE_MIMXRT1175 || \
-                    MCUX_HW_DEVICE_MIMXRT1176 || \
-                    MCUX_HW_DEVICE_MIMXRT1187 || \
-                    MCUX_HW_DEVICE_MIMXRT1189 || \
                     MCUX_HW_DEVICE_RW610 || \
                     MCUX_HW_DEVICE_RW612
                 select MCUX_COMPONENT_driver.memory
@@ -270,13 +263,6 @@ if MCUX_COMPONENT_middleware.usb.common_header
             config MCUX_DEPENDENCY_COMPONENT_middleware.usb.host.ehci_DEPEND_driver.memory
                 bool
                 depends on \
-                    MCUX_HW_DEVICE_MIMXRT1165 || \
-                    MCUX_HW_DEVICE_MIMXRT1166 || \
-                    MCUX_HW_DEVICE_MIMXRT1173 || \
-                    MCUX_HW_DEVICE_MIMXRT1175 || \
-                    MCUX_HW_DEVICE_MIMXRT1176 || \
-                    MCUX_HW_DEVICE_MIMXRT1187 || \
-                    MCUX_HW_DEVICE_MIMXRT1189 || \
                     MCUX_HW_DEVICE_RW610 || \
                     MCUX_HW_DEVICE_RW612
                 select MCUX_COMPONENT_driver.memory
