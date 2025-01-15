@@ -61,44 +61,8 @@ if MCUX_COMPONENT_middleware.usb.common_header
             depends on MCUX_HW_IP_DriverType_USB_HOST_DEVICE_EHCI
             select MCUX_COMPONENT_middleware.usb.device.controller.driver
             select MCUX_COMPONENT_middleware.usb.device.ehci_config_header
-
-        if MCUX_COMPONENT_middleware.usb.device.ehci
-
-            choice
-
-            config MCUX_DEPENDENCY_COMPONENT_middleware.usb.device.ehci_DEPEND_middleware.usb.phy_driver.memory
-                bool
-                depends on \
-                    MCUX_HW_IP_DriverType_USB_PHY && \
-                    ( \
-                        MCUX_HW_DEVICE_MIMXRT1165 || \
-                        MCUX_HW_DEVICE_MIMXRT1166 || \
-                        MCUX_HW_DEVICE_MIMXRT1173 || \
-                        MCUX_HW_DEVICE_MIMXRT1175 || \
-                        MCUX_HW_DEVICE_MIMXRT1176 || \
-                        MCUX_HW_DEVICE_MIMXRT1187 || \
-                        MCUX_HW_DEVICE_MIMXRT1189 || \
-                        MCUX_HW_DEVICE_RW610 || \
-                        MCUX_HW_DEVICE_RW612 \
-                    )
-                select MCUX_COMPONENT_middleware.usb.phy
-                select MCUX_COMPONENT_driver.memory
-
-            config MCUX_DEPENDENCY_COMPONENT_middleware.usb.device.ehci_DEPEND_driver.memory
-                bool
-                depends on \
-                    MCUX_HW_DEVICE_RW610 || \
-                    MCUX_HW_DEVICE_RW612
-                select MCUX_COMPONENT_driver.memory
-
-            config MCUX_DEPENDENCY_COMPONENT_middleware.usb.device.ehci_DEPEND_middleware.usb.phy
-                bool
-                depends on MCUX_HW_IP_DriverType_USB_PHY
-                select MCUX_COMPONENT_middleware.usb.phy
-
-            endchoice
-
-        endif
+            select MCUX_COMPONENT_middleware.usb.phy if MCUX_HW_IP_DriverType_USB_PHY
+            select MCUX_COMPONENT_driver.memory if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.device.ehci_config_header
             bool
@@ -237,44 +201,8 @@ if MCUX_COMPONENT_middleware.usb.common_header
             depends on MCUX_HW_IP_DriverType_USB_HOST_DEVICE_EHCI
             select MCUX_COMPONENT_middleware.usb.host.stack
             select MCUX_COMPONENT_middleware.usb.host.ehci_config_header
-
-        if MCUX_COMPONENT_middleware.usb.host.ehci
-
-            choice
-
-            config MCUX_DEPENDENCY_COMPONENT_middleware.usb.host.ehci_DEPEND_middleware.usb.phy_driver.memory
-                bool
-                depends on \
-                    MCUX_HW_IP_DriverType_USB_PHY && \
-                    ( \
-                        MCUX_HW_DEVICE_MIMXRT1165 || \
-                        MCUX_HW_DEVICE_MIMXRT1166 || \
-                        MCUX_HW_DEVICE_MIMXRT1173 || \
-                        MCUX_HW_DEVICE_MIMXRT1175 || \
-                        MCUX_HW_DEVICE_MIMXRT1176 || \
-                        MCUX_HW_DEVICE_MIMXRT1187 || \
-                        MCUX_HW_DEVICE_MIMXRT1189 || \
-                        MCUX_HW_DEVICE_RW610 || \
-                        MCUX_HW_DEVICE_RW612 \
-                    )
-                select MCUX_COMPONENT_middleware.usb.phy
-                select MCUX_COMPONENT_driver.memory
-
-            config MCUX_DEPENDENCY_COMPONENT_middleware.usb.host.ehci_DEPEND_driver.memory
-                bool
-                depends on \
-                    MCUX_HW_DEVICE_RW610 || \
-                    MCUX_HW_DEVICE_RW612
-                select MCUX_COMPONENT_driver.memory
-
-            config MCUX_DEPENDENCY_COMPONENT_middleware.usb.host.ehci_DEPEND_middleware.usb.phy
-                bool
-                depends on MCUX_HW_IP_DriverType_USB_PHY
-                select MCUX_COMPONENT_middleware.usb.phy
-
-            endchoice
-
-        endif
+            select MCUX_COMPONENT_middleware.usb.phy if MCUX_HW_IP_DriverType_USB_PHY
+            select MCUX_COMPONENT_driver.memory if (MCUX_HW_DEVICE_RW610 || MCUX_HW_DEVICE_RW612)
 
         config MCUX_COMPONENT_middleware.usb.host.ehci_config_header
             bool
@@ -494,5 +422,24 @@ if MCUX_COMPONENT_middleware.usb.common_header
         bool
         default y
         depends on MCUX_HW_IP_DriverType_USB_PHY
-
+        select MCUX_COMPONENT_driver.memory if \
+            ( \
+                MCUX_HW_DEVICE_MIMXRT1165 || \
+                MCUX_HW_DEVICE_MIMXRT1166 || \
+                MCUX_HW_DEVICE_MIMXRT1173 || \
+                MCUX_HW_DEVICE_MIMXRT1175 || \
+                MCUX_HW_DEVICE_MIMXRT1176 || \
+                MCUX_HW_DEVICE_MIMXRT1187 || \
+                MCUX_HW_DEVICE_MIMXRT1189 \
+            )
+        select MCUX_COMPONENT_driver.common if \
+            ( \
+                !MCUX_HW_DEVICE_MIMXRT1165 && \
+                !MCUX_HW_DEVICE_MIMXRT1166 && \
+                !MCUX_HW_DEVICE_MIMXRT1173 && \
+                !MCUX_HW_DEVICE_MIMXRT1175 && \
+                !MCUX_HW_DEVICE_MIMXRT1176 && \
+                !MCUX_HW_DEVICE_MIMXRT1187 && \
+                !MCUX_HW_DEVICE_MIMXRT1189 \
+            )
 endif
