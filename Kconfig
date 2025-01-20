@@ -285,7 +285,7 @@ if MCUX_COMPONENT_middleware.usb.common_header
     endif
 
     config MCUX_COMPONENT_middleware.usb.phydcd
-        bool "Enable DCD (Device Charger Detect) Support embedded in USB Controller PHY"
+        bool "PHY DCD (Device Charger Detect)"
         default y if \
             USB_DEVICE_CONFIG_CHARGER_DETECT || \
             USB_HOST_CONFIG_BATTERY_CHARGER
@@ -302,7 +302,7 @@ if MCUX_COMPONENT_middleware.usb.common_header
     endif
 
     config MCUX_COMPONENT_middleware.usb.hsdcd
-        bool "DCD (Device Charger Detect) independent of USB Controller"
+        bool "HS DCD (Device Charger Detect)"
         default y if \
             USB_DEVICE_CONFIG_CHARGER_DETECT || \
             USB_HOST_CONFIG_BATTERY_CHARGER
