@@ -14,11 +14,9 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.device.khci)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.khci_config_header)
-  mcux_add_include(INCLUDES config/device/khci)
-  mcux_add_source(
-    SOURCES config/device/khci/usb_device_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/device/khci TARGET_FILES
+                   config/device/khci/usb_device_config.h)
+  mcux_add_source(SOURCES config/device/khci/usb_device_config.h CONFIG TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.ehci)
@@ -27,11 +25,9 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.device.ehci)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.ehci_config_header)
-  mcux_add_include(INCLUDES config/device/ehci)
-  mcux_add_source(
-    SOURCES config/device/ehci/usb_device_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/device/ehci TARGET_FILES
+                   config/device/ehci/usb_device_config.h)
+  mcux_add_source(SOURCES config/device/ehci/usb_device_config.h CONFIG TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.ip3511fs)
@@ -41,11 +37,10 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.device.ip3511fs)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.ip3511fs_config_header)
-  mcux_add_include(INCLUDES config/device/ip3511fs)
-  mcux_add_source(
-    SOURCES config/device/ip3511fs/usb_device_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/device/ip3511fs TARGET_FILES
+                   config/device/ip3511fs/usb_device_config.h)
+  mcux_add_source(SOURCES config/device/ip3511fs/usb_device_config.h CONFIG
+                  TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.ip3511hs)
@@ -55,11 +50,10 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.device.ip3511hs)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.ip3511hs_config_header)
-  mcux_add_include(INCLUDES config/device/ip3511hs)
-  mcux_add_source(
-    SOURCES config/device/ip3511hs/usb_device_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/device/ip3511hs TARGET_FILES
+                   config/device/ip3511hs/usb_device_config.h)
+  mcux_add_source(SOURCES config/device/ip3511hs/usb_device_config.h CONFIG
+                  TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.device.controller.driver)
@@ -161,11 +155,9 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.phydcd)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.phydcd_config_header)
-  mcux_add_include(INCLUDES config/dcd/phydcd)
-  mcux_add_source(
-    SOURCES config/dcd/phydcd/usb_phydcd_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/dcd/phydcd TARGET_FILES
+                   config/dcd/phydcd/usb_phydcd_config.h)
+  mcux_add_source(SOURCES config/dcd/phydcd/usb_phydcd_config.h CONFIG TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.hsdcd)
@@ -175,11 +167,9 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.hsdcd)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.hsdcd_config_header)
-  mcux_add_include(INCLUDES config/dcd/hsdcd)
-  mcux_add_source(
-    SOURCES config/dcd/hsdcd/usb_hsdcd_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/dcd/hsdcd TARGET_FILES
+                   config/dcd/hsdcd/usb_hsdcd_config.h)
+  mcux_add_source(SOURCES config/dcd/hsdcd/usb_hsdcd_config.h CONFIG TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.host.common_header)
@@ -194,11 +184,9 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.host.khci)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.host.khci_config_header)
-  mcux_add_include(INCLUDES config/host/khci)
-  mcux_add_source(
-    SOURCES config/host/khci/usb_host_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/host/khci TARGET_FILES
+                   config/host/khci/usb_host_config.h)
+  mcux_add_source(SOURCES config/host/khci/usb_host_config.h CONFIG TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.host.ehci)
@@ -207,11 +195,9 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.host.ehci)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.host.ehci_config_header)
-  mcux_add_include(INCLUDES config/host/ehci)
-  mcux_add_source(
-    SOURCES config/host/ehci/usb_host_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/host/ehci TARGET_FILES
+                   config/host/ehci/usb_host_config.h)
+  mcux_add_source(SOURCES config/host/ehci/usb_host_config.h CONFIG TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.host.ohci)
@@ -220,11 +206,9 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.host.ohci)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.host.ohci_config_header)
-  mcux_add_include(INCLUDES config/host/ohci)
-  mcux_add_source(
-    SOURCES config/host/ohci/usb_host_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/host/ohci TARGET_FILES
+                   config/host/ohci/usb_host_config.h)
+  mcux_add_source(SOURCES config/host/ohci/usb_host_config.h CONFIG TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.host.ip3516hs)
@@ -233,11 +217,9 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb.host.ip3516hs)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.host.ip3516hs_config_header)
-  mcux_add_include(INCLUDES config/host/ip3516hs)
-  mcux_add_source(
-    SOURCES config/host/ip3516hs/usb_host_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/host/ip3516hs TARGET_FILES
+                   config/host/ip3516hs/usb_host_config.h)
+  mcux_add_source(SOURCES config/host/ip3516hs/usb_host_config.h CONFIG TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb.host.stack)
@@ -322,11 +304,8 @@ if(CONFIG_MCUX_COMPONENT_middleware.usb_pd)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb_pd.config_header)
-  mcux_add_include(INCLUDES config/pd)
-  mcux_add_source(
-    SOURCES config/pd/usb_pd_config.h
-    CONFIG TRUE
-  )
+  mcux_add_include(INCLUDES config/pd TARGET_FILES config/pd/usb_pd_config.h)
+  mcux_add_source(SOURCES config/pd/usb_pd_config.h CONFIG TRUE)
 endif()
 
 if(CONFIG_MCUX_COMPONENT_middleware.usb_pd.phy.ptn5110)
