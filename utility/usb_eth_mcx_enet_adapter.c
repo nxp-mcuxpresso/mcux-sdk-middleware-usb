@@ -9,8 +9,8 @@
  ******************************************************************************/
 #include "fsl_enet.h"
 #include "fsl_phy.h"
+#include "usb.h"
 #include "usb_eth_adapter.h"
-#include "usb_misc.h"
 
 /*******************************************************************************
  * Definitions
@@ -26,11 +26,11 @@
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
-extern ENET_Type *BOARD_GetExampleEnetBase(void);
-extern const phy_operations_t *BOARD_GetPhyOps(void);
-extern void *BOARD_GetPhyResource(void);
-extern uint32_t BOARD_GetPhySysClock(void);
-extern uint8_t BOARD_GetPhyAddress(void);
+extern ENET_Type *BOARD_Enet;
+extern const phy_operations_t *BOARD_PhyOps;
+extern uint32_t BOARD_PhySysClock;
+extern uint8_t BOARD_PhyAddress;
+extern void *BOARD_PhySource;
 
 void ETH_Callback(ENET_Type *base, enet_handle_t *handle, enet_event_t event, uint8_t channel, enet_tx_reclaim_info_t *txReclaimInfo, void *param);
 
@@ -104,19 +104,20 @@ static eth_adapter_err_t ETH_ADAPTER_HW_Init(void)
     /* The miiMode should be set according to the different PHY interfaces. */
 #ifdef EXAMPLE_PHY_INTERFACE_RGMII
     config.miiMode = kENET_RgmiiMode;
+    config.miiSpeed = kENET_MiiSpeed1000M;
 #else
     config.miiMode = kENET_RmiiMode;
-#endif
     config.miiSpeed = kENET_MiiSpeed100M;
+#endif
     config.miiDuplex = kENET_MiiFullDuplex;
 
     /* Mount callback to ENET for getting interrupt event. */
     config.interrupt = kENET_DmaTx | kENET_DmaRx | kENET_DmaBusErr;
 
-    phyConfig.phyAddr = BOARD_GetPhyAddress();
-    phyConfig.autoNeg = false;
-    phyConfig.ops = BOARD_GetPhyOps();
-    phyConfig.resource = BOARD_GetPhyResource();
+    phyConfig.phyAddr = BOARD_PhyAddress;
+    phyConfig.autoNeg = true;
+    phyConfig.ops = BOARD_PhyOps;
+    phyConfig.resource = BOARD_PhySource;
 
     /* Initialize PHY and wait auto-negotiation over. */
     while (PHY_Init(&phyHandle, &phyConfig) != kStatus_Success)
@@ -138,7 +139,7 @@ static eth_adapter_err_t ETH_ADAPTER_HW_Init(void)
 
     for (uint32_t instance = 0; instance < ARRAY_SIZE(enetBases); instance++)
     {
-        if (enetBases[instance] == BOARD_GetExampleEnetBase())
+        if (enetBases[instance] == BOARD_Enet)
         {
             NVIC_SetPriority(enetIrqId[instance], ENET_INTERRUPT_PRIORITY);
         }
@@ -146,21 +147,21 @@ static eth_adapter_err_t ETH_ADAPTER_HW_Init(void)
 #endif
 
     /* Initialize ENET. */
-    ENET_Init(BOARD_GetExampleEnetBase(), &config, &macAddr[0], BOARD_GetPhySysClock());
+    ENET_Init(BOARD_Enet, &config, &macAddr[0], BOARD_PhySysClock);
 
     NVIC_SetPriority(ETHERNET_IRQn, 3U);
 
     /* Initialize Descriptor. */
-    if (ENET_DescriptorInit(BOARD_GetExampleEnetBase(), &config, &buffConfig[0]) != kStatus_Success)
+    if (ENET_DescriptorInit(BOARD_Enet, &config, &buffConfig[0]) != kStatus_Success)
     {
         (void)usb_echo("ENET_DescriptorInit() occurs error.\r\n");
     }
 
     /* Create the handler. */
-    ENET_CreateHandler(BOARD_GetExampleEnetBase(), &enetHandle, &config, &buffConfig[0], ETH_Callback, NULL);
+    ENET_CreateHandler(BOARD_Enet, &enetHandle, &config, &buffConfig[0], ETH_Callback, NULL);
 
     /* Active TX/RX. */
-    ENET_StartRxTx(BOARD_GetExampleEnetBase(), 1, 1);
+    ENET_StartRxTx(BOARD_Enet, 1, 1);
 
     return ETH_ADAPTER_OK;
 }
@@ -177,15 +178,22 @@ eth_adapter_err_t ETH_ADAPTER_Init(void)
         return ETH_ADAPTER_ERROR;
     }
 
-    ethAdapterHandle.rxEvent = false;
-    ethAdapterHandle.txEvent = false;
+    ethAdapterHandle.txCallback = NULL;
+    ethAdapterHandle.txUserInfo = NULL;
+    ethAdapterHandle.rxCallback = NULL;
+    ethAdapterHandle.rxUserInfo = NULL;
+    ethAdapterHandle.errCallback = NULL;
+    ethAdapterHandle.errUserInfo = NULL;
+    ethAdapterHandle.unicastFramePass = true;
+    ethAdapterHandle.multicastFramePass = true;
+    ethAdapterHandle.boardcastFramePass = true;
 
     return ETH_ADAPTER_HW_Init();
 }
 
 eth_adapter_err_t ETH_ADAPTER_GetMacAddress(uint8_t *address)
 {
-    ENET_GetMacAddr(BOARD_GetExampleEnetBase(), address);
+    ENET_GetMacAddr(BOARD_Enet, address);
 
     for (uint32_t idx = 0U; idx < 6; idx++)
     {
@@ -254,7 +262,7 @@ eth_adapter_err_t ETH_ADAPTER_SendFrame(eth_adapter_frame_buf_t *buffer)
             .tsEnable = false,
         }};
 
-    status_t status = ENET_SendFrame(BOARD_GetExampleEnetBase(), &enetHandle, &txFrame, 0);
+    status_t status = ENET_SendFrame(BOARD_Enet, &enetHandle, &txFrame, 0);
 
     if (status != kStatus_Success)
     {
@@ -269,29 +277,24 @@ eth_adapter_err_t ETH_ADAPTER_SendFrame(eth_adapter_frame_buf_t *buffer)
     return ETH_ADAPTER_OK;
 }
 
-eth_adapter_err_t ETH_ADAPTER_RecvFrame(eth_adapter_frame_buf_t *buffer)
+eth_adapter_err_t ETH_ADAPTER_RecvFrame(eth_adapter_frame_buf_t *buffer, uint32_t maxLength)
 {
-    uint32_t length = 0U;
-
     if (!buffer)
     {
-        (void)ENET_ReadFrame(BOARD_GetExampleEnetBase(), &enetHandle, NULL, 0, 0, NULL);
+        (void)ENET_ReadFrame(BOARD_Enet, &enetHandle, NULL, 0, 0, NULL);
 
         return ETH_ADAPTER_OK;
     }
 
-    buffer->len = 0U;
-
     /* Get the received frame size firstly. */
-    status_t status = ENET_GetRxFrameSize(BOARD_GetExampleEnetBase(), &enetHandle, &length, 0);
+    status_t status = ENET_GetRxFrameSize(BOARD_Enet, &enetHandle, &buffer->len, 0);
 
-    if (length != 0)
+    if (buffer->len != 0)
     {
         /* Allocate memory here with the size of "length" */
-        uint8_t *data = (uint8_t *)malloc(sizeof(uint8_t) * length);
-        if (!data)
+        if (buffer->len > maxLength)
         {
-            (void)ENET_ReadFrame(BOARD_GetExampleEnetBase(), &enetHandle, NULL, 0, 0, NULL);
+            (void)ENET_ReadFrame(BOARD_Enet, &enetHandle, NULL, 0, 0, NULL);
 
             /* Add the console warning log. */
 
@@ -299,30 +302,51 @@ eth_adapter_err_t ETH_ADAPTER_RecvFrame(eth_adapter_frame_buf_t *buffer)
         }
         else
         {
-            eth_adapter_frame_buf_t temp_buf;
-            temp_buf.payload = data;
-            temp_buf.len = length;
-
-            if (ENET_ReadFrame(BOARD_GetExampleEnetBase(), &enetHandle, temp_buf.payload, temp_buf.len, 0, NULL) != kStatus_Success)
+            if (ENET_ReadFrame(BOARD_Enet, &enetHandle, buffer->payload, buffer->len, 0, NULL) != kStatus_Success)
             {
-                free(data);
-
                 return ETH_ADAPTER_ERROR;
             }
 
-            if (ETH_ADAPTER_FrameQueuePush(&ethAdapterHandle.rxFrameQueue, &temp_buf) != ETH_ADAPTER_OK)
+            eth_adapter_dst_frame_type_t type;
+            bool forwardUp = false;
+            if (ETH_ADAPTER_IdentifyDstFrameType(buffer, &type) != ETH_ADAPTER_OK)
             {
-                free(data);
-
                 return ETH_ADAPTER_ERROR;
             }
+            else
+            {
+                switch (type)
+                {
+                    case ETH_ADAPTER_DST_FRAME_UNICAST:
+                        if (ethAdapterHandle.unicastFramePass)
+                        {
+                            forwardUp = true;
+                        }
+                        break;
 
-            free(data);
+                    case ETH_ADAPTER_DST_FRAME_MULTICAST:
+                        if (ethAdapterHandle.multicastFramePass)
+                        {
+                            forwardUp = true;
+                        }
+                        break;
 
-            eth_adapter_frame_buf_t *p = &ethAdapterHandle.rxFrameQueue.queue[(ethAdapterHandle.rxFrameQueue.idx + ethAdapterHandle.rxFrameQueue.valid_len - 1) % ethAdapterHandle.rxFrameQueue.total_len];
+                    case ETH_ADAPTER_DST_FRAME_BOARDCAST:
+                        if (ethAdapterHandle.boardcastFramePass)
+                        {
+                            forwardUp = true;
+                        }
+                        break;
 
-            buffer->payload = p->payload;
-            buffer->len = p->len;
+                    default:
+                        break;
+                }
+            }
+
+            if (!forwardUp)
+            {
+                buffer->len = 0U;
+            }
 
             /* Call stack input API to deliver the data to stack */
         }
@@ -330,7 +354,7 @@ eth_adapter_err_t ETH_ADAPTER_RecvFrame(eth_adapter_frame_buf_t *buffer)
     else if (status == kStatus_ENET_RxFrameError)
     {
         /* Update the received buffer when a error frame is received. */
-        (void)ENET_ReadFrame(ENET, &enetHandle, NULL, 0, 0, NULL);
+        (void)ENET_ReadFrame(BOARD_Enet, &enetHandle, NULL, 0, 0, NULL);
 
         return ETH_ADAPTER_ERROR;
     }
@@ -341,24 +365,26 @@ eth_adapter_err_t ETH_ADAPTER_RecvFrame(eth_adapter_frame_buf_t *buffer)
 eth_adapter_err_t ETH_ADAPTER_SendFrameQueue(void)
 {
     eth_adapter_err_t status = ETH_ADAPTER_OK;
+    eth_adapter_frame_buf_t *frame;
 
     while (ethAdapterHandle.txFrameQueue.valid_len)
     {
-        status = ETH_ADAPTER_SendFrame(&ethAdapterHandle.txFrameQueue.queue[ethAdapterHandle.txFrameQueue.idx]);
+        status = ETH_ADAPTER_FrameQueueGet(&ethAdapterHandle.txFrameQueue, &frame);
         if (status != ETH_ADAPTER_OK)
         {
-            if (status == ETH_ADAPTER_BUSY)
-            {
-                break;
-            }
+            break;
+        }
 
-            return status;
+        status = ETH_ADAPTER_SendFrame(frame);
+        if (status != ETH_ADAPTER_OK)
+        {
+            break;
         }
         else
         {
-            if (ETH_ADAPTER_FrameQueuePop(&ethAdapterHandle.txFrameQueue, NULL) != ETH_ADAPTER_OK)
+            status = ETH_ADAPTER_FrameQueuePop(&ethAdapterHandle.txFrameQueue, NULL);
+            if (status != ETH_ADAPTER_OK)
             {
-                status = ETH_ADAPTER_ERROR;
                 break;
             }
         }
@@ -369,24 +395,31 @@ eth_adapter_err_t ETH_ADAPTER_SendFrameQueue(void)
 
 eth_adapter_err_t ETH_ADAPTER_RecvFrameQueue(void)
 {
-    eth_adapter_frame_buf_t data;
+    eth_adapter_err_t status = ETH_ADAPTER_OK;
+    eth_adapter_frame_buf_t *data;
 
     while (ethAdapterHandle.rxFrameQueue.valid_len < ethAdapterHandle.rxFrameQueue.total_len)
     {
-        if (ETH_ADAPTER_RecvFrame(&data) != ETH_ADAPTER_OK)
+        status = ETH_ADAPTER_FrameQueueAlloc(&ethAdapterHandle.rxFrameQueue, &data);
+        if (status != ETH_ADAPTER_OK)
         {
-            return ETH_ADAPTER_ERROR;
+            break;
         }
-        else
+
+        status = ETH_ADAPTER_RecvFrame(data, ENET_FRAME_MAX_FRAMELEN);
+        if (status != ETH_ADAPTER_OK)
         {
-            if (!data.len)
-            {
-                break;
-            }
+            break;
+        }
+
+        if (!data->len)
+        {
+            status = ETH_ADAPTER_FrameQueueDrop(&ethAdapterHandle.rxFrameQueue, NULL);
+            break;
         }
     }
 
-    return ETH_ADAPTER_OK;
+    return status;
 }
 
 eth_adapter_err_t ETH_ADAPTER_IdentifyDstFrameType(eth_adapter_frame_buf_t *buffer, eth_adapter_dst_frame_type_t *type)
@@ -441,11 +474,17 @@ void ETH_Callback(ENET_Type *base, enet_handle_t *handle, enet_event_t event, ui
     switch (event)
     {
         case kENET_TxIntEvent:
-            ethAdapterHandle.txEvent = true;
+            if (ethAdapterHandle.txCallback)
+            {
+                ethAdapterHandle.txCallback(ethAdapterHandle.txUserInfo);
+            }
             break;
 
         case kENET_RxIntEvent:
-            ethAdapterHandle.rxEvent = true;
+            if (ethAdapterHandle.rxCallback)
+            {
+                ethAdapterHandle.rxCallback(ethAdapterHandle.rxUserInfo);
+            }
             break;
 
         default:
