@@ -513,6 +513,10 @@ void PDPTN5110_ConnectDetectDetach(pd_instance_t *pdInstance)
     switch (pdInstance->connectState)
     {
         case kTYPEC_ConnectSource:
+            if (pdInstance->pdPowerPortConfig->typecSrcCurrent < 1U)
+            {
+                break;
+            }
             PDPTN5110_ConnectAssertRpAttached(pdInstance, pdInstance->ccUsed,
                                               pdInstance->pdPowerPortConfig->typecSrcCurrent - 1U);
             break;
