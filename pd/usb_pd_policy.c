@@ -7979,6 +7979,11 @@ static uint8_t PD_PsmSecondaryStateHandler(pd_instance_t *pdInstance,
                     commandVdmResult.vdmHeader.structuredVdmHeaderVal =
                         USB_LONG_FROM_LITTLE_ENDIAN_ADDRESS(((uint8_t *)triggerInfo->pdMsgDataBuffer));
                     commandVdmResult.vdoData  = triggerInfo->pdMsgDataBuffer + 1U;
+                    if (triggerInfo->pdMsgDataLength < 1U)
+                    {
+                        secondNewState = PSM_IDLE;
+                        break;
+                    }
                     commandVdmResult.vdoCount = triggerInfo->pdMsgDataLength - 1U;
                     (void)PD_DpmAppCallback(pdInstance, PD_DPM_STRUCTURED_VDM_SUCCESS, &commandVdmResult, 1);
                     secondNewState = PSM_IDLE;
