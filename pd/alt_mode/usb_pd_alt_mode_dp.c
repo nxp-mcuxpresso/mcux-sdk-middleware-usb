@@ -630,7 +630,13 @@ static void PD_DpUFPHPDDetectAdd(pd_alt_mode_dp_t *dpInstance, pd_hpd_detect_typ
     {
         if (detectValue == kDPHPDDetect_IRQ)
         {
-            uint8_t lastIndex = dpInstance->hpdDetectQueuePutPos - 1U;
+            uint8_t lastIndex = 0U;
+            if (dpInstance->hpdDetectQueuePutPos < 1U)
+            {
+                OSA_EXIT_CRITICAL();
+                return;
+            }
+            lastIndex = dpInstance->hpdDetectQueuePutPos - 1U;
             if (dpInstance->hpdDetectQueuePutPos == 0U)
             {
                 lastIndex = HPD_DETECT_QUEUE_LEN - 1U;
