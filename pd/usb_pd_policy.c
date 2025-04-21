@@ -3849,6 +3849,10 @@ static inline void PD_PsmSetVbusAlarmAndSinkDisconnect(pd_instance_t *pdInstance
 #if defined(PD_CONFIG_SINK_ROLE_ENABLE) && (PD_CONFIG_SINK_ROLE_ENABLE)
     if (pdInstance->curPowerRole == kPD_PowerRoleSink)
     {
+        if (minVoltage < 750U)
+        {
+            return;
+        }
         minVoltage -= 750U; /* Voltage - Cable IR Drop(750mV) */
         /* Set VBUS_SINK_DISCONNECT_THRESHOLD according to power negotiation result. */
         (void)PD_PhyControl(pdInstance, PD_PHY_SET_VBUS_SINK_DISCONNECT, &minVoltage);
