@@ -144,7 +144,7 @@ pd_status_t PD_MsgSend(
     if (dataLength < 2U)
     {
         pdInstance->sendingResult = kStatus_PD_Error;
-        return;
+        return pdInstance->sendingResult;
     }
     msgHeader.bitFields.NumOfDataObjs            = (uint16_t)((dataLength - 2U) >> 2U); /* control, data, chunked */
     msgHeader.bitFields.messageID                = (uint16_t)pdInstance->msgId[sop];
