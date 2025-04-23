@@ -676,7 +676,12 @@ static void PD_PsmCheckRevision(pd_instance_t *pdInstance, pd_msg_header_t msgHe
 /* for sink */
 static uint8_t PD_PsmSinkIsPPSRDO(pd_instance_t *pdInstance)
 {
-    uint8_t rdoIndex = (uint8_t)pdInstance->rdoRequest.bitFields.objectPosition - 1U;
+    uint8_t rdoIndex = 0U;
+    if (pdInstance->rdoRequest.bitFields.objectPosition < 1U)
+    {
+        return 0;
+    }
+    rdoIndex = (uint8_t)pdInstance->rdoRequest.bitFields.objectPosition - 1U;
 
     if (rdoIndex < pdInstance->partnerSourcePDOsCount)
     {
@@ -692,7 +697,12 @@ static uint8_t PD_PsmSinkIsPPSRDO(pd_instance_t *pdInstance)
 /* for source */
 static uint8_t PD_PsmSourceIsPPSRDO(pd_instance_t *pdInstance)
 {
-    uint8_t rdoIndex = (uint8_t)pdInstance->partnerRdoRequest.bitFields.objectPosition - 1U;
+    uint8_t rdoIndex = 0U;
+    if (pdInstance->partnerRdoRequest.bitFields.objectPosition < 1U)
+    {
+        return 0;
+    }
+    rdoIndex = (uint8_t)pdInstance->partnerRdoRequest.bitFields.objectPosition - 1U;
 
     if (rdoIndex < pdInstance->pdPowerPortConfig->sourceCapCount)
     {
@@ -3799,11 +3809,19 @@ static inline void PD_PsmSetVbusAlarmAndSinkDisconnect(pd_instance_t *pdInstance
     if (pdInstance->curPowerRole == kPD_PowerRoleSource)
     {
         rdo.rdoVal   = pdInstance->partnerRdoRequest.rdoVal;
+        if (rdo.bitFields.objectPosition < 1U)
+        {
+            return;
+        }
         pdo.PDOValue = pdInstance->pdPowerPortConfig->sourceCaps[rdo.bitFields.objectPosition - 1U];
     }
     else
     {
         rdo.rdoVal   = pdInstance->rdoRequest.rdoVal;
+        if (rdo.bitFields.objectPosition < 1U)
+        {
+            return;
+        }
         pdo.PDOValue = pdInstance->partnerSourcePDOs[rdo.bitFields.objectPosition - 1U].PDOValue;
     }
 
