@@ -2491,7 +2491,7 @@ static usb_status_t USB_HostEhciQhInit(usb_host_ehci_instance_t *ehciInstance, u
     USB_HostEhciUnlock();
     if (qhPointer == NULL)
     {
-#ifdef HOST_EHCO
+#ifdef HOST_ECHO
         usb_echo("get qh error\r\n");
 #endif
         return kStatus_USB_Error;
