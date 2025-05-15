@@ -2044,7 +2044,10 @@ static usb_status_t USB_DeviceLpc3511IpTransaction(usb_device_lpc3511ip_state_st
             epState->stateUnion.stateBitField.stallPrimed = 1u;
             status                                        = kStatus_USB_Success;
         }
-        status = kStatus_USB_Error;
+        else
+        {
+            status = kStatus_USB_Error;
+        }
         OSA_EXIT_CRITICAL();
         return status;
     }
