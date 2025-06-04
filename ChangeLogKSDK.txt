@@ -21,7 +21,7 @@
       - Split usb audio cases for LPC54xxx series with others.
   - 2.10.1
     - Improvement:
-      - Host cdc acm
+      - Host cdc ECM
         - Add link state detection in DHCP and DNS processing.
         - Unify and simplify application processing log.
         - Add static IP supporting.
