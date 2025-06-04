@@ -2,8 +2,8 @@
 @page middleware_log Middleware Change Log
 
 @section USB USB stack for MCUXpresso SDK
-  The current version of USB stack is 2.11.1.
-  - 2.11.1
+  The current version of USB stack is 2.12.0.
+  - 2.12.0
     - Bug fixes:
       - Fix the dependency issue to meet NPW of CONFIG tool.
       - Fix disk mount issue for host_msd_fatfs during testing throughput.
