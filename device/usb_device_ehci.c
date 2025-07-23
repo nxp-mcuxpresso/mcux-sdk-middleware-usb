@@ -2021,11 +2021,7 @@ usb_status_t USB_DeviceEhciControl(usb_device_controller_handle ehciHandle, usb_
 #endif
             ehciState->registerBase->PORTSC1 &= ~USBHS_PORTSC1_PHCD_MASK;
             ehciState->registerBase->PORTSC1 |= USBHS_PORTSC1_FPR_MASK;
-            startTick = deviceHandle->hwTick;
-            while ((deviceHandle->hwTick - startTick) < 10U)
-            {
-                __NOP();
-            }
+            SDK_DelayAtLeastUs(5000, SystemCoreClock);
             ehciState->registerBase->PORTSC1 &= ~USBHS_PORTSC1_FPR_MASK;
             error = kStatus_USB_Success;
             break;

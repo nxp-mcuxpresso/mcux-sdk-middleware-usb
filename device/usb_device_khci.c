@@ -1623,11 +1623,7 @@ usb_status_t USB_DeviceKhciControl(usb_device_controller_handle khciHandle, usb_
 #if defined(USB_DEVICE_CONFIG_REMOTE_WAKEUP) && (USB_DEVICE_CONFIG_REMOTE_WAKEUP > 0U)
         case kUSB_DeviceControlResume:
             khciState->registerBase->CTL |= USB_CTL_RESUME_MASK;
-            startTick = deviceHandle->hwTick;
-            while ((deviceHandle->hwTick - startTick) < 10U)
-            {
-                __NOP();
-            }
+            SDK_DelayAtLeastUs(5000, SystemCoreClock);
             khciState->registerBase->CTL &= (uint8_t)(~USB_CTL_RESUME_MASK);
             status = kStatus_USB_Success;
             break;
