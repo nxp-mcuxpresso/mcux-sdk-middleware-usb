@@ -25,9 +25,9 @@
  * Definitions
  ******************************************************************************/
 /*! @brief Defines USB stack major version */
-#define USB_STACK_VERSION_MAJOR (0x01UL)
+#define USB_STACK_VERSION_MAJOR (0x02UL)
 /*! @brief Defines USB stack minor version */
-#define USB_STACK_VERSION_MINOR (0x00UL)
+#define USB_STACK_VERSION_MINOR (0x0CUL)
 /*! @brief Defines USB stack bugfix version */
 #define USB_STACK_VERSION_BUGFIX (0x00U)
 
