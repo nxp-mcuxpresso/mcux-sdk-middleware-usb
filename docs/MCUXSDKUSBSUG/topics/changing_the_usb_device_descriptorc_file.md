@@ -164,14 +164,19 @@ The macros in the variable above are defined in the usb\_device\_descriptor.h fi
                                             SetConfiguration() request to select this configuration */
        0x00U,                            /* Index of string descriptor describing this configuration */
        (USB_DESCRIPTOR_CONFIGURE_ATTRIBUTE_D7_MASK) |
+#if defined(USB_DEVICE_CONFIG_SELF_POWER) && (USB_DEVICE_CONFIG_SELF_POWER > 0U)
        (USB_DEVICE_CONFIG_SELF_POWER << USB_DESCRIPTOR_CONFIGURE_ATTRIBUTE_SELF_POWERED_SHIFT) |
-       (USB_DEVICE_CONFIG_REMOTE_WAKEUP << USB_DESCRIPTOR_CONFIGURE_ATTRIBUTE_REMOTE_WAKEUP_SHIFT),
+#endif
+#if defined(USB_DEVICE_CONFIG_REMOTE_WAKEUP) && (USB_DEVICE_CONFIG_REMOTE_WAKEUP > 0U)
+       (USB_DEVICE_CONFIG_REMOTE_WAKEUP << USB_DESCRIPTOR_CONFIGURE_ATTRIBUTE_REMOTE_WAKEUP_SHIFT) |
                                          /* Configuration characteristics
                                               D7: Reserved (set to one)
                                               D6: Self-powered
                                               D5: Remote Wakeup
                                               D4...0: Reserved (reset to zero)
                                          */
+#endif
+       0x00U,
        USB_DEVICE_MAX_POWER,             /* Maximum power consumption of the USB
                                           * device from the bus in this specific
                                           * configuration when the device is fully
@@ -200,8 +205,13 @@ USB_CDC_VCOM_CONFIGURE_INDEX,
 /* Configuration characteristics D7: Reserved (set to one) D6: Self-powered D5: Remote Wakeup D4...0: Reserved
    (reset to zero) */
 (USB_DESCRIPTOR_CONFIGURE_ATTRIBUTE_D7_MASK) |
-    (USB_DEVICE_CONFIG_SELF_POWER << USB_DESCRIPTOR_CONFIGURE_ATTRIBUTE_SELF_POWERED_SHIFT) |
-    (USB_DEVICE_CONFIG_REMOTE_WAKEUP << USB_DESCRIPTOR_CONFIGURE_ATTRIBUTE_REMOTE_WAKEUP_SHIFT),
+#if defined(USB_DEVICE_CONFIG_SELF_POWER) && (USB_DEVICE_CONFIG_SELF_POWER > 0U)
+(USB_DEVICE_CONFIG_SELF_POWER << USB_DESCRIPTOR_CONFIGURE_ATTRIBUTE_SELF_POWERED_SHIFT) |
+#endif
+#if defined(USB_DEVICE_CONFIG_REMOTE_WAKEUP) && (USB_DEVICE_CONFIG_REMOTE_WAKEUP > 0U)
+(USB_DEVICE_CONFIG_REMOTE_WAKEUP << USB_DESCRIPTOR_CONFIGURE_ATTRIBUTE_REMOTE_WAKEUP_SHIFT) |
+#endif
+0x00U,
 /* Maximum power consumption of the USB * device from the bus in this specific * configuration when the device is
    fully * operational. Expressed in 2 mA units *  (i.e., 50 = 100 mA).  */
 USB_DEVICE_MAX_POWER,
