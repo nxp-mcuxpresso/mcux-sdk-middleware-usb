@@ -325,10 +325,13 @@ static void USB_HostOhciEnableIsr(usb_host_ip3516hs_state_struct_t *usbHostState
 
     /* Enter critical */
     OSA_ENTER_CRITICAL();
-    usbHostState->isrLevel--;
-    if (0U == usbHostState->isrLevel)
+    if (usbHostState->isrLevel > 0U)
     {
-        NVIC_EnableIRQ((IRQn_Type)usbHostState->isrNumber);
+        usbHostState->isrLevel--;
+        if (0U == usbHostState->isrLevel)
+        {
+            NVIC_EnableIRQ((IRQn_Type)usbHostState->isrNumber);
+        }
     }
     OSA_EXIT_CRITICAL();
 }
