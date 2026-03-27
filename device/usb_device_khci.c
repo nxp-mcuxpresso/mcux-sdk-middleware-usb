@@ -281,6 +281,11 @@ static usb_status_t USB_DeviceKhciEndpointInit(usb_device_khci_state_struct_t *k
     uint8_t direction      = (epInit->endpointAddress & USB_DESCRIPTOR_ENDPOINT_ADDRESS_DIRECTION_MASK) >>
                         USB_DESCRIPTOR_ENDPOINT_ADDRESS_DIRECTION_SHIFT;
     uint8_t index = ((uint8_t)((uint32_t)endpoint << 1U)) | (uint8_t)direction;
+	
+	if (khciState->endpointState[index].stateUnion.stateBitField.maxPacketSize != 0U)
+	{
+		return kStatus_USB_EpAlreadyProcessed;
+	}
 
     /* Make the endpoint max packet size align with USB Specification 2.0. */
     if (USB_ENDPOINT_ISOCHRONOUS == epInit->transferType)
@@ -388,6 +393,11 @@ static usb_status_t USB_DeviceKhciEndpointDeinit(usb_device_khci_state_struct_t 
     uint8_t direction =
         (ep & USB_DESCRIPTOR_ENDPOINT_ADDRESS_DIRECTION_MASK) >> USB_DESCRIPTOR_ENDPOINT_ADDRESS_DIRECTION_SHIFT;
     uint8_t index = ((uint8_t)((uint32_t)endpoint << 1U)) | (uint8_t)direction;
+
+    if (khciState->endpointState[index].stateUnion.stateBitField.maxPacketSize == 0U)
+	{
+		return kStatus_USB_EpAlreadyProcessed;
+	}
 
     /* Cancel the transfer of the endpoint */
 #if (defined(USB_DEVICE_CONFIG_RETURN_VALUE_CHECK) && (USB_DEVICE_CONFIG_RETURN_VALUE_CHECK > 0U))

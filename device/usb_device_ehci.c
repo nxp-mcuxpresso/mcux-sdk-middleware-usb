@@ -257,6 +257,11 @@ static usb_status_t USB_DeviceEhciEndpointInit(usb_device_ehci_state_struct_t *e
     uint8_t index        = ((uint8_t)((uint32_t)endpoint << 1U)) | direction;
     uint8_t transferType = epInit->transferType & USB_DESCRIPTOR_ENDPOINT_ATTRIBUTE_TYPE_MASK;
 
+    if (ehciState->qh[index].endpointStatusUnion.endpointStatusBitmap.isOpened != 0U)
+    {
+        return kStatus_USB_EpAlreadyProcessed;
+    }
+
     /* Cancel pending transfer of the endpoint */
 #if (defined(USB_DEVICE_CONFIG_RETURN_VALUE_CHECK) && (USB_DEVICE_CONFIG_RETURN_VALUE_CHECK > 0U))
     if (kStatus_USB_Success != USB_DeviceEhciCancel(ehciState, epInit->endpointAddress))
@@ -345,6 +350,11 @@ static usb_status_t USB_DeviceEhciEndpointDeinit(usb_device_ehci_state_struct_t 
     uint8_t direction =
         (ep & USB_DESCRIPTOR_ENDPOINT_ADDRESS_DIRECTION_MASK) >> USB_DESCRIPTOR_ENDPOINT_ADDRESS_DIRECTION_SHIFT;
     uint8_t index = ((uint8_t)((uint32_t)endpoint << 1U)) | direction;
+
+    if (ehciState->qh[index].endpointStatusUnion.endpointStatusBitmap.isOpened == 0U)
+    {
+        return kStatus_USB_EpAlreadyProcessed;
+    }
 
     ehciState->qh[index].endpointStatusUnion.endpointStatusBitmap.isOpened = 0U;
 

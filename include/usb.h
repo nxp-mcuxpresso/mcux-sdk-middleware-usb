@@ -71,6 +71,7 @@ typedef enum _usb_status
     kStatus_USB_DataOverRun, /*!< The amount of data returned by the endpoint exceeded
                                   either the size of the maximum data packet allowed
                                   from the endpoint or the remaining buffer size. */
+    kStatus_USB_EpAlreadyProcessed, /*!< Endpoint process already handled */
 } usb_status_t;
 
 /*! @brief USB host handle type define */

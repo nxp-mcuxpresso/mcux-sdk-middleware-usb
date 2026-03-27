@@ -527,6 +527,11 @@ static usb_status_t USB_DeviceLpc3511IpEndpointInit(usb_device_lpc3511ip_state_s
     uint8_t *maxPacketBuffer;
 #endif
 
+    if (epState->stateUnion.stateBitField.isOpened != 0U)
+    {
+        return kStatus_USB_EpAlreadyProcessed;
+    }
+
     /* clear the endpoint status bits */
     epState->stateUnion.state = 0x00000000U;
     lpc3511IpState->registerBase->EPINUSE &= (~((uint32_t)(0x01UL << endpointIndex)));
@@ -622,9 +627,9 @@ static usb_status_t USB_DeviceLpc3511IpEndpointInit(usb_device_lpc3511ip_state_s
         }
     }
 #endif
-#if (defined(USB_DEVICE_CONFIG_ROOT2_TEST) && (USB_DEVICE_CONFIG_ROOT2_TEST > 0U))
+
     epState->stateUnion.stateBitField.isOpened = 1U;
-#endif
+
     return kStatus_USB_Success;
 }
 
@@ -645,6 +650,11 @@ static usb_status_t USB_DeviceLpc3511IpEndpointDeinit(usb_device_lpc3511ip_state
     usb_device_lpc3511ip_endpoint_state_struct_t *epState =
         USB_DeviceLpc3511IpGetEndpointStateStruct(lpc3511IpState, endpointIndex);
 
+    if (epState->stateUnion.stateBitField.isOpened == 0)
+    {
+        return kStatus_USB_EpAlreadyProcessed;
+    }
+
     /* Cancel the transfer of the endpoint */
 #if (defined(USB_DEVICE_CONFIG_RETURN_VALUE_CHECK) && (USB_DEVICE_CONFIG_RETURN_VALUE_CHECK > 0U))
     if (kStatus_USB_Success != USB_DeviceLpc3511IpCancel(lpc3511IpState, ep))
@@ -658,7 +668,7 @@ static usb_status_t USB_DeviceLpc3511IpEndpointDeinit(usb_device_lpc3511ip_state
 #if (defined USB_DEVICE_IP3511_RESERVED_BUFFER_FOR_COPY) && (USB_DEVICE_IP3511_RESERVED_BUFFER_FOR_COPY)
     if (0U != USB_DeviceLpcIp3511MaxPacketNeedCopy(lpc3511IpState))
     {
-        if ((endpointIndex >> 1U) != USB_CONTROL_ENDPOINT) /* control endpoint */
+        if ((endpointIndex >> 1U) != USB_CONTROL_ENDPOINT) /* not control endpoint */
         {
 #if (defined USB_DEVICE_IP3511_DOUBLE_BUFFER_ENABLE) && (USB_DEVICE_IP3511_DOUBLE_BUFFER_ENABLE)
 #if ((defined(USB_DEVICE_IP3511HS_BULK_OUT_ONE_TIME_TRANSFER_SIZE_MAX)) && \
@@ -696,10 +706,9 @@ static usb_status_t USB_DeviceLpc3511IpEndpointDeinit(usb_device_lpc3511ip_state
     USB_LPC3511IP_ENDPOINT_SET_ENDPOINT(lpc3511IpState, endpointIndex, 0U, USB_LPC3511IP_ENDPOINT_DISABLE_MASK, 0U, 0U);
     /* Clear the max packet size */
     epState->stateUnion.stateBitField.maxPacketSize = 0U;
-#if (defined(USB_DEVICE_CONFIG_ROOT2_TEST) && (USB_DEVICE_CONFIG_ROOT2_TEST > 0U))
+
     /* Clear the endpoint open status */
     epState->stateUnion.stateBitField.isOpened = 0U;
-#endif
 
     return kStatus_USB_Success;
 }
@@ -1312,7 +1321,9 @@ static void USB_DeviceLpc3511IpInterruptToken(usb_device_lpc3511ip_state_struct_
 #endif
         {
             length = USB_DeviceLpc3511IpTokenUpdate(lpc3511IpState, epState, endpointIndex, 0U);
+#if (defined USB_DEVICE_IP3511_DOUBLE_BUFFER_ENABLE) && (USB_DEVICE_IP3511_DOUBLE_BUFFER_ENABLE)
             len    = length;
+#endif
         }
 
         /* update remaining length */
@@ -2447,7 +2458,7 @@ usb_status_t USB_DeviceLpc3511IpControl(usb_device_controller_handle controllerH
                         error = kStatus_USB_Error;
                         break;
                     }
-#if (defined(USB_DEVICE_CONFIG_ROOT2_TEST) && (USB_DEVICE_CONFIG_ROOT2_TEST > 0U))
+
                     if (0U == epState->stateUnion.stateBitField.isOpened)
                     {
                         error = kStatus_USB_InvalidRequest;
@@ -2459,19 +2470,11 @@ usb_status_t USB_DeviceLpc3511IpControl(usb_device_controller_handle controllerH
                                                                         kUSB_DeviceEndpointStateIdle);
                         error                          = kStatus_USB_Success;
                     }
-#else
-                    endpointStatus->endpointStatus =
-                        (uint16_t)((epState->stateUnion.stateBitField.stalled == 1U) ? kUSB_DeviceEndpointStateStalled :
-                                                                                       kUSB_DeviceEndpointStateIdle);
-                    error = kStatus_USB_Success;
-#endif
                 }
-#if (defined(USB_DEVICE_CONFIG_ROOT2_TEST) && (USB_DEVICE_CONFIG_ROOT2_TEST > 0U))
                 else
                 {
                     error = kStatus_USB_InvalidRequest;
                 }
-#endif
             }
             break;
 

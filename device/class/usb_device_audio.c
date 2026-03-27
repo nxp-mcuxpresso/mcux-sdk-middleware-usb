@@ -501,6 +501,10 @@ usb_status_t USB_DeviceAudioControlEndpointsInit(usb_device_audio_struct_t *audi
         epCallback.callbackParam = audioHandle;
 
         status = USB_DeviceInitEndpoint(audioHandle->handle, &epInitStruct, &epCallback);
+        if (status == kStatus_USB_EpAlreadyProcessed)
+        {
+            status = kStatus_USB_Success;
+        }
     }
     return status;
 }
@@ -529,6 +533,10 @@ usb_status_t USB_DeviceAudioControlEndpointsDeinit(usb_device_audio_struct_t *au
     {
         status = USB_DeviceDeinitEndpoint(
             audioHandle->handle, audioHandle->controlInterfaceHandle->endpointList.endpoint[count].endpointAddress);
+        if (status == kStatus_USB_EpAlreadyProcessed)
+        {
+            status = kStatus_USB_Success;
+        }
     }
     audioHandle->controlInterfaceHandle = NULL;
     return status;

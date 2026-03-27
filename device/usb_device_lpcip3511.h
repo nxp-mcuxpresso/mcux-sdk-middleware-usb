@@ -125,12 +125,8 @@ typedef struct _usb_device_lpc3511ip_endpoint_state_struct
             uint32_t producerOdd : 1U;      /*!< When priming one transaction, prime to this endpoint buffer */
             uint32_t consumerOdd : 1U;      /*!< When transaction is done, read result from this endpoint buffer */
             uint32_t endpointType : 2U;
-#if (defined(USB_DEVICE_CONFIG_ROOT2_TEST) && (USB_DEVICE_CONFIG_ROOT2_TEST > 0U))
             uint32_t isOpened : 1U; /*!< whether the endpoint is initialized */
             uint32_t reserved1 : 3U;
-#else
-            uint32_t reserved1 : 4U;
-#endif
         } stateBitField;
     } stateUnion;
     union
