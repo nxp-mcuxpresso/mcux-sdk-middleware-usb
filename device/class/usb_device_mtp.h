@@ -104,6 +104,7 @@ typedef enum
     kUSB_DeviceMtpEventGetObjReferences,     /*!< GetObjectReferences command */
     kUSB_DeviceMtpEventMoveObj,              /*!< MoveObject command */
     kUSB_DeviceMtpEventCopyObj,              /*!< CopyObject command */
+    kUSB_DeviceMtpEventGetThumb,             /*!< GetThumb command */
     kUSB_DeviceMtpEventSendResponseError,    /*!< The result of asynchronous event notification */
     kUSB_DeviceMtpEventSendResponseSuccess,  /*!< The result of asynchronous event notification */
     kUSB_DeviceMtpEventDeviceResetRequest,   /*!< Class specific request callback */

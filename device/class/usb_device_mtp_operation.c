@@ -245,6 +245,13 @@ static inline usb_status_t USB_DeviceMtpCopyObj(usb_device_mtp_struct_t *mtpHand
                                                          dataInfo);
 }
 
+static usb_status_t USB_DeviceMtpGetThumb(usb_device_mtp_struct_t *mtpHandle,
+                                          usb_device_mtp_cmd_data_struct_t *dataInfo)
+{
+    return mtpHandle->configurationStruct->classCallback((class_handle_t)mtpHandle, kUSB_DeviceMtpEventGetThumb,
+                                                         dataInfo);
+}
+
 void USB_DeviceMtpProcessCommand(usb_device_mtp_struct_t *mtpHandle, usb_device_mtp_cmd_data_struct_t *dataInfo)
 {
     usb_status_t status = kStatus_USB_Success;
@@ -373,6 +380,10 @@ void USB_DeviceMtpProcessCommand(usb_device_mtp_struct_t *mtpHandle, usb_device_
                 status = USB_DeviceMtpCopyObj(mtpHandle, dataInfo);
                 break;
 
+            case MTP_OPERATION_GET_THUMB:
+                status = USB_DeviceMtpGetThumb(mtpHandle, dataInfo);
+                break;
+
             default:
                 if (dataInfo->curPhase == USB_DEVICE_MTP_PHASE_COMMAND)
                 {
@@ -398,6 +409,7 @@ void USB_DeviceMtpProcessCommand(usb_device_mtp_struct_t *mtpHandle, usb_device_
                 case MTP_OPERATION_GET_OBJECT_PROP_LIST:
                 case MTP_OPERATION_GET_OBJECT_INFO:
                 case MTP_OPERATION_GET_OBJECT:
+                case MTP_OPERATION_GET_THUMB:
                 case MTP_OPERATION_GET_DEVICE_PROP_VALUE:
                 case MTP_OPERATION_GET_OBJECT_PROP_VALUE:
                 case MTP_OPERATION_GET_OBJECT_REFERENCES:
