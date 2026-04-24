@@ -261,8 +261,18 @@ void USB_DeviceMtpProcessCommand(usb_device_mtp_struct_t *mtpHandle, usb_device_
         /* In the command phase, check transaction and session ID */
         if (dataInfo->curPhase == USB_DEVICE_MTP_PHASE_COMMAND)
         {
-            /* Check transction ID */
-            if (mtpHandle->mtpContainer->transactionID == (mtpHandle->transactionID + 1U))
+            /* Check transaction ID. GetDeviceInfo and OpenSession have undefined
+               Transaction IDs per spec (session-less / session-initializing).
+               Different hosts order them differently: iOS does GetDeviceInfo then
+               OpenSession; libgphoto2 does OpenSession then GetDeviceInfo.
+               For both, accept any txID and sync our tracker to it so subsequent
+               in-session commands validate correctly against whichever came last. */
+            if ((mtpHandle->mtpContainer->code == MTP_OPERATION_GET_DEVICE_INFO) ||
+                (mtpHandle->mtpContainer->code == MTP_OPERATION_OPEN_SESSION))
+            {
+                mtpHandle->transactionID = mtpHandle->mtpContainer->transactionID;
+            }
+            else if (mtpHandle->mtpContainer->transactionID == (mtpHandle->transactionID + 1U))
             {
                 mtpHandle->transactionID = mtpHandle->mtpContainer->transactionID;
 
