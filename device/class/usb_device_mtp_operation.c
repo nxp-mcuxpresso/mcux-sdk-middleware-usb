@@ -245,6 +245,13 @@ static inline usb_status_t USB_DeviceMtpCopyObj(usb_device_mtp_struct_t *mtpHand
                                                          dataInfo);
 }
 
+static usb_status_t USB_DeviceMtpGetThumb(usb_device_mtp_struct_t *mtpHandle,
+                                          usb_device_mtp_cmd_data_struct_t *dataInfo)
+{
+    return mtpHandle->configurationStruct->classCallback((class_handle_t)mtpHandle, kUSB_DeviceMtpEventGetThumb,
+                                                         dataInfo);
+}
+
 void USB_DeviceMtpProcessCommand(usb_device_mtp_struct_t *mtpHandle, usb_device_mtp_cmd_data_struct_t *dataInfo)
 {
     usb_status_t status = kStatus_USB_Success;
@@ -254,8 +261,18 @@ void USB_DeviceMtpProcessCommand(usb_device_mtp_struct_t *mtpHandle, usb_device_
         /* In the command phase, check transaction and session ID */
         if (dataInfo->curPhase == USB_DEVICE_MTP_PHASE_COMMAND)
         {
-            /* Check transction ID */
-            if (mtpHandle->mtpContainer->transactionID == (mtpHandle->transactionID + 1U))
+            /* Check transaction ID. GetDeviceInfo and OpenSession have undefined
+               Transaction IDs per spec (session-less / session-initializing).
+               Different hosts order them differently: iOS does GetDeviceInfo then
+               OpenSession; libgphoto2 does OpenSession then GetDeviceInfo.
+               For both, accept any txID and sync our tracker to it so subsequent
+               in-session commands validate correctly against whichever came last. */
+            if ((mtpHandle->mtpContainer->code == MTP_OPERATION_GET_DEVICE_INFO) ||
+                (mtpHandle->mtpContainer->code == MTP_OPERATION_OPEN_SESSION))
+            {
+                mtpHandle->transactionID = mtpHandle->mtpContainer->transactionID;
+            }
+            else if (mtpHandle->mtpContainer->transactionID == (mtpHandle->transactionID + 1U))
             {
                 mtpHandle->transactionID = mtpHandle->mtpContainer->transactionID;
 
@@ -373,6 +390,10 @@ void USB_DeviceMtpProcessCommand(usb_device_mtp_struct_t *mtpHandle, usb_device_
                 status = USB_DeviceMtpCopyObj(mtpHandle, dataInfo);
                 break;
 
+            case MTP_OPERATION_GET_THUMB:
+                status = USB_DeviceMtpGetThumb(mtpHandle, dataInfo);
+                break;
+
             default:
                 if (dataInfo->curPhase == USB_DEVICE_MTP_PHASE_COMMAND)
                 {
@@ -398,6 +419,7 @@ void USB_DeviceMtpProcessCommand(usb_device_mtp_struct_t *mtpHandle, usb_device_
                 case MTP_OPERATION_GET_OBJECT_PROP_LIST:
                 case MTP_OPERATION_GET_OBJECT_INFO:
                 case MTP_OPERATION_GET_OBJECT:
+                case MTP_OPERATION_GET_THUMB:
                 case MTP_OPERATION_GET_DEVICE_PROP_VALUE:
                 case MTP_OPERATION_GET_OBJECT_PROP_VALUE:
                 case MTP_OPERATION_GET_OBJECT_REFERENCES:
