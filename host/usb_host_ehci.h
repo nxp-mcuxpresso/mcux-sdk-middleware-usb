@@ -326,12 +326,12 @@ typedef struct _usb_host_ehci_instance
 #endif
 
 #endif
+    uint16_t ehciItdNumber;   /*!< Idle ITD number*/
+    uint16_t ehciSitdNumber;  /*!< Idle SITD number*/
+    uint16_t ehciQtdNumber;   /*!< Idle QTD number*/
     uint8_t controllerId;     /*!< EHCI controller ID*/
     uint8_t deviceAttached;   /*!< Device attach/detach state, see #host_ehci_device_state_t */
     uint8_t firstDeviceSpeed; /*!< The first device's speed, the controller's work speed*/
-    uint8_t ehciItdNumber;    /*!< Idle ITD number*/
-    uint8_t ehciSitdNumber;   /*!< Idle SITD number*/
-    uint8_t ehciQtdNumber;    /*!< Idle QTD number*/
 #if ((defined(USB_HOST_CONFIG_LOW_POWER_MODE)) && (USB_HOST_CONFIG_LOW_POWER_MODE > 0U))
 #if ((defined(USB_HOST_CONFIG_LPM_L1)) && (USB_HOST_CONFIG_LPM_L1 > 0U))
     uint8_t hirdValue;

@@ -1992,7 +1992,7 @@ static usb_status_t USB_HostEhciQhQtdListInit(usb_host_ehci_instance_t *ehciInst
     USB_HostEhciLock();
     if (qtdNumber <= ehciInstance->ehciQtdNumber)
     {
-        ehciInstance->ehciQtdNumber -= (uint8_t)qtdNumber;
+        ehciInstance->ehciQtdNumber -= (uint16_t)qtdNumber;
         BaseQtdPointer = ehciInstance->ehciQtdHead;
         qtdPointer     = NULL;
         do
@@ -2854,7 +2854,7 @@ static usb_status_t USB_HostEhciSitdArrayInit(usb_host_ehci_instance_t *ehciInst
         }
         sitdPointer->nextSitdIndex = 0xFF;
         ehciInstance->ehciSitdList = (usb_host_ehci_sitd_t *)(sitdPointer->nextLinkPointer & 0xFFFFFFFEU);
-        ehciInstance->ehciSitdNumber -= (uint8_t)sitdNumber;
+        ehciInstance->ehciSitdNumber -= (uint16_t)sitdNumber;
     }
     else
     {
@@ -3101,7 +3101,7 @@ static usb_status_t USB_HostEhciItdArrayInit(usb_host_ehci_instance_t *ehciInsta
     uint32_t convert_addr  = 0U;
     uint32_t convert_addr1 = 0U;
 #endif
-    uint8_t maxItdNumber;
+    uint16_t maxItdNumber;
     uint16_t index = 0;
 
     isoPointer = (usb_host_ehci_iso_t *)ehciPipePointer->ehciQh;
@@ -3109,10 +3109,10 @@ static usb_status_t USB_HostEhciItdArrayInit(usb_host_ehci_instance_t *ehciInsta
                                                  (uint32_t)kUSB_HostGetDeviceAddress, &address);
 
     /* max needed itd number, the actual needed number may be less because micro-frame interval may be less than 8 */
-    maxItdNumber = (uint8_t)((transfer->transferLength - 1U + minDataPerItd) / minDataPerItd);
+    maxItdNumber = (uint16_t)((transfer->transferLength - 1U + minDataPerItd) / minDataPerItd);
     if (ehciPipePointer->uframeInterval < 8U)
     {
-        maxItdNumber = (uint8_t)((maxItdNumber * ehciPipePointer->uframeInterval + 7U) / 8U) + 1U;
+        maxItdNumber = (uint16_t)((maxItdNumber * ehciPipePointer->uframeInterval + 7U) / 8U) + 1U;
     }
     if (maxItdNumber > ehciInstance->ehciItdNumber)
     {

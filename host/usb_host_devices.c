@@ -661,14 +661,14 @@ static uint8_t USB_HostAllocateDeviceAddress(usb_host_instance_t *hostInstance)
     uint8_t address = 0U;
     uint8_t addressIndex;
     uint8_t addressBitIndex;
-    for (addressIndex = 0U; addressIndex < 8U; ++addressIndex) /* find the idle address position byte */
+    for (addressIndex = 0U; addressIndex < 16U; ++addressIndex) /* find the idle address position byte */
     {
         if (hostInstance->addressBitMap[addressIndex] != 0xFFU)
         {
             break;
         }
     }
-    if (addressIndex < 8U)
+    if (addressIndex < 16U)
     {
         for (addressBitIndex = 0U; addressBitIndex < 8U; ++addressBitIndex) /* find the idle address position bit */
         {
