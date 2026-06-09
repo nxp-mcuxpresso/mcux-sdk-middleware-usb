@@ -505,7 +505,16 @@ usb_status_t USB_DeviceAudioControlEndpointsInit(usb_device_audio_struct_t *audi
         {
             status = kStatus_USB_Success;
         }
+        else if (status == kStatus_USB_Success)
+        {
+            audioHandle->audioInterruptEpInitFlag = 1U;
+        }
+        else
+        {
+            /* no action */
+        }
     }
+
     return status;
 }
 
@@ -531,14 +540,19 @@ usb_status_t USB_DeviceAudioControlEndpointsDeinit(usb_device_audio_struct_t *au
     /* De-initialize all control endpoints of the interface */
     for (count = 0U; count < audioHandle->controlInterfaceHandle->endpointList.count; count++)
     {
-        status = USB_DeviceDeinitEndpoint(
-            audioHandle->handle, audioHandle->controlInterfaceHandle->endpointList.endpoint[count].endpointAddress);
-        if (status == kStatus_USB_EpAlreadyProcessed)
+        if (audioHandle->audioInterruptEpInitFlag == 1U)
+        {
+            status = USB_DeviceDeinitEndpoint(
+                audioHandle->handle, audioHandle->controlInterfaceHandle->endpointList.endpoint[count].endpointAddress);
+            audioHandle->audioInterruptEpInitFlag = 0U;
+        }
+        else
         {
             status = kStatus_USB_Success;
         }
     }
     audioHandle->controlInterfaceHandle = NULL;
+
     return status;
 }
 

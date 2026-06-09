@@ -562,6 +562,7 @@ typedef struct _usb_device_audio_struct
     uint8_t streamAlternate;                               /*!< Current alternate setting of the stream interface */
     uint8_t streamInPipeBusy;                              /*!< Stream IN pipe busy flag */
     uint8_t streamOutPipeBusy;                             /*!< Stream OUT pipe busy flag */
+    uint8_t audioInterruptEpInitFlag;                      /*!< Interrupt pipe init flag */
 } usb_device_audio_struct_t;
 
 #if (USB_DEVICE_CONFIG_AUDIO_CLASS_2_0)

@@ -353,7 +353,7 @@ static usb_status_t USB_DeviceEhciEndpointDeinit(usb_device_ehci_state_struct_t 
 
     if (ehciState->qh[index].endpointStatusUnion.endpointStatusBitmap.isOpened == 0U)
     {
-        return kStatus_USB_EpAlreadyProcessed;
+        return kStatus_USB_Success;
     }
 
     ehciState->qh[index].endpointStatusUnion.endpointStatusBitmap.isOpened = 0U;

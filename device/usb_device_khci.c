@@ -396,7 +396,7 @@ static usb_status_t USB_DeviceKhciEndpointDeinit(usb_device_khci_state_struct_t 
 
     if (khciState->endpointState[index].stateUnion.stateBitField.maxPacketSize == 0U)
 	{
-		return kStatus_USB_EpAlreadyProcessed;
+		return kStatus_USB_Success;
 	}
 
     /* Cancel the transfer of the endpoint */

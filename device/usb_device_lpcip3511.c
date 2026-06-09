@@ -652,7 +652,7 @@ static usb_status_t USB_DeviceLpc3511IpEndpointDeinit(usb_device_lpc3511ip_state
 
     if (epState->stateUnion.stateBitField.isOpened == 0)
     {
-        return kStatus_USB_EpAlreadyProcessed;
+        return kStatus_USB_Success;
     }
 
     /* Cancel the transfer of the endpoint */
