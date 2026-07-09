@@ -19,6 +19,10 @@
 
 #include "usb_device_khci.h"
 
+#if defined FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET && FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET
+#include "fsl_memory.h"
+#endif
+
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -38,6 +42,11 @@
 #error The SOC does not suppoort dedicated RAM case.
 #endif /* USB_STACK_USE_DEDICATED_RAM */
 
+#endif
+
+#if defined FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET && FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET
+#define USB_DEV_MEMORY_CPU_2_DMA(x) MEMORY_ConvertMemoryMapAddress((uint32_t)(x), kMEMORY_Local2DMA)
+#define USB_DEV_MEMORY_DMA_2_CPU(x) MEMORY_ConvertMemoryMapAddress((uint32_t)(x), kMEMORY_DMA2Local)
 #endif
 
 /*******************************************************************************
@@ -118,8 +127,17 @@ static usb_status_t USB_DeviceKhciEndpointTransfer(
     khciState->endpointState[index].stateUnion.stateBitField.transferring = 1U;
 
     /* Add the data buffer address to the BDT. */
+#if defined FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET && FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET
+    /* The USB controller accesses the data buffer via its DMA bus address, which may differ from the
+     * CPU local address (e.g. when the buffer is placed in TCM). Convert the CPU address to the DMA
+     * address before writing it into the BDT. */
+    USB_KHCI_BDT_SET_ADDRESS((uint32_t)khciState->bdt, endpoint, direction,
+                             khciState->endpointState[index].stateUnion.stateBitField.bdtOdd,
+                             (uint32_t)USB_DEV_MEMORY_CPU_2_DMA(buffer));
+#else
     USB_KHCI_BDT_SET_ADDRESS((uint32_t)khciState->bdt, endpoint, direction,
                              khciState->endpointState[index].stateUnion.stateBitField.bdtOdd, (uint32_t)buffer);
+#endif
 
     /* Change the BDT control field to start the transfer. */
     USB_KHCI_BDT_SET_CONTROL(
@@ -679,7 +697,14 @@ static void USB_DeviceKhciInterruptTokenDone(usb_device_khci_state_struct_t *khc
     control = USB_KHCI_BDT_GET_CONTROL((uint32_t)khciState->bdt, endpoint, direction, bdtOdd);
 
     /* Get the buffer field of the BDT element according to the endpoint number, the direction and finished BDT ODD. */
+#if defined FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET && FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET
+    /* The BDT holds the DMA bus address of the buffer. Convert it back to the CPU local address before the
+     * upper layer dereferences it. */
+    bdtBuffer = (uint8_t *)USB_DEV_MEMORY_DMA_2_CPU(
+        USB_KHCI_BDT_GET_ADDRESS((uint32_t)khciState->bdt, endpoint, direction, bdtOdd));
+#else
     bdtBuffer = (uint8_t *)USB_KHCI_BDT_GET_ADDRESS((uint32_t)khciState->bdt, endpoint, direction, bdtOdd);
+#endif
 
     /* Get the transferred length. */
     length = ((USB_LONG_FROM_LITTLE_ENDIAN(control)) >> 16U) & 0x3FFU;
@@ -812,9 +837,17 @@ static void USB_DeviceKhciInterruptTokenDone(usb_device_khci_state_struct_t *khc
         {
             if (0U == khciState->endpointState[index].stateUnion.stateBitField.dmaAlign)
             {
+#if defined FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET && FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET
+                /* The BDT holds the DMA bus address. Convert it back to the CPU local address before
+                 * dereferencing it with memcpy below. */
+                uint8_t *buffer = (uint8_t *)USB_DEV_MEMORY_DMA_2_CPU(USB_LONG_FROM_LITTLE_ENDIAN(
+                    USB_KHCI_BDT_GET_ADDRESS((uint32_t)khciState->bdt, endpoint, USB_OUT,
+                                             khciState->endpointState[index].stateUnion.stateBitField.bdtOdd)));
+#else
                 uint8_t *buffer = (uint8_t *)USB_LONG_FROM_LITTLE_ENDIAN(
                     USB_KHCI_BDT_GET_ADDRESS((uint32_t)khciState->bdt, endpoint, USB_OUT,
                                              khciState->endpointState[index].stateUnion.stateBitField.bdtOdd));
+#endif
                 uint8_t *transferBuffer =
                     khciState->endpointState[index].transferBuffer + khciState->endpointState[index].transferDone;
                 if (buffer != transferBuffer)
@@ -1251,9 +1284,14 @@ usb_status_t USB_DeviceKhciInit(uint8_t controllerId,
 #endif
 
     /* Set BDT buffer address */
-    khciState->registerBase->BDTPAGE1 = (uint8_t)((((uint32_t)khciState->bdt) >> 8U) & 0xFFU);
-    khciState->registerBase->BDTPAGE2 = (uint8_t)((((uint32_t)khciState->bdt) >> 16U) & 0xFFU);
-    khciState->registerBase->BDTPAGE3 = (uint8_t)((((uint32_t)khciState->bdt) >> 24U) & 0xFFU);
+#if defined FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET && FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET
+    uint32_t bdtDmaAddr = (uint32_t)USB_DEV_MEMORY_CPU_2_DMA(khciState->bdt);
+#else
+    uint32_t bdtDmaAddr = (uint32_t)khciState->bdt;
+#endif
+    khciState->registerBase->BDTPAGE1 = (uint8_t)((bdtDmaAddr >> 8U) & 0xFFU);
+    khciState->registerBase->BDTPAGE2 = (uint8_t)((bdtDmaAddr >> 16U) & 0xFFU);
+    khciState->registerBase->BDTPAGE3 = (uint8_t)((bdtDmaAddr >> 24U) & 0xFFU);
 
 #if (defined(USB_DEVICE_CONFIG_DETACH_ENABLE) && (USB_DEVICE_CONFIG_DETACH_ENABLE > 0U))
     khciState->registerBase->MISCCTRL |= USB_MISCCTRL_VREDG_EN_MASK | USB_MISCCTRL_VFEDG_EN_MASK;

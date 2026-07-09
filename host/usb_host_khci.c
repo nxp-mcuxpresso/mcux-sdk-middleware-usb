@@ -21,6 +21,11 @@
 #include "usb_host_devices.h"
 #include "usb_host_framework.h"
 #endif
+
+#if (defined(FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET) && (FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET > 0U))
+#include "fsl_memory.h"
+#endif
+
 /*******************************************************************************
  * Variables
  ******************************************************************************/
@@ -43,6 +48,11 @@
 #endif
 /*for misra 11.3 11.6*/
 USB_CONTROLLER_DATA USB_RAM_ADDRESS_ALIGNMENT(512) static uint32_t bdt[512U / sizeof(uint32_t)];
+
+#if (defined(FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET) && (FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET > 0U))
+#define USB_HOST_MEMORY_CPU_2_DMA(x) MEMORY_ConvertMemoryMapAddress((uint32_t)(x), kMEMORY_Local2DMA)
+#define USB_HOST_MEMORY_DMA_2_CPU(x) MEMORY_ConvertMemoryMapAddress((uint32_t)(x), kMEMORY_DMA2Local)
+#endif
 
 /*******************************************************************************
  * Code
@@ -1000,8 +1010,15 @@ static int32_t _USB_HostKhciAtomNonblockingTransaction(usb_khci_host_state_struc
         switch (trType)
         {
             case kTr_Ctrl:
-                bdPointer         = (uint32_t *)USB_KHCI_BD_PTR(0U, 1U, usbHostPointer->txBd);
+                bdPointer = (uint32_t *)USB_KHCI_BD_PTR(0U, 1U, usbHostPointer->txBd);
+#if (defined(FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET) && (FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET > 0U))
+                /* The USB controller accesses the data buffer via its DMA bus address, which may differ
+                 * from the CPU local address (e.g. when the buffer is placed in TCM). Convert the CPU
+                 * address to the DMA address before writing it into the BD. */
+                *(bdPointer + 1U) = USB_LONG_TO_LITTLE_ENDIAN((uint32_t)USB_HOST_MEMORY_CPU_2_DMA(buf));
+#else
                 *(bdPointer + 1U) = USB_LONG_TO_LITTLE_ENDIAN((uint32_t)buf);
+#endif
                 *bdPointer        = USB_LONG_TO_LITTLE_ENDIAN(USB_KHCI_BD_BC(len) | USB_KHCI_BD_OWN);
                 __DSB(); /* make sure the bdt is updated before TOKEN update */
                 usbHostPointer->usbRegBase->TOKEN =
@@ -1009,8 +1026,13 @@ static int32_t _USB_HostKhciAtomNonblockingTransaction(usb_khci_host_state_struc
                 usbHostPointer->txBd ^= 1U;
                 break;
             case kTr_In:
-                bdPointer         = (uint32_t *)USB_KHCI_BD_PTR(0U, 0U, usbHostPointer->rxBd);
+                bdPointer = (uint32_t *)USB_KHCI_BD_PTR(0U, 0U, usbHostPointer->rxBd);
+#if (defined(FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET) && (FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET > 0U))
+                /* Convert the CPU local address to the DMA bus address before writing it into the BD. */
+                *(bdPointer + 1U) = USB_LONG_TO_LITTLE_ENDIAN((uint32_t)USB_HOST_MEMORY_CPU_2_DMA(buf));
+#else
                 *(bdPointer + 1U) = USB_LONG_TO_LITTLE_ENDIAN((uint32_t)buf);
+#endif
                 *bdPointer        = USB_LONG_TO_LITTLE_ENDIAN(USB_KHCI_BD_BC(len) | USB_KHCI_BD_OWN |
                                                        USB_KHCI_BD_DATA01(pipeDescPointer->nextdata01));
                 __DSB(); /* make sure the bdt is updated before TOKEN update */
@@ -1019,8 +1041,13 @@ static int32_t _USB_HostKhciAtomNonblockingTransaction(usb_khci_host_state_struc
                 usbHostPointer->rxBd ^= 1U;
                 break;
             case kTr_Out:
-                bdPointer         = (uint32_t *)USB_KHCI_BD_PTR(0U, 1U, usbHostPointer->txBd);
+                bdPointer = (uint32_t *)USB_KHCI_BD_PTR(0U, 1U, usbHostPointer->txBd);
+#if (defined(FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET) && (FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET > 0U))
+                /* Convert the CPU local address to the DMA bus address before writing it into the BD. */
+                *(bdPointer + 1U) = USB_LONG_TO_LITTLE_ENDIAN((uint32_t)USB_HOST_MEMORY_CPU_2_DMA(buf));
+#else
                 *(bdPointer + 1U) = USB_LONG_TO_LITTLE_ENDIAN((uint32_t)buf);
+#endif
                 *bdPointer        = USB_LONG_TO_LITTLE_ENDIAN(USB_KHCI_BD_BC(len) | USB_KHCI_BD_OWN |
                                                        USB_KHCI_BD_DATA01(pipeDescPointer->nextdata01));
                 __DSB(); /* make sure the bdt is updated before TOKEN update */
@@ -1628,9 +1655,20 @@ usb_status_t USB_HostKhciCreate(uint8_t controllerId,
     usbHostPointer->usbRegBase->USBCTRL &= (uint8_t)(~USB_USBCTRL_SUSP_MASK);
     usbHostPointer->usbRegBase->CTL |= USB_CTL_ODDRST_MASK;
 
+#if (defined(FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET) && (FSL_FEATURE_MEMORY_HAS_ADDRESS_OFFSET > 0U))
+    /* The USB controller fetches the BDT via its DMA bus address, which may differ from the CPU
+     * local address (e.g. when the BDT is placed in TCM). Convert the CPU address to the DMA
+     * address before programming the BDTPAGE registers. */
+    uint32_t bdtDmaAddr = (uint32_t)USB_HOST_MEMORY_CPU_2_DMA(USB_KHCI_BDT_BASE);
+    usbHostPointer->usbRegBase->BDTPAGE1 = (uint8_t)((bdtDmaAddr >> 8U) & 0xFFU);
+    usbHostPointer->usbRegBase->BDTPAGE2 = (uint8_t)((bdtDmaAddr >> 16U) & 0xFFU);
+    usbHostPointer->usbRegBase->BDTPAGE3 = (uint8_t)((bdtDmaAddr >> 24U) & 0xFFU);
+#else
     usbHostPointer->usbRegBase->BDTPAGE1 = (uint8_t)((uint32_t)USB_KHCI_BDT_BASE >> 8U);
     usbHostPointer->usbRegBase->BDTPAGE2 = (uint8_t)((uint32_t)USB_KHCI_BDT_BASE >> 16);
     usbHostPointer->usbRegBase->BDTPAGE3 = (uint8_t)((uint32_t)USB_KHCI_BDT_BASE >> 24);
+#endif
+
     /* Set SOF threshold */
     usbHostPointer->usbRegBase->SOFTHLD = 255;
     usbHostPointer->usbRegBase->ERREN   = 0x00U;
